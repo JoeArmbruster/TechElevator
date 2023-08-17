@@ -17,7 +17,7 @@ public class Exercise03_ShippingTotal {
      * Scamper Shipping Company charges $0.50 per pound for items up to and
      * including 40 pounds. It charges $0.75 per pound for items over 40 pounds.
      * Return the shipping rate when provided a weight in pounds.
-     * 
+     *
      * Examples:
      * calculateShippingRate(10) ➔ 0.50
      * calculateShippingRate(25) ➔ 0.50
@@ -25,7 +25,11 @@ public class Exercise03_ShippingTotal {
      * calculateShippingRate(45) ➔ 0.75
      */
     public double calculateShippingRate(int weightPounds) {
-        return 0.0;
+
+        if (weightPounds <= 40) {
+            return 0.50;
+        }
+        return 0.75;
     }
 
     /*
@@ -33,9 +37,9 @@ public class Exercise03_ShippingTotal {
      * including 40 pounds. It charges $0.75 per pound for items over 40 pounds.
      * Implement the logic needed to calculate the shipping cost when provided a
      * weight in pounds.
-     * 
+     *
      * You may use calculateShippingRate() in your solution.
-     * 
+     *
      * Examples:
      * calculateShippingTotal(10) ➔ 5.0
      * calculateShippingTotal(25) ➔ 12.5
@@ -43,7 +47,14 @@ public class Exercise03_ShippingTotal {
      * calculateShippingTotal(45) ➔ 33.75
      */
     public double calculateShippingTotal(int weightPounds) {
-        return 0.0;
+        double calculateShippingRate;
+
+        if (weightPounds <= 40) {
+            calculateShippingRate = weightPounds * 0.50;
+        } else {
+            calculateShippingRate = weightPounds * 0.75;
+        }
+        return calculateShippingRate;
     }
 
     /*
@@ -51,9 +62,9 @@ public class Exercise03_ShippingTotal {
      * give them 10% off of their order.
      * Implement the logic to calculate the correct shipping rate when provided a
      * weight in pounds and a boolean value for hasDiscount.
-     * 
+     *
      * You may use any previous methods in your solution.
-     * 
+     *
      * Examples:
      * calculateShippingTotal(10, false) ➔ 5.0
      * calculateShippingTotal(10, true) ➔ 4.5
@@ -65,7 +76,21 @@ public class Exercise03_ShippingTotal {
      * calculateShippingTotal(45, true) ➔ 30.375
      */
     public double calculateShippingTotal(int weightPounds, boolean hasDiscount) {
-        return 0.0;
-    }
 
+        if (hasDiscount && weightPounds <= 40) {
+            double shippingRate = weightPounds * 0.5;
+            double discountAmount = shippingRate * 0.1;
+            return shippingRate = shippingRate - discountAmount;
+        } else if (hasDiscount && weightPounds > 40) {
+            double shippingRate = weightPounds * 0.75;
+            double discountAmount = shippingRate * 0.1;
+            return shippingRate = shippingRate - discountAmount;
+        } else if (weightPounds <= 40) {
+            double shippingRate = weightPounds * 0.5;
+            return shippingRate;
+        } else {
+            double shippingRate = weightPounds * 0.75;
+            return shippingRate;
+        }
+    }
 }
