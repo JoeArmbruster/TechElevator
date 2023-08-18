@@ -21,7 +21,10 @@ public class MakingChange1 {
         value = sc.nextDouble(); 
         
         // puts in int format as cents
-        cents = (int) (value * 100);
+        cents = (int) (value * 100); // 12.51 --> 1251.0 --> 1251
+        dollars = cents / 100; // 1251 / 100 --> 12
+        //cents = cents - dollars * 100; // 1251 - 12 * 100 = 1251 - 1200 = 51
+        cents = cents % 100; // 1251 % 100
         
         // identify values for each currency type
         dollars = cents / 100;
