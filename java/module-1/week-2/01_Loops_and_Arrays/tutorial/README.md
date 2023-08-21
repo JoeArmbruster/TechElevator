@@ -201,7 +201,8 @@ for (int j = 1; j < forecastTemperatures.length; j++) {
 }
 ```
 
-Each time the loop runs, `forecastTemperatures[j]` points to a different value in the array, based on the value of `j`. The `if` statement compares that to the value stored in `highestTemperatureValue`. If the value in the array is greater than the value stored in `highestTemperatureValue`, then it's updated with that value. The index of that value is stored in `highestTemperatureIndex` since you want to know on what day the highest temperature is going to occur.
+Each time the loop runs, `forecastTemperatures[j]` points to a different value in the array, based on the value of `j`. The `if` statement compares that to the value stored in `highestTemperatureValue`. 
+If the value in the array is greater than the value stored in `highestTemperatureValue`, then it's updated with that value. The index of that value is stored in `highestTemperatureIndex` since you want to know on what day the highest temperature is going to occur.
 
 Lastly, you need to display those values.
 

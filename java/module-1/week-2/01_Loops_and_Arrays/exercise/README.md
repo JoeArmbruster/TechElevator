@@ -2,7 +2,8 @@
 
 This exercise consists of various problems to give you the opportunity to practice what you learned about loops and arrays.
 
-This exercise consists of small coding problems that you can solve with loops and arrays. There are five main exercises that have three problems each. The problems in each exercise relate to each other, with the second and third ones requiring you to handle additional complexity. The main exercises aren't related to each other, and while they're numbered in a suggested order, you can complete them in any order. You may also find it helpful to start with the first problem in each exercise before moving on to the second and third problems.
+This exercise consists of small coding problems that you can solve with loops and arrays. There are five main exercises that have three problems each. The problems in each exercise relate to each other, with the second and third ones requiring you to handle additional complexity. 
+The main exercises aren't related to each other, and while they're numbered in a suggested order, you can complete them in any order. You may also find it helpful to start with the first problem in each exercise before moving on to the second and third problems.
 
 ## Learning objectives
 
@@ -34,7 +35,8 @@ After completing this exercise, you'll understand:
 
 Before each method, there's a description of the problem you need to solve and examples with expected output. Use these examples to get an idea of the values you need to write your code around. It may help to keep track of the state of variables on a piece of paper as you work through your code.
 
-For example, in the comments before the `getCalzoneSales` method, there is a section that includes the method name, as well and the expected value that's returned for each method call. The following example shows that when the method gets called with `[40, 30, 32, 40, 10]`, it returns 2, when it's called with `[30, 32, 10]`, it returns 0, and when it's called with `[]` (an empty array), it returns 0:
+For example, in the comments before the `getCalzoneSales` method, there is a section that includes the method name, as well and the expected value that's returned for each method call. 
+The following example shows that when the method gets called with `[40, 30, 32, 40, 10]`, it returns 2, when it's called with `[30, 32, 10]`, it returns 0, and when it's called with `[]` (an empty array), it returns 0:
 
 ```java
 getCalzoneSales([40, 30, 32, 40, 10]) → 2
