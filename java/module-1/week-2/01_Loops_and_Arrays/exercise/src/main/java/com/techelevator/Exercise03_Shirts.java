@@ -17,7 +17,25 @@ public class Exercise03_Shirts {
     buildOrder() → ['S', 'S', 'S', 'M', 'M', 'L']
      */
     public char[] buildOrder() {
-        return new char[] {};    
+        char[] order = new char[6];
+
+        int numOfSmall = 0;
+        int numOfMedium = 0;
+        int numOfLarge = 0;
+
+        for (int i = 0; i < order.length; i++) {
+            if (numOfSmall < 3) {
+                order[i] = SMALL_TSHIRT;
+                numOfSmall++;
+            } else if (numOfMedium < 2) {
+                order[i] = MEDIUM_TSHIRT;
+                numOfMedium++;
+            } else if (numOfLarge < 1) {
+                order[i] = LARGE_TSHIRT;
+                numOfLarge++;
+            }
+        }
+        return order;
     }
 
     /*
@@ -36,8 +54,29 @@ public class Exercise03_Shirts {
     buildBulkOrder(4) → ['S', 'M', 'L', 'S']
     buildBulkOrder(0) → []
      */
-    public char[] buildBulkOrder(int numberOfShirts) { 
-        return new char[] {};    
+    public char[] buildBulkOrder(int numberOfShirts) {
+        if (numberOfShirts <= 0) {
+            return new char[] {};
+        }
+
+        char[] order = new char[numberOfShirts];
+        int numOfSmall = 0;
+        int numOfMedium = 0;
+        int numOfLarge = 0;
+
+        for (int i = 0; i < numberOfShirts; i++) {
+            if (numOfSmall <= numOfMedium && numOfSmall <= numOfLarge) {
+                order[i] = SMALL_TSHIRT;
+                numOfSmall++;
+            } else if (numOfMedium <= numOfSmall && numOfMedium <= numOfLarge){
+                order[i] = MEDIUM_TSHIRT;
+                numOfMedium++;
+            } else {
+                order[i] = LARGE_TSHIRT;
+                numOfLarge++;
+            }
+        }
+        return order;
     }
 
     /*
@@ -54,6 +93,11 @@ public class Exercise03_Shirts {
     placeRequest([]) → false
      */
     public boolean placeRequest(char[] order) {
+        for (int i = 0; i < order.length; i++) {
+            if (order[i] == SMALL_TSHIRT) {
+                return true;
+            }
+        }
         return false; 
     }
 }
