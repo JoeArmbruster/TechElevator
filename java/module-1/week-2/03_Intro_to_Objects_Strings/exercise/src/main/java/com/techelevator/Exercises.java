@@ -1,6 +1,7 @@
 package com.techelevator;
 
 import java.nio.charset.StandardCharsets;
+import java.util.Locale;
 
 public class Exercises {
 
@@ -281,13 +282,18 @@ public class Exercises {
 	 frontTimes("Abc", 3) → "AbcAbcAbc"
 	 */
 	public String frontTimes(String str, int n) {
-		String firstThree = str.substring(0,3);
-		String frontString = "";
-
-		for(int i = 0; i < n; i++) {
-			frontString += firstThree;
+		int frontLength = 3;
+		if (str.length() < 3) {
+			frontLength = str.length();
 		}
-		return frontString;
+
+		String front = str.substring(0, frontLength);
+		String result = "";
+
+		for (int i = 0; i < n; i++) {
+			result += front;
+		}
+		return result;
 	}
 
 	/*
@@ -313,6 +319,11 @@ public class Exercises {
 	 doubleX("xxxxx") → true
 	 */
 	public boolean doubleX(String str) {
+		int indexOfX = str.indexOf('x');
+
+		if (indexOfX + 1 < str.length()) {
+			return str.charAt(indexOfX + 1) == 'x';
+		}
 		return false;
 	}
 
@@ -352,7 +363,19 @@ public class Exercises {
 	 last2("axxxaaxx") → 2
 	 */
 	public int last2(String str) {
-		return 0;
+		if (str.length() < 2) {
+			return 0;
+		}
+
+		String endSubstring = str.substring(str.length() - 2);
+		int count = 0;
+
+		for (int i = 0; i < str.length() - 2; i++) {
+			if (str.substring(i, i + 2).equals(endSubstring)) {
+				count++;
+			}
+		}
+		return count;
 	}
 
 	/*
@@ -363,7 +386,22 @@ public class Exercises {
 	 stringX("xabxxxcdx") → "xabcdx"
 	 */
 	public String stringX(String str) {
-		return null;
+		if (str.length() <= 2){
+			return str;
+		}
+		char firstChar = str.charAt(0);
+		char lastChar = str.charAt(str.length() - 1);
+
+		String newString = "" + firstChar;
+
+		for (int i = 1; i < str.length() - 1; i++) {
+			if (str.charAt(i) != 'x') {
+				newString += str.charAt(i);
+			}
+		}
+		newString += lastChar;
+
+		return newString;
 	}
 
 	/*
@@ -373,7 +411,16 @@ public class Exercises {
 	 altPairs("CodingHorror") → "Congrr"
 	 */
 	public String altPairs(String str) {
-		return null;
+		String result = "";
+
+		for (int i = 0; i < str.length(); i += 4) {
+			result += str.charAt(i);
+
+			if (i + 1 < str.length()) {
+				result += str.charAt(i +1);
+			}
+		}
+		return result;
 	}
 
 	/*
@@ -384,7 +431,18 @@ public class Exercises {
 	 stringYak("yak123ya") → "123ya"
 	 */
 	public String stringYak(String str) {
-		return null;
-	}
+		String result = "";
 
+		int i = 0;
+
+		while (i < str.length()) {
+			if (i + 2 < str.length() && str.charAt(i) == 'y' && str.charAt(i + 2) == 'k') {
+				i += 3;
+			} else {
+				result += str.charAt(i);
+				i++;
+			}
+		}
+		return result;
+	}
 }
