@@ -1,23 +1,27 @@
-package com.techelevator;
+	package com.techelevator;
 
-import java.util.ArrayList;
-import java.util.List;
+	import org.junit.jupiter.api.IndicativeSentencesGeneration;
 
-public class Exercises {
+	import java.util.ArrayList;
+	import java.util.Arrays;
+	import java.util.List;
 
-	/*
-	 Note, for-each is preferred, and should be used when possible.
-	 */
+	public class Exercises {
 
-	/*
-	 Given an array of Strings, return an ArrayList containing the same Strings in the same order
-	 array2List( {"Apple", "Orange", "Banana"} )  ->  ["Apple", "Orange", "Banana"]
-	 array2List( {"Red", "Orange", "Yellow"} )  ->  ["Red", "Orange", "Yellow"]
-	 array2List( {"Left", "Right", "Forward", "Back"} )  ->  ["Left", "Right", "Forward", "Back"]
-	 */
-	public List<String> array2List(String[] stringArray) {
-		return null;
-	}
+		/*
+		 Note, for-each is preferred, and should be used when possible.
+		 */
+
+		/*
+		 Given an array of Strings, return an ArrayList containing the same Strings in the same order
+		 array2List( {"Apple", "Orange", "Banana"} )  ->  ["Apple", "Orange", "Banana"]
+		 array2List( {"Red", "Orange", "Yellow"} )  ->  ["Red", "Orange", "Yellow"]
+		 array2List( {"Left", "Right", "Forward", "Back"} )  ->  ["Left", "Right", "Forward", "Back"]
+		 */
+		public List<String> array2List(String[] stringArray) {
+
+			return Arrays.asList(stringArray);
+		}
 
 	/*
 	 Given a list of Strings, return an array containing the same Strings in the same order
@@ -26,8 +30,11 @@ public class Exercises {
 	 list2Array( ["Left", "Right", "Forward", "Back"] )  ->  {"Left", "Right", "Forward", "Back"}
 	 */
 	public String[] list2Array(List<String> stringList) {
-		return null;
-	}
+
+		String[] strings = stringList.toArray(stringList.toArray(new String[0]));
+		return strings;
+		}
+
 
 	/*
 	 Given an array of Strings, return an ArrayList containing the same Strings in the same order
@@ -37,7 +44,14 @@ public class Exercises {
 	 no4LetterWords( {"Jack", "Jill", "Jane", "John", "Jim"} )  ->  ["Jim"]
 	 */
 	public List<String> no4LetterWords(String[] stringArray) {
-		return null;
+
+		List<String> strings = new ArrayList<>();
+		for (String s : stringArray) {
+			if (s.length() != 4) {
+				strings.add(s);
+			}
+		}
+		return strings;
 	}
 
 	/*
@@ -47,7 +61,16 @@ public class Exercises {
 	 arrayInt2ListDouble( {84, 99, 3285, 13, 877} ) -> [42, 49.5, 1642.5, 6.5, 438.5]
 	 */
 	public List<Double> arrayInt2ListDouble(int[] intArray) {
-		return null;
+
+		List<Double> halfValues = new ArrayList<>();
+
+		for (int number : intArray){
+			double halfValue = number / 2.0;
+			halfValues.add(halfValue);
+		}
+
+		return halfValues;
+
 	}
 
 	/*
@@ -57,7 +80,16 @@ public class Exercises {
 	 findLargest( [34070, 1380, 81238, 7782, 234, 64362, 627] ) -> 81238
 	 */
 	public Integer findLargest(List<Integer> integerList) {
-		return null;
+
+		int largestValue = integerList.get(0);
+
+		for (int value : integerList) {
+			if (value > largestValue) {
+				largestValue = value;
+			}
+		}
+		return largestValue;
+
 	}
 
 	/*
@@ -67,9 +99,17 @@ public class Exercises {
 	 oddOnly( {734, 233, 782, 811, 3, 9999} ) -> [233, 811, 3, 9999]
 	 */
 	public List<Integer> oddOnly(Integer[] integerArray) {
-		return null;
-	}
 
+		List<Integer> numbersOdd = new ArrayList<>();
+
+		for (int number : integerArray) {
+			if (number % 2 == 1) {
+				numbersOdd.add(number);
+			}
+		}
+		return numbersOdd;
+
+	}
 	/*
 	 Given a List of Integers, and an int value, return true if the int value appears two or more times in
 	 the list.
@@ -78,7 +118,15 @@ public class Exercises {
 	 foundIntTwice( [9, 9, 44, 2, 88, 9], 9) -> true
 	 */
 	public boolean foundIntTwice(List<Integer> integerList, int intToFind) {
-		return false;
+
+		int timesFound = 0;
+
+		for (int twoOrMore : integerList) {
+			if (twoOrMore == intToFind) {
+				timesFound++;
+			}
+		}
+		return (timesFound >= 2);
 	}
 
 	/*
@@ -94,7 +142,22 @@ public class Exercises {
 	HINT: To convert an Integer x to a String, you can use x.toString() in your code. For example, if x = 1, then x.toString() returns "1."
 	 */
 	public List<String> fizzBuzzList(Integer[] integerArray) {
-		return null;
+
+		List<String> fizzBuzzStrings = new ArrayList<>();
+
+		for (int number : integerArray) {
+			String numberString = "" + number;
+			if (number % 3 == 0 && number % 5 == 0){
+				fizzBuzzStrings.add("FizzBuzz");
+			} else if (number % 3 == 0) {
+				fizzBuzzStrings.add("Fizz");
+			} else if (number % 5 == 0) {
+				fizzBuzzStrings.add("Buzz");
+			} else {
+				fizzBuzzStrings.add(numberString);
+			}
+		}
+		return fizzBuzzStrings;
 	}
 
 	/*
@@ -107,7 +170,24 @@ public class Exercises {
      interleaveLists( [1, 2, 5, 8, 10], [4, 5, 6] )  ->  [1, 4, 2, 5, 5, 6, 8, 10]
 	 */
 	public List<Integer> interleaveLists(List<Integer> listOne, List<Integer> listTwo) {
-		return null;
+
+		List<Integer> interleavedLists = new ArrayList<>();
+
+		int indexListOne = 0;
+		int indexListTwo = 0;
+
+		for (Integer elementOne : listOne) {
+			interleavedLists.add(elementOne);
+			if (indexListTwo < listTwo.size()) {
+				interleavedLists.add(listTwo.get(indexListTwo));
+				indexListTwo++;
+			}
+		}
+		while (indexListTwo < listTwo.size()) {
+			interleavedLists.add(listTwo.get(indexListTwo));
+			indexListTwo++;
+		}
+		return interleavedLists;
 	}
 
 }
