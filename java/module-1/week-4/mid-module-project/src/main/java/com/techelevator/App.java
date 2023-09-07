@@ -32,6 +32,14 @@ public class App {
 
         String[] dataset = Dataset.load();
 
+        /*
+         Requirement: 1
+         Populate the instance variables `titles`, `authors`, `publishedYears`,
+         and `prices` by splitting each string in the `dataset` array and adding
+         the individual fields to the appropriate list.
+         See README for additional details.
+         */
+
         for (String data : dataset) {
             String[] fields = data.split(FIELD_DELIMITER);
             titles.add(fields[TITLE_FIELD]);
@@ -90,7 +98,6 @@ public class App {
                          `filterByAuthor()` and `displaySearchResults()` methods.
                          */
 
-                        // displaySearchResults(filterByAuthor(filterAuthor)) better way to code it
                         List<Integer> searchResults = filterByAuthor(filterAuthor);
                         displaySearchResults(searchResults);
                     } else if (searchBooksMenuSelection == 3) {
@@ -143,7 +150,6 @@ public class App {
                          `filterByPriceRange()` and `displaySearchResults()` methods.
                          */
 
-                        //displaySearchResults(filterByPriceRange(filterFromPrice, filterToPrice)) better way to code it
                         List<Integer> searchResults = filterByPriceRange(filterFromPrice, filterToPrice);
                         displaySearchResults(searchResults);
                     } else if (searchBooksMenuSelection == 8) {
