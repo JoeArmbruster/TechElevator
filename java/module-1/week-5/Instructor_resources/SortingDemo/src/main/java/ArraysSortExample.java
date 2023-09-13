@@ -4,8 +4,8 @@ public class ArraysSortExample {
 
     public static void main(String[] args) {
 
-        String arr[] ={"duck", "eagle", "chicken", "Kingfisher", "bluebird"};
-        //int arr[] = {5, 8, 4, 6, 2, 1, 6};
+        //String arr[] ={"duck", "eagle", "chicken", "Kingfisher", "bluebird"};
+        int arr[] = {5, 8, 4, 6, 2, 1, 6};
 
         System.out.println("Array Before Sort");
         for(int i=0; i < arr.length; i++){

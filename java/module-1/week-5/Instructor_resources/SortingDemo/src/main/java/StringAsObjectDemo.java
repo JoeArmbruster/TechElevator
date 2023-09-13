@@ -4,7 +4,6 @@ public class StringAsObjectDemo {
 
         String location = new String ("Boulder");
 
-       int len = name.length();
-       int lenLocation = location.length();
+
     }
 }
