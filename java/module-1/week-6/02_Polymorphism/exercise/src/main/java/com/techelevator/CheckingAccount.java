@@ -1,6 +1,6 @@
 package com.techelevator;
 
-public class CheckingAccount extends BankAccount {
+public class CheckingAccount extends BankAccount implements Accountable {
 
     public CheckingAccount(String accountHolder, String accountNumber, int balance) {
         super(accountHolder, accountNumber, balance);
