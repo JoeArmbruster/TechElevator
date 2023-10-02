@@ -1,0 +1,3 @@
+What color is the sky?|yellow|blue*|green|red
+What's the world's most populous nation?|India*|China|U.S.
+What is 3 * 8?|11|12|18|24*
