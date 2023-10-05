@@ -1,45 +1,53 @@
+import java.util.List;
+
 public class QuizQuestion {
 
-    /*
-    Instance variables:
-        question (a String)
-        answers (an array of Strings)
-        correctAnswer (a String)
+    private String question;
+    private String[] answers;
+    private String correctAnswer;
 
+    public QuizQuestion (String lineOfText){
+    String[] questionParts = lineOfText.split("\\|");
+    this.question = questionParts[0];
+    this.answers = new String[questionParts.length - 1];
 
-    Constructor (do this last)
+    for (int i = 1; i < questionParts.length; i++){
+        String answer = questionParts[i];
+        if (answer.endsWith("*")){
+            this.correctAnswer = answer.substring(0, answer.length() - 1); // removes asterisk
+        } else {
+            this.answers[i - 1] = answer;
+        }
+        }
+    }
 
-        QuizQuestion (String lineOfText)
+    public String getQuestion() {
+        return question;
+    }
 
-        Parameter lineOfText has the following format:
+    public String[] getAnswers() {
+        return answers.clone(); // a copy so original can't be modified
+    }
 
-            What color is the sky?|yellow|blue*|green|red
+    public String getCorrectAnswer() {
+        return correctAnswer;
+    }
 
-    Getter methods for
-        question
-        answers
+    public boolean isCorrectAnswer(String answer){
+        return this.correctAnswer.equals(answer);
+    }
 
-    boolean isCorrectAnswer (String)
+    @Override
+    public String toString(){
+        String questionInfo = "";
+        questionInfo += "Question: " + question;
+        questionInfo += "\nPossible answers: ";
+        for (String answer : answers) {
+            questionInfo += "\n" + answer;
+        }
+        questionInfo += "\nCorrect answer: " + correctAnswer;
 
-     */
-
-    /*
-        The provided toString() method will allow you to confirm that your
-        constructor works correctly.
-     */
-
-
-//    @Override
-//    public String toString(){
-//        String questionInfo = "";
-//        questionInfo += "Question: " + question;
-//        questionInfo += "\nPossible answers: ";
-//        for (String answer : answers) {
-//            questionInfo += "\n" + answer;
-//        }
-//        questionInfo += "\nCorrect answer: " + correctAnswer;
-//
-//        return questionInfo;
-//    }
+        return questionInfo;
+    }
 
 }
