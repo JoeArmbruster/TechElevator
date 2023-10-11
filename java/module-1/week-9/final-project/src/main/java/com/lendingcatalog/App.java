@@ -2,6 +2,10 @@ package com.lendingcatalog;
 
 import com.lendingcatalog.model.*;
 
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.Paths;
+import java.time.LocalDate;
 import java.util.*;
 
 public class App {
@@ -22,8 +26,58 @@ public class App {
     }
 
     private void initialize() {
-        // Requirement: Data transformation
 
+        catalog = new HashMap<>();
+
+        List<String> membersData = readDataFromFile("members.dat");
+
+        for (String memberData : membersData) {
+            String[] memberInfo = memberData.split(FIELD_DELIMITER);
+
+            String firstName = memberInfo[0];
+            String lastName = memberInfo[1];
+            String itemsFileName = memberInfo[2];
+
+            List<String> itemsData = readDataFromFile(itemsFileName);
+
+            List<CatalogItem> memberItems = new ArrayList<>();
+
+            for (String itemData : itemsData) {
+                String[] itemInfo = itemData.split(FIELD_DELIMITER);
+
+                String itemType = itemInfo[0];
+                String itemTitle = itemInfo[1];
+                String itemCreator = itemInfo[2];
+                String itemDateOrCount = itemInfo[3];
+
+                CatalogItem catalogItem = null;
+
+                if (itemType.equalsIgnoreCase("book") || itemType.equalsIgnoreCase("movie") || itemTitle.equalsIgnoreCase("tool")) {
+                    if (itemType.equalsIgnoreCase("book")) {
+                        catalogItem = new Book(itemTitle, itemCreator, LocalDate.parse(itemDateOrCount));
+                    } else if (itemType.equalsIgnoreCase("movie")) {
+                        catalogItem = new Movie(itemTitle, itemCreator, LocalDate.parse(itemDateOrCount));
+                    } else if (itemType.equalsIgnoreCase("tool")) {
+                        catalogItem = new Tool(itemTitle, itemCreator, Integer.parseInt(itemDateOrCount));
+                    }
+                    catalogItem.registerItem();
+                    memberItems.add(catalogItem);
+                }
+            }
+            String memberKey = firstName + " " + lastName;
+            catalog.put(memberKey, memberItems);
+        }
+    }
+
+    private List<String> readDataFromFile(String fileName) {
+
+        try {
+            return Files.readAllLines(Paths.get(FILE_BASE_PATH, fileName));
+        } catch (IOException e) {
+            System.err.println("Error reading data from file: " + fileName);
+            e.printStackTrace();
+            return new ArrayList<>();
+        }
     }
 
 
@@ -53,8 +107,7 @@ public class App {
                         break;
                     }
                 }
-            }
-            else if (mainMenuSelection == 2) {
+            } else if (mainMenuSelection == 2) {
                 while (true) {
                     printSearchMenu();
                     int searchMenuSelection = promptForMenuSelection("Please choose an option: ");
