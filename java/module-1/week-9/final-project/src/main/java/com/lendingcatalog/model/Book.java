@@ -47,7 +47,7 @@ public class Book implements CatalogItem {
         this.id = UUID.randomUUID().toString();
 
         try {
-            String message = "The Book " + this.toString() + System.lineSeparator() + " - Was Registered on " + new Date();
+            String message = "The Book " + this.toString() + " - Was Registered on " + new Date() + System.lineSeparator();
             FileStorageService.writeContentsToFile(message, "src/main/resources/logs/book_log.txt", true);
         } catch (FileStorageException e) {
             e.printStackTrace();

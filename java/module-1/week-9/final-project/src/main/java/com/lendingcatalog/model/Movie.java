@@ -48,7 +48,7 @@ public class Movie implements CatalogItem {
         this.id = UUID.randomUUID().toString();
 
         try {
-            String message = "The Movie " + this.toString() + System.lineSeparator() + " - Was Registered on " + new Date();
+            String message = "The Movie " + this.toString() + " - Was Registered on " + new Date() + System.lineSeparator();
             FileStorageService.writeContentsToFile(message, "src/main/resources/logs/movie_log.txt", true);
         } catch (FileStorageException e) {
             e.printStackTrace();

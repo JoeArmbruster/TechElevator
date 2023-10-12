@@ -1,253 +1,105 @@
 The Tool * Type: socket wrench
  - Manufacturer: Craftsman
  - Count: 1
+ - Was Registered on Thu Oct 12 18:28:56 EDT 2023
 
- - Was Registered on Wed Oct 11 22:24:25 EDT 2023The Tool * Type: socket wrench
+The Tool * Type: socket wrench
  - Manufacturer: DeWalt
  - Count: 2
+ - Was Registered on Thu Oct 12 18:28:56 EDT 2023
 
- - Was Registered on Wed Oct 11 22:24:25 EDT 2023The Tool * Type: power drill
+The Tool * Type: power drill
  - Manufacturer: DeWalt
  - Count: 2
+ - Was Registered on Thu Oct 12 18:28:56 EDT 2023
 
- - Was Registered on Wed Oct 11 22:24:25 EDT 2023The Tool * Type: hand saw
+The Tool * Type: hand saw
  - Manufacturer: Craftsman
  - Count: 1
+ - Was Registered on Thu Oct 12 18:28:56 EDT 2023
 
- - Was Registered on Wed Oct 11 22:24:25 EDT 2023The Tool * Type: hammer
+The Tool * Type: hammer
  - Manufacturer: Craftsman
  - Count: 1
+ - Was Registered on Thu Oct 12 18:28:56 EDT 2023
 
- - Was Registered on Wed Oct 11 22:24:25 EDT 2023The Tool * Type: stapler
+The Tool * Type: stapler
  - Manufacturer: DeWalt
  - Count: 2
+ - Was Registered on Thu Oct 12 18:28:56 EDT 2023
 
- - Was Registered on Wed Oct 11 22:24:25 EDT 2023The Tool * Type: power drill
+The Tool * Type: power drill
  - Manufacturer: DeWalt
  - Count: 1
+ - Was Registered on Thu Oct 12 18:28:56 EDT 2023
 
- - Was Registered on Wed Oct 11 22:24:25 EDT 2023The Tool * Type: socket wrench
+The Tool * Type: socket wrench
  - Manufacturer: DeWalt
  - Count: 3
+ - Was Registered on Thu Oct 12 18:28:56 EDT 2023
 
- - Was Registered on Wed Oct 11 22:24:25 EDT 2023The Tool * Type: stapler
+The Tool * Type: stapler
  - Manufacturer: Swingline
  - Count: 2
+ - Was Registered on Thu Oct 12 18:28:56 EDT 2023
 
- - Was Registered on Wed Oct 11 22:24:25 EDT 2023The Tool * Type: hand saw
+The Tool * Type: hand saw
  - Manufacturer: Craftsman
  - Count: 1
+ - Was Registered on Thu Oct 12 18:28:56 EDT 2023
 
- - Was Registered on Wed Oct 11 22:24:25 EDT 2023The Tool * Type: hammer
+The Tool * Type: hammer
  - Manufacturer: Craftsman
  - Count: 1
+ - Was Registered on Thu Oct 12 18:28:56 EDT 2023
 
- - Was Registered on Wed Oct 11 22:24:25 EDT 2023The Tool * Type: hammer
+The Tool * Type: hammer
  - Manufacturer: Craftsman
  - Count: 1
+ - Was Registered on Thu Oct 12 18:28:56 EDT 2023
 
- - Was Registered on Wed Oct 11 22:24:25 EDT 2023The Tool * Type: hand saw
+The Tool * Type: hand saw
  - Manufacturer: Craftsman
  - Count: 1
+ - Was Registered on Thu Oct 12 18:28:56 EDT 2023
 
- - Was Registered on Wed Oct 11 22:24:25 EDT 2023The Tool * Type: socket wrench
+The Tool * Type: socket wrench
  - Manufacturer: DeWalt
  - Count: 1
+ - Was Registered on Thu Oct 12 18:28:56 EDT 2023
 
- - Was Registered on Wed Oct 11 22:24:25 EDT 2023The Tool * Type: pry bar
+The Tool * Type: pry bar
  - Manufacturer: Stanley
  - Count: 2
+ - Was Registered on Thu Oct 12 18:28:56 EDT 2023
 
- - Was Registered on Wed Oct 11 22:24:25 EDT 2023The Tool * Type: hammer
+The Tool * Type: hammer
  - Manufacturer: Vaughan
  - Count: 2
+ - Was Registered on Thu Oct 12 18:28:56 EDT 2023
 
- - Was Registered on Wed Oct 11 22:24:25 EDT 2023The Tool * Type: hammer
+The Tool * Type: hammer
  - Manufacturer: Craftsman
  - Count: 1
+ - Was Registered on Thu Oct 12 18:28:56 EDT 2023
 
- - Was Registered on Wed Oct 11 22:24:25 EDT 2023The Tool * Type: hand saw
+The Tool * Type: hand saw
  - Manufacturer: Stanley
  - Count: 3
+ - Was Registered on Thu Oct 12 18:28:56 EDT 2023
 
- - Was Registered on Wed Oct 11 22:24:25 EDT 2023The Tool * Type: power drill
+The Tool * Type: power drill
  - Manufacturer: Milwaukee
  - Count: 2
+ - Was Registered on Thu Oct 12 18:28:56 EDT 2023
 
- - Was Registered on Wed Oct 11 22:24:25 EDT 2023The Tool * Type: stapler
+The Tool * Type: stapler
  - Manufacturer: DeWalt
  - Count: 2
+ - Was Registered on Thu Oct 12 18:28:56 EDT 2023
 
- - Was Registered on Wed Oct 11 22:24:25 EDT 2023The Tool * Type: socket wrench
+The Tool * Type: socket wrench
  - Manufacturer: DeWalt
  - Count: 2
+ - Was Registered on Thu Oct 12 18:28:56 EDT 2023
 
- - Was Registered on Wed Oct 11 22:24:25 EDT 2023The Tool * Type: socket wrench
- - Manufacturer: Craftsman
- - Count: 1
-
- - Was Registered on Wed Oct 11 22:36:15 EDT 2023The Tool * Type: socket wrench
- - Manufacturer: DeWalt
- - Count: 2
-
- - Was Registered on Wed Oct 11 22:36:15 EDT 2023The Tool * Type: power drill
- - Manufacturer: DeWalt
- - Count: 2
-
- - Was Registered on Wed Oct 11 22:36:15 EDT 2023The Tool * Type: hand saw
- - Manufacturer: Craftsman
- - Count: 1
-
- - Was Registered on Wed Oct 11 22:36:15 EDT 2023The Tool * Type: hammer
- - Manufacturer: Craftsman
- - Count: 1
-
- - Was Registered on Wed Oct 11 22:36:15 EDT 2023The Tool * Type: stapler
- - Manufacturer: DeWalt
- - Count: 2
-
- - Was Registered on Wed Oct 11 22:36:15 EDT 2023The Tool * Type: power drill
- - Manufacturer: DeWalt
- - Count: 1
-
- - Was Registered on Wed Oct 11 22:36:15 EDT 2023The Tool * Type: socket wrench
- - Manufacturer: DeWalt
- - Count: 3
-
- - Was Registered on Wed Oct 11 22:36:15 EDT 2023The Tool * Type: stapler
- - Manufacturer: Swingline
- - Count: 2
-
- - Was Registered on Wed Oct 11 22:36:15 EDT 2023The Tool * Type: hand saw
- - Manufacturer: Craftsman
- - Count: 1
-
- - Was Registered on Wed Oct 11 22:36:15 EDT 2023The Tool * Type: hammer
- - Manufacturer: Craftsman
- - Count: 1
-
- - Was Registered on Wed Oct 11 22:36:15 EDT 2023The Tool * Type: hammer
- - Manufacturer: Craftsman
- - Count: 1
-
- - Was Registered on Wed Oct 11 22:36:15 EDT 2023The Tool * Type: hand saw
- - Manufacturer: Craftsman
- - Count: 1
-
- - Was Registered on Wed Oct 11 22:36:15 EDT 2023The Tool * Type: socket wrench
- - Manufacturer: DeWalt
- - Count: 1
-
- - Was Registered on Wed Oct 11 22:36:15 EDT 2023The Tool * Type: pry bar
- - Manufacturer: Stanley
- - Count: 2
-
- - Was Registered on Wed Oct 11 22:36:15 EDT 2023The Tool * Type: hammer
- - Manufacturer: Vaughan
- - Count: 2
-
- - Was Registered on Wed Oct 11 22:36:15 EDT 2023The Tool * Type: hammer
- - Manufacturer: Craftsman
- - Count: 1
-
- - Was Registered on Wed Oct 11 22:36:15 EDT 2023The Tool * Type: hand saw
- - Manufacturer: Stanley
- - Count: 3
-
- - Was Registered on Wed Oct 11 22:36:15 EDT 2023The Tool * Type: power drill
- - Manufacturer: Milwaukee
- - Count: 2
-
- - Was Registered on Wed Oct 11 22:36:15 EDT 2023The Tool * Type: stapler
- - Manufacturer: DeWalt
- - Count: 2
-
- - Was Registered on Wed Oct 11 22:36:15 EDT 2023The Tool * Type: socket wrench
- - Manufacturer: DeWalt
- - Count: 2
-
- - Was Registered on Wed Oct 11 22:36:15 EDT 2023The Tool * Type: socket wrench
- - Manufacturer: Craftsman
- - Count: 1
-
- - Was Registered on Thu Oct 12 18:02:02 EDT 2023The Tool * Type: socket wrench
- - Manufacturer: DeWalt
- - Count: 2
-
- - Was Registered on Thu Oct 12 18:02:02 EDT 2023The Tool * Type: power drill
- - Manufacturer: DeWalt
- - Count: 2
-
- - Was Registered on Thu Oct 12 18:02:02 EDT 2023The Tool * Type: hand saw
- - Manufacturer: Craftsman
- - Count: 1
-
- - Was Registered on Thu Oct 12 18:02:02 EDT 2023The Tool * Type: hammer
- - Manufacturer: Craftsman
- - Count: 1
-
- - Was Registered on Thu Oct 12 18:02:02 EDT 2023The Tool * Type: stapler
- - Manufacturer: DeWalt
- - Count: 2
-
- - Was Registered on Thu Oct 12 18:02:02 EDT 2023The Tool * Type: power drill
- - Manufacturer: DeWalt
- - Count: 1
-
- - Was Registered on Thu Oct 12 18:02:02 EDT 2023The Tool * Type: socket wrench
- - Manufacturer: DeWalt
- - Count: 3
-
- - Was Registered on Thu Oct 12 18:02:02 EDT 2023The Tool * Type: stapler
- - Manufacturer: Swingline
- - Count: 2
-
- - Was Registered on Thu Oct 12 18:02:02 EDT 2023The Tool * Type: hand saw
- - Manufacturer: Craftsman
- - Count: 1
-
- - Was Registered on Thu Oct 12 18:02:02 EDT 2023The Tool * Type: hammer
- - Manufacturer: Craftsman
- - Count: 1
-
- - Was Registered on Thu Oct 12 18:02:02 EDT 2023The Tool * Type: hammer
- - Manufacturer: Craftsman
- - Count: 1
-
- - Was Registered on Thu Oct 12 18:02:02 EDT 2023The Tool * Type: hand saw
- - Manufacturer: Craftsman
- - Count: 1
-
- - Was Registered on Thu Oct 12 18:02:02 EDT 2023The Tool * Type: socket wrench
- - Manufacturer: DeWalt
- - Count: 1
-
- - Was Registered on Thu Oct 12 18:02:02 EDT 2023The Tool * Type: pry bar
- - Manufacturer: Stanley
- - Count: 2
-
- - Was Registered on Thu Oct 12 18:02:02 EDT 2023The Tool * Type: hammer
- - Manufacturer: Vaughan
- - Count: 2
-
- - Was Registered on Thu Oct 12 18:02:02 EDT 2023The Tool * Type: hammer
- - Manufacturer: Craftsman
- - Count: 1
-
- - Was Registered on Thu Oct 12 18:02:02 EDT 2023The Tool * Type: hand saw
- - Manufacturer: Stanley
- - Count: 3
-
- - Was Registered on Thu Oct 12 18:02:02 EDT 2023The Tool * Type: power drill
- - Manufacturer: Milwaukee
- - Count: 2
-
- - Was Registered on Thu Oct 12 18:02:02 EDT 2023The Tool * Type: stapler
- - Manufacturer: DeWalt
- - Count: 2
-
- - Was Registered on Thu Oct 12 18:02:02 EDT 2023The Tool * Type: socket wrench
- - Manufacturer: DeWalt
- - Count: 2
-
- - Was Registered on Thu Oct 12 18:02:02 EDT 2023

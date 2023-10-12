@@ -46,7 +46,7 @@ public class Tool implements CatalogItem {
         this.id = UUID.randomUUID().toString();
 
         try {
-            String message = "The Tool " + this.toString() + System.lineSeparator() + " - Was Registered on " + new Date();
+            String message = "The Tool " + this.toString() + " - Was Registered on " + new Date() + System.lineSeparator();
             FileStorageService.writeContentsToFile(message, "src/main/resources/logs/tool_log.txt", true);
         } catch (FileStorageException e) {
             e.printStackTrace();
