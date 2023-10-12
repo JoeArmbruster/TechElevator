@@ -45,6 +45,11 @@ public class App {
             for (String itemData : itemsData) {
                 String[] itemInfo = itemData.split(FIELD_DELIMITER);
 
+                if (itemInfo.length != 4){
+                    System.out.println("Skipping invalid item data: " + itemData);
+                    continue;
+                }
+
                 String itemType = itemInfo[0];
                 String itemTitle = itemInfo[1];
                 String itemCreator = itemInfo[2];
@@ -52,7 +57,7 @@ public class App {
 
                 CatalogItem catalogItem = null;
 
-                if (itemType.equalsIgnoreCase("book") || itemType.equalsIgnoreCase("movie") || itemTitle.equalsIgnoreCase("tool")) {
+                if (itemType.equalsIgnoreCase("book") || itemType.equalsIgnoreCase("movie") || itemType.equalsIgnoreCase("tool")) {
                     if (itemType.equalsIgnoreCase("book")) {
                         catalogItem = new Book(itemTitle, itemCreator, LocalDate.parse(itemDateOrCount));
                     } else if (itemType.equalsIgnoreCase("movie")) {
@@ -62,6 +67,8 @@ public class App {
                     }
                     catalogItem.registerItem();
                     memberItems.add(catalogItem);
+                } else {
+                    System.out.println("Skipping item with invalid type: "+ itemData);
                 }
             }
             String memberKey = firstName + " " + lastName;
