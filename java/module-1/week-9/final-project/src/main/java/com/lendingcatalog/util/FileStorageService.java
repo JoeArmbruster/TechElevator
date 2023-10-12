@@ -14,6 +14,7 @@ public class FileStorageService {
         try (FileWriter fileWriter = new FileWriter(filename, appendFile);
              BufferedWriter bufferedWriter = new BufferedWriter(fileWriter)) {
             bufferedWriter.write(contents);
+            bufferedWriter.flush();
         } catch (IOException e) {
             throw new FileStorageException("Error writing to file: " + filename, e);
         }

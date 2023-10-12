@@ -1,12 +1,11 @@
 package com.lendingcatalog.model;
 
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.util.UUID;
-
 import com.lendingcatalog.util.FileStorageService;
-
 import com.lendingcatalog.util.exception.FileStorageException;
+
+import java.time.LocalDate;
+import java.util.Date;
+import java.util.UUID;
 
 public class Movie implements CatalogItem {
 
@@ -48,16 +47,23 @@ public class Movie implements CatalogItem {
 
         this.id = UUID.randomUUID().toString();
 
-        String logMessage = LocalDateTime.now() + " - Movie created: " +
-                "Name: " + name +
-                ", Director: " + director +
-                ", Release Date: " + releaseDate +
-                ", ID: " + id;
-
         try {
-            FileStorageService.writeContentsToFile(logMessage, "src/main/resources/logs/movie_log.txt", true);
+            String message = "The Movie " + this.toString() + System.lineSeparator() + " - Was Registered on " + new Date();
+            FileStorageService.writeContentsToFile(message, "src/main/resources/logs/movie_log.txt", true);
         } catch (FileStorageException e) {
             e.printStackTrace();
         }
+
+//        String logMessage = LocalDateTime.now() + " - Movie created: " +
+//                "Name: " + name +
+//                ", Director: " + director +
+//                ", Release Date: " + releaseDate +
+//                ", ID: " + id;
+
+//        try {
+//            FileStorageService.writeContentsToFile(logMessage, "src/main/resources/logs/movie_log.txt", true);
+//        } catch (FileStorageException e) {
+//            e.printStackTrace();
+//        }
     }
 }

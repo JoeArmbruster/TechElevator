@@ -1,0 +1,229 @@
+2023-10-11T20:52:03.313494500 - Movie created: Name: Home Alone, Director: Chris Columbus, Release Date: 1990-11-16, ID: f7e64cb9-bad1-4a19-b05b-357ec2e2b1af2023-10-11T20:52:03.316494300 - Movie created: Name: Jurassic Park, Director: Steven Spielberg, Release Date: 1993-06-11, ID: 54f6f7c2-40ee-42e4-acfe-8f27dd8059922023-10-11T20:52:03.324493900 - Movie created: Name: Memento, Director: Christopher Nolan, Release Date: 2000-10-11, ID: daf53a3d-9702-4043-b4b2-dce300c8226e2023-10-11T20:52:03.324493900 - Movie created: Name: Inception, Director: Christopher Nolan, Release Date: 2010-07-15, ID: 6e68eda6-b58e-45be-9236-be1654fc15172023-10-11T20:52:03.325493900 - Movie created: Name: Interstellar, Director: Christopher Nolan, Release Date: 2014-11-05, ID: eff46af6-7778-46cb-9ead-84a2f21cbc8c2023-10-11T20:52:03.325493900 - Movie created: Name: Rouge One, Director: Gareth Edwards, Release Date: 2016-12-16, ID: 82f0dffb-31fd-40e4-9e9e-212b224fd8842023-10-11T20:52:03.326493400 - Movie created: Name: Contact, Director: Robert Zemeckis, Release Date: 1997-07-11, ID: 86f19069-a887-40dc-b60d-1917dd68a5362023-10-11T20:52:03.326493400 - Movie created: Name: Jurassic Park, Director: Steven Spielberg, Release Date: 1993-06-11, ID: d46c178d-243a-4e77-8215-66eb1229416c2023-10-11T20:52:03.326493400 - Movie created: Name: The Hitchhiker's Guide to the Galaxy, Director: Garth Jennings, Release Date: 2005-04-28, ID: 0cdd1980-2793-41ec-982e-1ad59a6b15482023-10-11T20:52:03.327493800 - Movie created: Name: Star Wars, Director: George Lucas, Release Date: 1977-05-25, ID: b423b731-8f2e-4c56-b59f-f4bb3057c8852023-10-11T20:52:03.327493800 - Movie created: Name: Star Trek, Director: J.J. Abrams, Release Date: 2009-05-06, ID: 2ca78b97-2326-450d-b294-9c42ed5606342023-10-11T20:52:03.327493800 - Movie created: Name: Star Trek Into Darkness, Director: J.J. Abrams, Release Date: 2013-05-05, ID: 3116bac5-3f52-4453-a08a-7732eec156402023-10-11T20:52:03.328493900 - Movie created: Name: Forrest Gump, Director: Robert Zemeckis, Release Date: 1994-07-06, ID: ece7023b-2ae9-4712-89a3-1a6a5e75a3c32023-10-11T20:52:03.328493900 - Movie created: Name: Cast Away, Director: Robert Zemeckis, Release Date: 2000-12-22, ID: 10707b5e-36ec-4d43-bd30-9102b7587c2c2023-10-11T20:52:03.329494200 - Movie created: Name: The Fifth Element, Director: Luc Besson, Release Date: 1997-05-02, ID: 2ea0cf41-39d1-47c7-82be-db1696688b1d2023-10-11T20:52:03.329494200 - Movie created: Name: Close Encounters of the Third Kind, Director: Steven Spielberg, Release Date: 1977-11-18, ID: 01727cd1-2e2c-4b62-8643-97004f6c75582023-10-11T20:52:03.331495400 - Movie created: Name: Star Wars, Director: George Lucas, Release Date: 1977-05-25, ID: fc831305-4985-4563-8949-9d9804dd46dd2023-10-11T20:52:03.331495400 - Movie created: Name: Jurassic Park, Director: Steven Spielberg, Release Date: 1993-06-11, ID: 568fb6f4-876e-4a51-86a2-4839f4a001b52023-10-11T20:52:03.332494800 - Movie created: Name: The Hitchhiker's Guide to the Galaxy, Director: Garth Jennings, Release Date: 2005-04-28, ID: 2373437a-607e-44cf-95cc-8558077a69bf2023-10-11T20:52:03.333494100 - Movie created: Name: Finding Nemo, Director: Andrew Stanton, Release Date: 2003-05-30, ID: 82b2a30f-df7d-4eec-9fe3-9854a93840cb2023-10-11T20:52:03.333494100 - Movie created: Name: WALL·E, Director: Andrew Stanton, Release Date: 2008-06-22, ID: 5ddb656c-dd0e-4d62-834b-72cf05c056042023-10-11T20:52:03.334497200 - Movie created: Name: Coco, Director: Lee Unkrich, Release Date: 2017-10-27, ID: 64234704-7dcf-4552-84e6-5937217b33712023-10-11T20:52:03.334497200 - Movie created: Name: Toy Story 3, Director: Lee Unkrich, Release Date: 2010-06-16, ID: ed5b077a-357d-4933-9100-37ae6edb074b2023-10-11T20:52:03.335493700 - Movie created: Name: The Polar Express, Director: Robert Zemeckis, Release Date: 2004-11-10, ID: a10a2f95-9383-495a-8d63-db806acc77192023-10-11T20:52:03.335493700 - Movie created: Name: Shrek, Director: Andrew Adamson, Release Date: 2001-05-18, ID: 458db093-6e60-4feb-83d3-4ebfd13747002023-10-11T20:52:03.336494 - Movie created: Name: Home Alone, Director: Chris Columbus, Release Date: 1990-11-16, ID: 7bbbae36-aaf7-4075-a772-2edfe4c92e472023-10-11T20:52:03.337494200 - Movie created: Name: Back to the Future Part III, Director: Robert Zemeckis, Release Date: 1990-05-25, ID: 5f329b54-21e3-4cf8-8a82-19bbda51d3212023-10-11T20:52:03.337494200 - Movie created: Name: Back to the Future, Director: Robert Zemeckis, Release Date: 1985-07-03, ID: 3f5c8dc9-116c-4988-981d-34cebe46f9d72023-10-11T20:52:03.337494200 - Movie created: Name: Back to the Future Part II, Director: Robert Zemeckis, Release Date: 1989-11-22, ID: 50dfdbde-80b2-41fc-a1d6-5f9f169fe9d22023-10-11T20:52:03.339493900 - Movie created: Name: Who Framed Roger Rabbit, Director: Robert Zemeckis, Release Date: 1988-06-21, ID: eeeefeea-1109-4fcf-b485-7320afe189072023-10-11T20:52:03.339493900 - Movie created: Name: The Lord of the Rings: The Fellowship of the Ring, Director: Peter Jackson, Release Date: 2001-12-18, ID: fdafac80-d3e3-4dd5-88d6-57df23e584472023-10-11T20:52:03.339493900 - Movie created: Name: The Lord of the Rings: The Two Towers, Director: Peter Jackson, Release Date: 2002-12-18, ID: 950ce9db-62d8-4a48-91e9-95beeb3289472023-10-11T20:52:03.340492800 - Movie created: Name: The Lord of the Rings: The Return of the King, Director: Peter Jackson, Release Date: 2003-12-01, ID: 99be4a1b-e79e-4823-b868-7027fc031d682023-10-11T20:52:03.341494 - Movie created: Name: Rouge One, Director: Gareth Edwards, Release Date: 2016-12-16, ID: 383407fb-c789-4e98-864a-4fb5a1398a3b2023-10-11T20:52:03.341494 - Movie created: Name: The Hitchhiker's Guide to the Galaxy, Director: Garth Jennings, Release Date: 2005-04-28, ID: c665e7cd-bebc-48d6-a1af-90c11bf1f3b42023-10-11T20:52:03.343494200 - Movie created: Name: Star Trek, Director: J.J. Abrams, Release Date: 2009-05-06, ID: b22a8c74-05b0-41a7-9ae1-0fb0b25556382023-10-11T20:52:03.343494200 - Movie created: Name: Star Trek II: The Wrath of Khan, Director: Nicholas Meyer, Release Date: 1982-06-04, ID: bab0c68e-c6f8-416c-8280-fd095467c3d52023-10-11T20:52:03.343494200 - Movie created: Name: Star Trek Into Darkness, Director: J.J. Abrams, Release Date: 2013-05-05, ID: 57d81e19-6b94-403a-b9fb-343c6402dfc12023-10-11T20:52:03.344493900 - Movie created: Name: The Lord of the Rings: The Return of the King, Director: Peter Jackson, Release Date: 2003-12-01, ID: 31aa2aea-c4c7-4023-b510-b17f2afb492e2023-10-11T20:52:03.344493900 - Movie created: Name: The Lord of the Rings: The Two Towers, Director: Peter Jackson, Release Date: 2002-12-18, ID: 6bcdd2b2-ca2d-4613-8474-a86618793f702023-10-11T20:52:03.344493900 - Movie created: Name: The Lord of the Rings: The Fellowship of the Ring, Director: Peter Jackson, Release Date: 2001-12-18, ID: 3d4407bb-b27a-4c80-8a7c-033495858df82023-10-11T20:52:03.345493600 - Movie created: Name: Memento, Director: Christopher Nolan, Release Date: 2000-10-11, ID: 3f611c85-815e-4f88-b947-97c4af4a4b892023-10-11T20:52:03.345493600 - Movie created: Name: Inception, Director: Christopher Nolan, Release Date: 2010-07-15, ID: 63fcd89b-3c3c-4e03-bcb7-aa40e8162e0f2023-10-11T20:52:03.347493 - Movie created: Name: Rouge One, Director: Gareth Edwards, Release Date: 2016-12-16, ID: c09b260a-75b8-4a9f-a781-a7c07bf2af792023-10-11T20:52:03.347493 - Movie created: Name: Star Wars, Director: George Lucas, Release Date: 1977-05-25, ID: 4e679ec6-f1d3-4fdf-ba8a-080a0e69c0d92023-10-11T20:52:03.348492500 - Movie created: Name: Back to the Future, Director: Robert Zemeckis, Release Date: 1985-07-03, ID: 3d49a6e9-e534-4f4a-9276-c2ac92fef8e12023-10-11T20:52:03.348492500 - Movie created: Name: Back to the Future Part II, Director: Robert Zemeckis, Release Date: 1989-11-22, ID: 6a26c442-964f-45af-8364-1310a9924f992023-10-11T20:52:03.348492500 - Movie created: Name: Back to the Future Part III, Director: Robert Zemeckis, Release Date: 1990-05-25, ID: d8cb15d1-92e8-476d-927f-51aed78fba092023-10-11T20:52:03.349493 - Movie created: Name: The Fifth Element, Director: Luc Besson, Release Date: 1997-05-02, ID: 47b4b6f7-1ad7-414b-983f-6db2f4125e772023-10-11T20:52:03.349493 - Movie created: Name: The Lord of the Rings: The Fellowship of the Ring, Director: Peter Jackson, Release Date: 2001-12-18, ID: f560489a-ccb0-4bf1-8242-eaf19dbd86a42023-10-11T20:52:03.349493 - Movie created: Name: The Lord of the Rings: The Two Towers, Director: Peter Jackson, Release Date: 2002-12-18, ID: 42347ed7-b13f-4832-81c2-219bf6ce152b2023-10-11T20:52:03.350493100 - Movie created: Name: The Lord of the Rings: The Return of the King, Director: Peter Jackson, Release Date: 2003-12-01, ID: 044fdbb5-5b34-40e6-ad79-307cead9bfa22023-10-11T20:52:03.350493100 - Movie created: Name: Close Encounters of the Third Kind, Director: Steven Spielberg, Release Date: 1977-11-18, ID: 26e53fff-6e1d-4695-9be5-b5b79e8eee122023-10-11T20:52:03.350493100 - Movie created: Name: Star Trek Into Darkness, Director: J.J. Abrams, Release Date: 2013-05-05, ID: e9cc5c4a-2f3f-4978-b60e-1f1120a67c3d2023-10-11T20:52:03.351492800 - Movie created: Name: Jurassic Park, Director: Steven Spielberg, Release Date: 1993-06-11, ID: cfd1188b-43b3-401c-a818-e3e0366c8b882023-10-11T20:52:03.353493700 - Movie created: Name: The Hitchhiker's Guide to the Galaxy, Director: Garth Jennings, Release Date: 2005-04-28, ID: 1bf928d3-66b1-479c-84ff-23fb300f941c2023-10-11T20:52:03.355494500 - Movie created: Name: Home Alone, Director: Chris Columbus, Release Date: 1990-11-16, ID: 9b42f4d3-484b-48ae-a6e0-5c66b6f878e22023-10-11T20:53:23.161332900 - Movie created: Name: Home Alone, Director: Chris Columbus, Release Date: 1990-11-16, ID: 2a04b1e1-e058-47d1-af3b-a00d01d173f92023-10-11T20:53:23.163333700 - Movie created: Name: Jurassic Park, Director: Steven Spielberg, Release Date: 1993-06-11, ID: 5aff08b9-15d6-43f9-b811-fd9b69a933b82023-10-11T20:53:23.170333100 - Movie created: Name: Memento, Director: Christopher Nolan, Release Date: 2000-10-11, ID: 182b1295-bfe7-420d-a2cc-cef259c5dd5e2023-10-11T20:53:23.170333100 - Movie created: Name: Inception, Director: Christopher Nolan, Release Date: 2010-07-15, ID: aa9a28ad-4113-4a6c-82de-531d69feecea2023-10-11T20:53:23.171333200 - Movie created: Name: Interstellar, Director: Christopher Nolan, Release Date: 2014-11-05, ID: 7ff0e986-aca3-4fe9-90f7-208724d9de892023-10-11T20:53:23.171333200 - Movie created: Name: Rouge One, Director: Gareth Edwards, Release Date: 2016-12-16, ID: 24b1aa51-29ce-46ba-982d-b733d6d276f32023-10-11T20:53:23.172333200 - Movie created: Name: Contact, Director: Robert Zemeckis, Release Date: 1997-07-11, ID: cbfa55f3-20bf-489e-b7c0-5c081b7e68e02023-10-11T20:53:23.172333200 - Movie created: Name: Jurassic Park, Director: Steven Spielberg, Release Date: 1993-06-11, ID: e15d72b9-22b7-4587-9d94-18636c01375d2023-10-11T20:53:23.172333200 - Movie created: Name: The Hitchhiker's Guide to the Galaxy, Director: Garth Jennings, Release Date: 2005-04-28, ID: 99356a22-e7ab-420e-a8a0-01aa7be296432023-10-11T20:53:23.173333600 - Movie created: Name: Star Wars, Director: George Lucas, Release Date: 1977-05-25, ID: 609ec488-69f7-4f52-befb-a3791877e6092023-10-11T20:53:23.173333600 - Movie created: Name: Star Trek, Director: J.J. Abrams, Release Date: 2009-05-06, ID: 7e72684b-3ad7-44cb-9ec2-d48ab3d03e8a2023-10-11T20:53:23.173333600 - Movie created: Name: Star Trek Into Darkness, Director: J.J. Abrams, Release Date: 2013-05-05, ID: 063fd670-44b2-4969-90ac-e356969243bc2023-10-11T20:53:23.174332900 - Movie created: Name: Forrest Gump, Director: Robert Zemeckis, Release Date: 1994-07-06, ID: a2fa5ef7-880f-4100-a6f1-6d7930f21dff2023-10-11T20:53:23.174332900 - Movie created: Name: Cast Away, Director: Robert Zemeckis, Release Date: 2000-12-22, ID: 99897152-1015-4323-86a3-b08be1e39ffc2023-10-11T20:53:23.175332800 - Movie created: Name: The Fifth Element, Director: Luc Besson, Release Date: 1997-05-02, ID: 2c047b38-dede-4511-b602-440b11e1bfed2023-10-11T20:53:23.175332800 - Movie created: Name: Close Encounters of the Third Kind, Director: Steven Spielberg, Release Date: 1977-11-18, ID: 763c1dbf-02a6-4d95-8451-9bc7562c19882023-10-11T20:53:23.177332700 - Movie created: Name: Star Wars, Director: George Lucas, Release Date: 1977-05-25, ID: 763aadc7-51d4-40c0-bd98-dbb612148d592023-10-11T20:53:23.177332700 - Movie created: Name: Jurassic Park, Director: Steven Spielberg, Release Date: 1993-06-11, ID: 201253b9-b965-4770-b771-9e9d81b3eaca2023-10-11T20:53:23.178333 - Movie created: Name: The Hitchhiker's Guide to the Galaxy, Director: Garth Jennings, Release Date: 2005-04-28, ID: 023ed2dc-79e4-4ca6-ac11-1cd5f505872b2023-10-11T20:53:23.178333 - Movie created: Name: Finding Nemo, Director: Andrew Stanton, Release Date: 2003-05-30, ID: 06add630-951a-4d67-9196-a5b1628ff3382023-10-11T20:53:23.178333 - Movie created: Name: WALL·E, Director: Andrew Stanton, Release Date: 2008-06-22, ID: b05760d9-ea9d-4b2b-a1a8-8da11f09e4ad2023-10-11T20:53:23.179335700 - Movie created: Name: Coco, Director: Lee Unkrich, Release Date: 2017-10-27, ID: 54ba3cbc-a30a-444c-a247-1d66fe6fbbe92023-10-11T20:53:23.179335700 - Movie created: Name: Toy Story 3, Director: Lee Unkrich, Release Date: 2010-06-16, ID: 4e9037f2-4676-471f-bc63-c6a900acfff92023-10-11T20:53:23.180332900 - Movie created: Name: The Polar Express, Director: Robert Zemeckis, Release Date: 2004-11-10, ID: 7778d587-d317-4b8a-912d-e6d446e449fd2023-10-11T20:53:23.180332900 - Movie created: Name: Shrek, Director: Andrew Adamson, Release Date: 2001-05-18, ID: be5c4d15-cb70-4626-a74d-bb18a780bfdc2023-10-11T20:53:23.180332900 - Movie created: Name: Home Alone, Director: Chris Columbus, Release Date: 1990-11-16, ID: e0457408-7fa3-4a76-9c04-da3675b3965e2023-10-11T20:53:23.181332900 - Movie created: Name: Back to the Future Part III, Director: Robert Zemeckis, Release Date: 1990-05-25, ID: e6253d9e-fed2-4872-a0fa-d3bfb6db3f852023-10-11T20:53:23.181332900 - Movie created: Name: Back to the Future, Director: Robert Zemeckis, Release Date: 1985-07-03, ID: 905e171a-06c2-4126-a959-76983f0fc8f72023-10-11T20:53:23.182335600 - Movie created: Name: Back to the Future Part II, Director: Robert Zemeckis, Release Date: 1989-11-22, ID: 01006d5e-7962-4cfe-b7b6-4b3f899502af2023-10-11T20:53:23.183335100 - Movie created: Name: Who Framed Roger Rabbit, Director: Robert Zemeckis, Release Date: 1988-06-21, ID: 44eea09e-03a4-4997-aff0-80ad02fa8d142023-10-11T20:53:23.183335100 - Movie created: Name: The Lord of the Rings: The Fellowship of the Ring, Director: Peter Jackson, Release Date: 2001-12-18, ID: 5c71bfb9-eb23-435a-b9d2-0041ce5d23e02023-10-11T20:53:23.183335100 - Movie created: Name: The Lord of the Rings: The Two Towers, Director: Peter Jackson, Release Date: 2002-12-18, ID: adc4b4d1-dc5c-4bfe-a0dc-59040f2fccd32023-10-11T20:53:23.183335100 - Movie created: Name: The Lord of the Rings: The Return of the King, Director: Peter Jackson, Release Date: 2003-12-01, ID: 70df25c5-cd15-4a6d-83c0-1f0d3da118f32023-10-11T20:53:23.184332900 - Movie created: Name: Rouge One, Director: Gareth Edwards, Release Date: 2016-12-16, ID: 27c08b77-e44a-4e0b-b37c-f5fd051c20722023-10-11T20:53:23.185334400 - Movie created: Name: The Hitchhiker's Guide to the Galaxy, Director: Garth Jennings, Release Date: 2005-04-28, ID: 4ef89498-974f-4f1f-a3fa-370ed7515b902023-10-11T20:53:23.186340200 - Movie created: Name: Star Trek, Director: J.J. Abrams, Release Date: 2009-05-06, ID: 254a938c-e908-4394-937f-bc380eadefac2023-10-11T20:53:23.186340200 - Movie created: Name: Star Trek II: The Wrath of Khan, Director: Nicholas Meyer, Release Date: 1982-06-04, ID: c9df398d-35d8-4a22-bb8f-2edb6e99ba182023-10-11T20:53:23.186340200 - Movie created: Name: Star Trek Into Darkness, Director: J.J. Abrams, Release Date: 2013-05-05, ID: 09c5eabd-4b0f-40f9-9097-8035d52c21222023-10-11T20:53:23.187332800 - Movie created: Name: The Lord of the Rings: The Return of the King, Director: Peter Jackson, Release Date: 2003-12-01, ID: 5ebac74c-a2c2-4beb-8943-0ffded7b4e572023-10-11T20:53:23.187332800 - Movie created: Name: The Lord of the Rings: The Two Towers, Director: Peter Jackson, Release Date: 2002-12-18, ID: 659c6cea-6d37-459a-bb94-cb50e4cb7c312023-10-11T20:53:23.187332800 - Movie created: Name: The Lord of the Rings: The Fellowship of the Ring, Director: Peter Jackson, Release Date: 2001-12-18, ID: c4381c25-526e-4aa2-99ef-906b9805693a2023-10-11T20:53:23.187332800 - Movie created: Name: Memento, Director: Christopher Nolan, Release Date: 2000-10-11, ID: 282680fb-5d8c-4062-8276-f7268c55ea9c2023-10-11T20:53:23.188334800 - Movie created: Name: Inception, Director: Christopher Nolan, Release Date: 2010-07-15, ID: 3d37a060-c706-49ee-9f39-1c768a4fa5122023-10-11T20:53:23.189333400 - Movie created: Name: Rouge One, Director: Gareth Edwards, Release Date: 2016-12-16, ID: bb0bd747-b350-4f7a-8803-3c2f58ff51f92023-10-11T20:53:23.189333400 - Movie created: Name: Star Wars, Director: George Lucas, Release Date: 1977-05-25, ID: 6ced07ac-2cf7-4389-8f73-11d419c5b9592023-10-11T20:53:23.190333300 - Movie created: Name: Back to the Future, Director: Robert Zemeckis, Release Date: 1985-07-03, ID: 067702c1-64e4-4008-b642-c85ffc1faffc2023-10-11T20:53:23.190333300 - Movie created: Name: Back to the Future Part II, Director: Robert Zemeckis, Release Date: 1989-11-22, ID: 00625316-e595-4ace-82d1-f84dde06d5442023-10-11T20:53:23.190333300 - Movie created: Name: Back to the Future Part III, Director: Robert Zemeckis, Release Date: 1990-05-25, ID: 37f3ef9b-906b-4efa-893a-2e961f11db632023-10-11T20:53:23.190333300 - Movie created: Name: The Fifth Element, Director: Luc Besson, Release Date: 1997-05-02, ID: f2f4e831-8228-47d8-91ec-09c35d0e89782023-10-11T20:53:23.191334600 - Movie created: Name: The Lord of the Rings: The Fellowship of the Ring, Director: Peter Jackson, Release Date: 2001-12-18, ID: 11a1b85d-2ce9-449a-99f5-6107a42b7e162023-10-11T20:53:23.191334600 - Movie created: Name: The Lord of the Rings: The Two Towers, Director: Peter Jackson, Release Date: 2002-12-18, ID: e181091e-0de3-4198-b981-dcad6936d6972023-10-11T20:53:23.191334600 - Movie created: Name: The Lord of the Rings: The Return of the King, Director: Peter Jackson, Release Date: 2003-12-01, ID: 996298e3-1e2d-4285-bcdb-2b02ac60ab1a2023-10-11T20:53:23.191334600 - Movie created: Name: Close Encounters of the Third Kind, Director: Steven Spielberg, Release Date: 1977-11-18, ID: 5d6a1e45-27f3-47fc-bfaf-016a41049beb2023-10-11T20:53:23.192333800 - Movie created: Name: Star Trek Into Darkness, Director: J.J. Abrams, Release Date: 2013-05-05, ID: 27800cbe-acd4-4659-a0b3-6a394c29d3032023-10-11T20:53:23.192333800 - Movie created: Name: Jurassic Park, Director: Steven Spielberg, Release Date: 1993-06-11, ID: 027ccd31-9fa1-4884-936d-deba1ebc31552023-10-11T20:53:23.194334 - Movie created: Name: The Hitchhiker's Guide to the Galaxy, Director: Garth Jennings, Release Date: 2005-04-28, ID: 1f837fb8-4cc1-4fcc-aac9-8e8fea68063e2023-10-11T20:53:23.196333900 - Movie created: Name: Home Alone, Director: Chris Columbus, Release Date: 1990-11-16, ID: 40d74c29-f26d-4916-83f5-bc63dfa06858The Movie * Home Alone
+ - Directed by: Chris Columbus
+ - Released: 1990-11-16
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Jurassic Park
+ - Directed by: Steven Spielberg
+ - Released: 1993-06-11
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Memento
+ - Directed by: Christopher Nolan
+ - Released: 2000-10-11
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Inception
+ - Directed by: Christopher Nolan
+ - Released: 2010-07-15
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Interstellar
+ - Directed by: Christopher Nolan
+ - Released: 2014-11-05
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Rouge One
+ - Directed by: Gareth Edwards
+ - Released: 2016-12-16
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Contact
+ - Directed by: Robert Zemeckis
+ - Released: 1997-07-11
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Jurassic Park
+ - Directed by: Steven Spielberg
+ - Released: 1993-06-11
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * The Hitchhiker's Guide to the Galaxy
+ - Directed by: Garth Jennings
+ - Released: 2005-04-28
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Star Wars
+ - Directed by: George Lucas
+ - Released: 1977-05-25
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Star Trek
+ - Directed by: J.J. Abrams
+ - Released: 2009-05-06
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Star Trek Into Darkness
+ - Directed by: J.J. Abrams
+ - Released: 2013-05-05
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Forrest Gump
+ - Directed by: Robert Zemeckis
+ - Released: 1994-07-06
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Cast Away
+ - Directed by: Robert Zemeckis
+ - Released: 2000-12-22
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * The Fifth Element
+ - Directed by: Luc Besson
+ - Released: 1997-05-02
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Close Encounters of the Third Kind
+ - Directed by: Steven Spielberg
+ - Released: 1977-11-18
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Star Wars
+ - Directed by: George Lucas
+ - Released: 1977-05-25
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Jurassic Park
+ - Directed by: Steven Spielberg
+ - Released: 1993-06-11
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * The Hitchhiker's Guide to the Galaxy
+ - Directed by: Garth Jennings
+ - Released: 2005-04-28
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Finding Nemo
+ - Directed by: Andrew Stanton
+ - Released: 2003-05-30
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * WALL·E
+ - Directed by: Andrew Stanton
+ - Released: 2008-06-22
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Coco
+ - Directed by: Lee Unkrich
+ - Released: 2017-10-27
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Toy Story 3
+ - Directed by: Lee Unkrich
+ - Released: 2010-06-16
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * The Polar Express
+ - Directed by: Robert Zemeckis
+ - Released: 2004-11-10
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Shrek
+ - Directed by: Andrew Adamson
+ - Released: 2001-05-18
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Home Alone
+ - Directed by: Chris Columbus
+ - Released: 1990-11-16
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Back to the Future Part III
+ - Directed by: Robert Zemeckis
+ - Released: 1990-05-25
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Back to the Future
+ - Directed by: Robert Zemeckis
+ - Released: 1985-07-03
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Back to the Future Part II
+ - Directed by: Robert Zemeckis
+ - Released: 1989-11-22
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Who Framed Roger Rabbit
+ - Directed by: Robert Zemeckis
+ - Released: 1988-06-21
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * The Lord of the Rings: The Fellowship of the Ring
+ - Directed by: Peter Jackson
+ - Released: 2001-12-18
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * The Lord of the Rings: The Two Towers
+ - Directed by: Peter Jackson
+ - Released: 2002-12-18
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * The Lord of the Rings: The Return of the King
+ - Directed by: Peter Jackson
+ - Released: 2003-12-01
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Rouge One
+ - Directed by: Gareth Edwards
+ - Released: 2016-12-16
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * The Hitchhiker's Guide to the Galaxy
+ - Directed by: Garth Jennings
+ - Released: 2005-04-28
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Star Trek
+ - Directed by: J.J. Abrams
+ - Released: 2009-05-06
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Star Trek II: The Wrath of Khan
+ - Directed by: Nicholas Meyer
+ - Released: 1982-06-04
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Star Trek Into Darkness
+ - Directed by: J.J. Abrams
+ - Released: 2013-05-05
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * The Lord of the Rings: The Return of the King
+ - Directed by: Peter Jackson
+ - Released: 2003-12-01
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * The Lord of the Rings: The Two Towers
+ - Directed by: Peter Jackson
+ - Released: 2002-12-18
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * The Lord of the Rings: The Fellowship of the Ring
+ - Directed by: Peter Jackson
+ - Released: 2001-12-18
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Memento
+ - Directed by: Christopher Nolan
+ - Released: 2000-10-11
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Inception
+ - Directed by: Christopher Nolan
+ - Released: 2010-07-15
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Rouge One
+ - Directed by: Gareth Edwards
+ - Released: 2016-12-16
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Star Wars
+ - Directed by: George Lucas
+ - Released: 1977-05-25
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Back to the Future
+ - Directed by: Robert Zemeckis
+ - Released: 1985-07-03
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Back to the Future Part II
+ - Directed by: Robert Zemeckis
+ - Released: 1989-11-22
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Back to the Future Part III
+ - Directed by: Robert Zemeckis
+ - Released: 1990-05-25
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * The Fifth Element
+ - Directed by: Luc Besson
+ - Released: 1997-05-02
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * The Lord of the Rings: The Fellowship of the Ring
+ - Directed by: Peter Jackson
+ - Released: 2001-12-18
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * The Lord of the Rings: The Two Towers
+ - Directed by: Peter Jackson
+ - Released: 2002-12-18
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * The Lord of the Rings: The Return of the King
+ - Directed by: Peter Jackson
+ - Released: 2003-12-01
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Close Encounters of the Third Kind
+ - Directed by: Steven Spielberg
+ - Released: 1977-11-18
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Star Trek Into Darkness
+ - Directed by: J.J. Abrams
+ - Released: 2013-05-05
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Jurassic Park
+ - Directed by: Steven Spielberg
+ - Released: 1993-06-11
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * The Hitchhiker's Guide to the Galaxy
+ - Directed by: Garth Jennings
+ - Released: 2005-04-28
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023The Movie * Home Alone
+ - Directed by: Chris Columbus
+ - Released: 1990-11-16
+
+ - Was Registered on Wed Oct 11 21:35:47 EDT 2023

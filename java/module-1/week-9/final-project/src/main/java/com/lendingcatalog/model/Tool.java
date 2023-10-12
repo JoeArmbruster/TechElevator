@@ -3,7 +3,7 @@ package com.lendingcatalog.model;
 import com.lendingcatalog.util.FileStorageService;
 import com.lendingcatalog.util.exception.FileStorageException;
 
-import java.time.LocalDateTime;
+import java.util.Date;
 import java.util.UUID;
 
 public class Tool implements CatalogItem {
@@ -45,17 +45,24 @@ public class Tool implements CatalogItem {
 
         this.id = UUID.randomUUID().toString();
 
-        String logMessage = LocalDateTime.now() + " - Tool created: " +
-                "Type: " + type +
-                ", Manufacturer: " + manufacturer +
-                ", Count: " + count +
-                ", ID: " + id;
-
         try {
-            FileStorageService.writeContentsToFile(logMessage, "src/main/resources/logs/tool_log.txt", true);
+            String message = "The Tool " + this.toString() + System.lineSeparator() + " - Was Registered on " + new Date();
+            FileStorageService.writeContentsToFile(message, "src/main/resources/logs/tool_log.txt", true);
         } catch (FileStorageException e) {
             e.printStackTrace();
         }
+
+//        String logMessage = LocalDateTime.now() + " - Tool created: " +
+//                "Type: " + type +
+//                ", Manufacturer: " + manufacturer +
+//                ", Count: " + count +
+//                ", ID: " + id;
+//
+//        try {
+//            FileStorageService.writeContentsToFile(logMessage, "src/main/resources/logs/tool_log.txt", true);
+//        } catch (FileStorageException e) {
+//            e.printStackTrace();
+//        }
 
     }
 }
