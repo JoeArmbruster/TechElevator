@@ -6,14 +6,14 @@ import com.lendingcatalog.util.exception.FileStorageException;
 import java.time.LocalDateTime;
 import java.util.UUID;
 
-public class Tool implements CatalogItem{
+public class Tool implements CatalogItem {
 
     private String id;
     private String type;
     private String manufacturer;
     private int count;
 
-    public Tool ( String type, String manufacturer, int count){
+    public Tool(String type, String manufacturer, int count) {
         this.type = type;
         this.manufacturer = manufacturer;
         this.count = count;
