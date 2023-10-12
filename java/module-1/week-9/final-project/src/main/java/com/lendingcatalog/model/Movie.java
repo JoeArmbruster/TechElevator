@@ -53,17 +53,5 @@ public class Movie implements CatalogItem {
         } catch (FileStorageException e) {
             e.printStackTrace();
         }
-
-//        String logMessage = LocalDateTime.now() + " - Movie created: " +
-//                "Name: " + name +
-//                ", Director: " + director +
-//                ", Release Date: " + releaseDate +
-//                ", ID: " + id;
-
-//        try {
-//            FileStorageService.writeContentsToFile(logMessage, "src/main/resources/logs/movie_log.txt", true);
-//        } catch (FileStorageException e) {
-//            e.printStackTrace();
-//        }
     }
 }

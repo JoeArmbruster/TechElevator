@@ -52,17 +52,5 @@ public class Book implements CatalogItem {
         } catch (FileStorageException e) {
             e.printStackTrace();
         }
-
-//        String logMessage = LocalDateTime.now() + " - Book created: " +
-//                "Title: " + title +
-//                ", Author: " + author +
-//                ", Publish Date: " + publishDate +
-//                ", ID: " + id;
-//
-//        try {
-//            FileStorageService.writeContentsToFile(logMessage, "src/main/resources/logs/book_log.txt", true);
-//        } catch (FileStorageException e) {
-//            e.printStackTrace();
-//        }
     }
 }

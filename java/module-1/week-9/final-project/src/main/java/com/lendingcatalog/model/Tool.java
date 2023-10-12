@@ -51,18 +51,5 @@ public class Tool implements CatalogItem {
         } catch (FileStorageException e) {
             e.printStackTrace();
         }
-
-//        String logMessage = LocalDateTime.now() + " - Tool created: " +
-//                "Type: " + type +
-//                ", Manufacturer: " + manufacturer +
-//                ", Count: " + count +
-//                ", ID: " + id;
-//
-//        try {
-//            FileStorageService.writeContentsToFile(logMessage, "src/main/resources/logs/tool_log.txt", true);
-//        } catch (FileStorageException e) {
-//            e.printStackTrace();
-//        }
-
     }
 }
