@@ -166,7 +166,8 @@ public class PracticePart1 {
 	Q08_allowanceCalculator(7, 0, 40) -> 10
 	*/
 	public int Q08_allowanceCalculator(int weekly, int gift, int bonus) {
-		int allowance = weekly + gift + bonus * 4 / 52;
+		int allowance = weekly + ((gift + bonus * 4) / 52);
+		// int allowance = weekly + (gift / 52) + (bonus/ 13); // NOTE: THIS DOESN'T WORK
 		return allowance;
 	}
 
