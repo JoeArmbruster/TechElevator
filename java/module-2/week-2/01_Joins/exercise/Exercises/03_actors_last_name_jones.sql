@@ -2,8 +2,8 @@
 -- Order the results by the actor names (A-Z) and then by movie title (A-Z). 
 -- (48 rows)
 
-SELECT person.person_name AS actor_name, movie.title AS movie_title FROM person
+SELECT person.person_name, movie.title FROM person
 JOIN movie_actor ON person.person_id = movie_actor.actor_id
 JOIN movie ON movie_actor.movie_id = movie.movie_id
 WHERE person.person_name LIKE '% Jones'
-ORDER BY actor_name, movie_title;
+ORDER BY person_name, movie.title;
