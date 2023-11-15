@@ -30,7 +30,7 @@ public class JdbcCollectionDao implements CollectionDao{
 
     @Override
     public Collection getCollectionById(int id) {
-        Collection collection = new Collection();
+        Collection collection = null;
         String sql = "SELECT collection_id, collection_name FROM collection WHERE collection_id = ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
         if (results.next()){
