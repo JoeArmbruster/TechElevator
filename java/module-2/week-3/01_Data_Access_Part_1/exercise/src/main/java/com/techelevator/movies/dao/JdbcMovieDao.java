@@ -2,6 +2,7 @@ package com.techelevator.movies.dao;
 
 import com.techelevator.movies.model.Movie;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
 import java.util.ArrayList;
@@ -17,22 +18,60 @@ public class JdbcMovieDao implements MovieDao {
 
     @Override
     public List<Movie> getMovies() {
-        return null;
+        List<Movie> movies = new ArrayList<>();
+        String sql = "SELECT * FROM movie;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            Movie movie = mapRowToMovie(results);
+            movies.add(movie);
+        }
+        return movies;
     }
 
     @Override
     public Movie getMovieById(int id) {
-        return new Movie(-1, "Not implemented yet", "", "", "", "", null, 0, -1, -1);
+        Movie movie = null;
+        String sql = "SELECT * FROM movie WHERE movie_id = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+        if (results.next()) {
+            movie = mapRowToMovie(results);
+        }
+        return movie;
     }
 
     @Override
     public List<Movie> getMoviesByTitle(String title, boolean useWildCard) {
-        return null;
+        List<Movie> movies = new ArrayList<>();
+        if (useWildCard){
+            title = "%" + title + "%";
+        }
+        String sql = "SELECT * FROM movie WHERE title ILIKE ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, title);
+
+        while(results.next()){
+            movies.add(mapRowToMovie(results));
+        }
+        return movies;
     }
 
     @Override
     public List<Movie> getMoviesByDirectorNameAndBetweenYears(String directorName, int startYear,
                                                               int endYear, boolean useWildCard) {
         return null;
+    }
+
+    public Movie mapRowToMovie(SqlRowSet results) {
+        Movie movie = new Movie();
+        movie.setId(results.getInt("movie_id"));
+        movie.setTitle(results.getString("title"));
+        movie.setOverview(results.getString("overview"));
+        movie.setTitle(results.getString("tagline"));
+        movie.setPosterPath(results.getString("poster_path"));
+        movie.setHomePage(results.getString("home_page"));
+        movie.setReleaseDate(results.getDate("release_date").toLocalDate());
+        movie.setLengthMinutes(results.getInt("length_minutes"));
+        movie.setDirectorId(results.getInt("director_id"));
+        movie.setCollectionId(results.getInt("collection_id"));
+        return movie;
     }
 }
