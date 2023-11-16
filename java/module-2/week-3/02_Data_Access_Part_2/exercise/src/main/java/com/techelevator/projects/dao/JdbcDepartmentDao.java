@@ -94,18 +94,22 @@ public class JdbcDepartmentDao implements DepartmentDao {
 
     @Override
     public int deleteDepartmentById(int id) {
-        String deleteEmployeeSql = "DELETE FROM employee WHERE department_id = ?;";
+        int numberOfRows = 0;
+        String updateFromEmployeeSql = "UPDATE employee SET department_id = 0 WHERE department_id = ?;";
+        String deleteFromProjectEmployeeSql = "DELETE FROM project_employee WHERE employee_id = ?;";
         String deleteDepartmentSql = "DELETE FROM department WHERE department_id = ?;";
 
 
         try {
-            jdbcTemplate.update(deleteEmployeeSql, id);
-            return jdbcTemplate.update(deleteDepartmentSql, id);
+            jdbcTemplate.update(deleteFromProjectEmployeeSql, id);
+            jdbcTemplate.update(updateFromEmployeeSql, id);
+            numberOfRows = jdbcTemplate.update(deleteDepartmentSql, id);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (DataIntegrityViolationException e) {
             throw new DaoException("Data integrity violation", e);
         }
+        return numberOfRows;
     }
 
     private Department mapRowToDepartment(SqlRowSet results) {
