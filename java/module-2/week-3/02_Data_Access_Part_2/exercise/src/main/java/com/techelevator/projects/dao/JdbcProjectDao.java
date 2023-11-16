@@ -64,7 +64,10 @@ public class JdbcProjectDao implements ProjectDao {
     }
 
     @Override
-    public Project createProject(Project newProject) {
+    public Project createProject(Project project) {
+        try{
+        String sql = "INSERT INTO project (name, from_date, to_date) VALUES (?, ?, ?) RETURNING project_id;";
+        int newProjectId = jdbcTemplate.queryForObject(sql, Integer.class, project)
         throw new DaoException("createProject() not implemented");
     }
 
