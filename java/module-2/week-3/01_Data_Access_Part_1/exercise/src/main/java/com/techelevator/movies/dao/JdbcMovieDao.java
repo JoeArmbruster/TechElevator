@@ -5,6 +5,7 @@ import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
 import javax.sql.DataSource;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -61,8 +62,11 @@ public class JdbcMovieDao implements MovieDao {
         if (useWildCard){
             directorName = "%" + directorName + "%";
         }
-        String sql = "SELECT * FROM movie WHERE director_id IN (SELECT person_id FROM person WHERE person_name ILIKE ?) AND release_date BETWEEN ? AND ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, directorName, startYear, endYear);
+
+        String sql = "SELECT * FROM movie " +
+                "JOIN person ON movie.director_id = person.person_id " +
+                "WHERE movie.release_date BETWEEN ? AND ? AND person.person_name = ?;";
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql,startYear, endYear, directorName);
         while(results.next()){
             movies.add(mapRowToMovie(results));
         }
@@ -75,7 +79,7 @@ public class JdbcMovieDao implements MovieDao {
         movie.setId(results.getInt("movie_id"));
         movie.setTitle(results.getString("title"));
         movie.setOverview(results.getString("overview"));
-        movie.setTitle(results.getString("tagline"));
+        movie.setTagline(results.getString("tagline"));
         movie.setPosterPath(results.getString("poster_path"));
         movie.setHomePage(results.getString("home_page"));
         movie.setReleaseDate(results.getDate("release_date").toLocalDate());
