@@ -43,13 +43,13 @@ public class JdbcMovieDao implements MovieDao {
     @Override
     public List<Movie> getMoviesByTitle(String title, boolean useWildCard) {
         List<Movie> movies = new ArrayList<>();
-        if (useWildCard){
+        if (useWildCard) {
             title = "%" + title + "%";
         }
         String sql = "SELECT * FROM movie WHERE title ILIKE ?;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, title);
 
-        while(results.next()){
+        while (results.next()) {
             movies.add(mapRowToMovie(results));
         }
         return movies;
@@ -59,15 +59,15 @@ public class JdbcMovieDao implements MovieDao {
     public List<Movie> getMoviesByDirectorNameAndBetweenYears(String directorName, int startYear,
                                                               int endYear, boolean useWildCard) {
         List<Movie> movies = new ArrayList<>();
-        if (useWildCard){
+        if (useWildCard) {
             directorName = "%" + directorName + "%";
         }
 
         String sql = "SELECT * FROM movie " +
                 "JOIN person ON movie.director_id = person.person_id " +
                 "WHERE movie.release_date BETWEEN ? AND ? AND person.person_name = ?;";
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql,startYear, endYear, directorName);
-        while(results.next()){
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, startYear, endYear, directorName);
+        while (results.next()) {
             movies.add(mapRowToMovie(results));
         }
 
@@ -82,7 +82,9 @@ public class JdbcMovieDao implements MovieDao {
         movie.setTagline(results.getString("tagline"));
         movie.setPosterPath(results.getString("poster_path"));
         movie.setHomePage(results.getString("home_page"));
-        movie.setReleaseDate(results.getDate("release_date").toLocalDate());
+        if (results.getDate("release_date") != null) {
+            movie.setReleaseDate(results.getDate("release_date").toLocalDate());
+        }
         movie.setLengthMinutes(results.getInt("length_minutes"));
         movie.setDirectorId(results.getInt("director_id"));
         movie.setCollectionId(results.getInt("collection_id"));

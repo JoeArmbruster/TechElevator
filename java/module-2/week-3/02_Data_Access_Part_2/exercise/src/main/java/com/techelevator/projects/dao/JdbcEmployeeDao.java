@@ -5,6 +5,7 @@ import java.util.List;
 
 import javax.sql.DataSource;
 
+import org.springframework.dao.DataAccessException;
 import org.springframework.dao.DataIntegrityViolationException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
@@ -15,117 +16,140 @@ import com.techelevator.projects.model.Employee;
 
 public class JdbcEmployeeDao implements EmployeeDao {
 
-	private final String EMPLOYEE_SELECT = "SELECT e.employee_id, e.department_id, e.first_name, e.last_name, " +
-				"e.birth_date, e.hire_date FROM employee e ";
+    private final String EMPLOYEE_SELECT = "SELECT e.employee_id, e.department_id, e.first_name, e.last_name, " +
+            "e.birth_date, e.hire_date FROM employee e ";
 
-	private final JdbcTemplate jdbcTemplate;
+    private final JdbcTemplate jdbcTemplate;
 
-	public JdbcEmployeeDao(DataSource dataSource) {
-		this.jdbcTemplate = new JdbcTemplate(dataSource);
-	}
-	
-	@Override
-	public Employee getEmployeeById(int id) {
-		Employee employee = null;
-		String sql = EMPLOYEE_SELECT +
-				" WHERE e.employee_id=?";
+    public JdbcEmployeeDao(DataSource dataSource) {
+        this.jdbcTemplate = new JdbcTemplate(dataSource);
+    }
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
-		if (results.next()) {
-			employee = mapRowToEmployee(results);
-		}
+    @Override
+    public Employee getEmployeeById(int id) {
+        try {
+            Employee employee = null;
+            String sql = EMPLOYEE_SELECT +
+                    " WHERE e.employee_id=?";
 
-		return employee;
-	}
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+            if (results.next()) {
+                employee = mapRowToEmployee(results);
+            }
+            if (employee == null) {
+                throw new DaoException("Employee not found for id: " + id);
+            }
 
-	@Override
-	public List<Employee> getEmployees() {
-		List<Employee> allEmployees = new ArrayList<>();
-		String sql = EMPLOYEE_SELECT;
+            return employee;
+        } catch (DataAccessException ex) {
+            throw new DaoException("Error retrieving employee by id", ex);
+        }
+    }
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-		while (results.next()) {
-			Employee employeeResult = mapRowToEmployee(results);
-			allEmployees.add(employeeResult);
-		}
+    @Override
+    public List<Employee> getEmployees() {
+        try {
+            List<Employee> allEmployees = new ArrayList<>();
+            String sql = EMPLOYEE_SELECT;
 
-		return allEmployees;
-	}
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+            while (results.next()) {
+                Employee employeeResult = mapRowToEmployee(results);
+                allEmployees.add(employeeResult);
+            }
 
-	@Override
-	public List<Employee> getEmployeesByFirstNameLastName(String firstName, String lastName) {
-		List<Employee> allEmployees = new ArrayList<>();
-		String sql = EMPLOYEE_SELECT +
-				" WHERE e.first_name ILIKE ? AND e.last_name ILIKE ?";
+            return allEmployees;
+        } catch (DataAccessException ex) {
+            throw new DaoException("Error retrieving employee", ex);
+        }
+    }
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, "%" + firstName + "%", "%" + lastName + "%");
-		while (results.next()) {
-			Employee employeeResult = mapRowToEmployee(results);
-			allEmployees.add(employeeResult);
-		}
+    @Override
+    public List<Employee> getEmployeesByFirstNameLastName(String firstName, String lastName) {
+        try {
+            List<Employee> allEmployees = new ArrayList<>();
+            String sql = EMPLOYEE_SELECT +
+                    " WHERE e.first_name ILIKE ? AND e.last_name ILIKE ?";
 
-		return allEmployees;
-	}
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, "%" + firstName + "%", "%" + lastName + "%");
+            while (results.next()) {
+                Employee employeeResult = mapRowToEmployee(results);
+                allEmployees.add(employeeResult);
+            }
 
-	@Override
-	public List<Employee> getEmployeesByProjectId(int projectId) {
-		List<Employee> allEmployees = new ArrayList<>();
-		String sql =  EMPLOYEE_SELECT +
-				"JOIN project_employee pe ON e.employee_id = pe.employee_id " +
-				"WHERE pe.project_id = ?";
+            return allEmployees;
+        } catch (DataAccessException ex) {
+            throw new DaoException("Error retrieving employees by name", ex);
+        }
+    }
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql, projectId);
-		while (results.next()) {
-			Employee employeeResult = mapRowToEmployee(results);
-			allEmployees.add(employeeResult);
-		}
+    @Override
+    public List<Employee> getEmployeesByProjectId(int projectId) {
+        try {
+            List<Employee> allEmployees = new ArrayList<>();
+            String sql = EMPLOYEE_SELECT +
+                    "JOIN project_employee pe ON e.employee_id = pe.employee_id " +
+                    "WHERE pe.project_id = ?";
 
-		return allEmployees;
-	}
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, projectId);
+            while (results.next()) {
+                Employee employeeResult = mapRowToEmployee(results);
+                allEmployees.add(employeeResult);
+            }
 
-	@Override
-	public List<Employee> getEmployeesWithoutProjects() {
-		List<Employee> allEmployees = new ArrayList<>();
-		String sql = EMPLOYEE_SELECT +
-				" WHERE e.employee_id NOT IN (SELECT DISTINCT employee_id FROM project_employee)";
+            return allEmployees;
+        } catch (DataAccessException ex) {
+            throw new DaoException("Error retrieving employees by project id", ex);
+        }
+    }
 
-		SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
-		while (results.next()) {
-			Employee employeeResult = mapRowToEmployee(results);
-			allEmployees.add(employeeResult);
-		}
+    @Override
+    public List<Employee> getEmployeesWithoutProjects() {
+        try {
+            List<Employee> allEmployees = new ArrayList<>();
+            String sql = EMPLOYEE_SELECT +
+                    " WHERE e.employee_id NOT IN (SELECT DISTINCT employee_id FROM project_employee)";
 
-		return allEmployees;
-	}
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+            while (results.next()) {
+                Employee employeeResult = mapRowToEmployee(results);
+                allEmployees.add(employeeResult);
+            }
 
-	@Override
-	public Employee createEmployee(Employee employee) {
-		throw new DaoException("createEmployee() not implemented");
-	}
-	
-	@Override
-	public Employee updateEmployee(Employee employee) {
-		throw new DaoException("updateEmployee() not implemented");
-	}
+            return allEmployees;
+        } catch (DataAccessException ex) {
+            throw new DaoException("Error retrieving employees without projects", ex);
+        }
+    }
 
-	@Override
-	public int deleteEmployeeById(int id) {
-		throw new DaoException("deleteEmployeeById() not implemented");
-	}
+    @Override
+    public Employee createEmployee(Employee employee) {
+        throw new DaoException("createEmployee() not implemented");
+    }
 
-	@Override
-	public int deleteEmployeesByDepartmentId(int departmentId) {
-		throw new DaoException("deleteEmployeeByDepartmentId() not implemented");
-	}
+    @Override
+    public Employee updateEmployee(Employee employee) {
+        throw new DaoException("updateEmployee() not implemented");
+    }
 
-	private Employee mapRowToEmployee(SqlRowSet result) {
-		Employee employee = new Employee();
-		employee.setId(result.getInt("employee_id"));
-		employee.setDepartmentId(result.getInt("department_id"));
-		employee.setFirstName(result.getString("first_name"));
-		employee.setLastName(result.getString("last_name"));
-		employee.setBirthDate(result.getDate("birth_date").toLocalDate());
-		employee.setHireDate(result.getDate("hire_date").toLocalDate());
-		return employee;
-	}
+    @Override
+    public int deleteEmployeeById(int id) {
+        throw new DaoException("deleteEmployeeById() not implemented");
+    }
+
+    @Override
+    public int deleteEmployeesByDepartmentId(int departmentId) {
+        throw new DaoException("deleteEmployeeByDepartmentId() not implemented");
+    }
+
+    private Employee mapRowToEmployee(SqlRowSet result) {
+        Employee employee = new Employee();
+        employee.setId(result.getInt("employee_id"));
+        employee.setDepartmentId(result.getInt("department_id"));
+        employee.setFirstName(result.getString("first_name"));
+        employee.setLastName(result.getString("last_name"));
+        employee.setBirthDate(result.getDate("birth_date").toLocalDate());
+        employee.setHireDate(result.getDate("hire_date").toLocalDate());
+        return employee;
+    }
 }
