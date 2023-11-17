@@ -85,8 +85,12 @@ public class JdbcPersonDao implements PersonDao {
         Person person = new Person();
         person.setId(results.getInt("person_id"));
         person.setName(results.getString("person_name"));
-        person.setBirthday(results.getDate("birthday").toLocalDate());
-        person.setDeathDate(results.getDate("deathday").toLocalDate());
+        if (results.getDate("birthday") != null){
+            person.setBirthday(results.getDate("birthday").toLocalDate());
+        }
+        if (results.getDate("deathday") != null){
+            person.setDeathDate(results.getDate("deathday").toLocalDate());
+        }
         person.setBiography(results.getString("biography"));
         person.setProfilePath(results.getString("profile_path"));
         person.setHomePage(results.getString("home_page"));
