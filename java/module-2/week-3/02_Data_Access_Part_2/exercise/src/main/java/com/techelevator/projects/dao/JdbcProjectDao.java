@@ -67,7 +67,7 @@ public class JdbcProjectDao implements ProjectDao {
     public Project createProject(Project project) {
         try {
             String sql = "INSERT INTO project (name, from_date, to_date) VALUES (?, ?, ?) RETURNING project_id;";
-            int newProjectId = jdbcTemplate.queryForObject(sql, Integer.class, project.getFromDate(), project.getToDate());
+            int newProjectId = jdbcTemplate.queryForObject(sql, Integer.class, project.getName(), project.getFromDate(), project.getToDate());
             project.setId(newProjectId);
             return project;
         } catch (CannotGetJdbcConnectionException e) {
@@ -80,7 +80,7 @@ public class JdbcProjectDao implements ProjectDao {
     @Override
     public void linkProjectEmployee(int id, int employeeId) {
         try {
-            String sql = "INSERT INTO project_employee (project_ic, employee_id) VALUES (?, ?);";
+            String sql = "INSERT INTO project_employee (project_id, employee_id) VALUES (?, ?);";
             jdbcTemplate.update(sql, id, employeeId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
@@ -104,7 +104,7 @@ public class JdbcProjectDao implements ProjectDao {
     @Override
     public Project updateProject(Project project) {
         try {
-            String sql = "UPDATE project SET name = ?, from_date = ?, to_date = ?, WHERE project_id = ?;";
+            String sql = "UPDATE project SET name = ?, from_date = ?, to_date = ? WHERE project_id = ?;";
             jdbcTemplate.update(sql, project.getName(), project.getFromDate(), project.getToDate(), project.getId());
             return project;
         } catch (CannotGetJdbcConnectionException e) {
@@ -116,14 +116,19 @@ public class JdbcProjectDao implements ProjectDao {
 
     @Override
     public int deleteProjectById(int id) {
+        int numberOfRows = 0;
+        String deleteFromProjectEmployeeSql = "DELETE FROM project_employee WHERE project_id = ?;";
+        String deleteProjectSql = "DELETE FROM project WHERE project_id = ?;";
+
         try {
-            String sql = "DELETE FROM project WHERE project_id = ?;";
-            return jdbcTemplate.update(sql, id);
+            jdbcTemplate.update(deleteFromProjectEmployeeSql, id);
+            numberOfRows = jdbcTemplate.update(deleteProjectSql, id);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (DataIntegrityViolationException e) {
             throw new DaoException("Data integrity violation", e);
         }
+        return numberOfRows;
     }
 
     private Project mapRowToProject(SqlRowSet results) {
