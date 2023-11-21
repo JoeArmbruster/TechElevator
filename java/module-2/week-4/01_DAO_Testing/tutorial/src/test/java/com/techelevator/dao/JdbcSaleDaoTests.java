@@ -12,6 +12,8 @@ public class JdbcSaleDaoTests extends BaseDaoTests {
 
     // Step One: Add constants for Madge
 
+    private static final int MADGE_CUSTOMER_D
+
     // Step Two: Add constants for customer without sale and non-existent customer
 
     private JdbcSaleDao jdbcSaleDao;
