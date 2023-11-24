@@ -1,13 +1,13 @@
 Bug 1
 -----
 Test that demonstrates problem:
-
+    getTimesheetById_with_valid_id_returns_correct_timesheet
 Expected output:
-
+    a list of timesheets for the given employee Id
 Actual output:
-
+    getTimesheetsByEmployeeId returned wrong number of timesheets
 How did you fix this bug?
-
+    Replaced employee_id in WHERE clause with project_id
 
 Bug 2
 -----

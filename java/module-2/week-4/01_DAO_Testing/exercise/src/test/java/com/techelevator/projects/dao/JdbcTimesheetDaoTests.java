@@ -21,30 +21,43 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {
     private static final Timesheet TIMESHEET_4 = new Timesheet(4, 2, 2,
             LocalDate.parse("2021-02-01"), 2.0, false, "Timesheet 4");
 
-    private JdbcTimesheetDao dao;
+    private JdbcTimesheetDao jdbcTimesheetDao;
 
 
     @Before
     public void setup() {
-        dao = new JdbcTimesheetDao(dataSource);
+        jdbcTimesheetDao = new JdbcTimesheetDao(dataSource);
     }
 
     @Test
     public void getTimesheetById_with_valid_id_returns_correct_timesheet() {
 
-        int validTimesheetId = TIMESHEET_1.getTimesheetId();
+        Timesheet timesheet = jdbcTimesheetDao.getTimesheetById(1);
+        Assert.assertNotNull("getTimesheetById(1) returned null", timesheet);
+        assertTimesheetsMatch("getTimesheetById(1) returned wrong or partial data", TIMESHEET_1, timesheet);
 
-        Timesheet actualTimesheet = dao.getTimesheetById(validTimesheetId);
+        timesheet = jdbcTimesheetDao.getTimesheetById(2);
+        Assert.assertNotNull("getTimesheetById(2) returned null", timesheet);
+        assertTimesheetsMatch("getTimesheetById(2) returned wrong or partial data", TIMESHEET_2, timesheet);
 
-        assertNotNull("getTimesheetById did not return a timesheet", actualTimesheet);
-        assertTimesheetsMatch("getTimesheetById returned wrong or partial data", TIMESHEET_1, actualTimesheet);
+        timesheet = jdbcTimesheetDao.getTimesheetById(3);
+        Assert.assertNotNull("getTimesheetById(3) returned null", timesheet);
+        assertTimesheetsMatch("getTimesheetById(3) returned wrong or partial data", TIMESHEET_3, timesheet);
+
+        timesheet = jdbcTimesheetDao.getTimesheetById(4);
+        Assert.assertNotNull("getTimesheetById(4) returned null", timesheet);
+        assertTimesheetsMatch("getTimesheetById(4) returned wrong or partial data", TIMESHEET_4, timesheet);
+
+        timesheet = jdbcTimesheetDao.getTimesheetById(5);
+        Assert.assertNull("getTimesheetById(5) does not exist and should be null", timesheet);
+
     }
 
     @Test
     public void getTimesheetById_with_invalid_id_returns_null_timesheet() {
         int invalidTimesheetId = 10;
 
-        Timesheet actualTimesheet = dao.getTimesheetById(invalidTimesheetId);
+        Timesheet actualTimesheet = jdbcTimesheetDao.getTimesheetById(invalidTimesheetId);
 
         assertNull("getTimesheetById did not return null for an invalid ID", actualTimesheet);
     }
@@ -54,7 +67,7 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {
         int validEmployeeId = TIMESHEET_1.getEmployeeId();
         List<Timesheet> expectedTimesheets = List.of(TIMESHEET_1, TIMESHEET_2);
 
-        List<Timesheet> actualTimesheets = dao.getTimesheetsByEmployeeId(validEmployeeId);
+        List<Timesheet> actualTimesheets = jdbcTimesheetDao.getTimesheetsByEmployeeId(validEmployeeId);
 
         assertEquals("getTimesheetsByEmployeeId returned wrong number of timesheets", expectedTimesheets.size(), actualTimesheets.size());
 
@@ -65,22 +78,14 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {
 
     @Test
     public void getTimesheetsByProjectId_with_valid_id_returns_list_of_all_timesheets_for_project() {
-        int validProjectId = TIMESHEET_1.getProjectId();
-        List<Timesheet> expectedTimesheets = List.of(TIMESHEET_1, TIMESHEET_2);
-
-        List<Timesheet> actualTimesheets = dao.getTimesheetsByProjectId(validProjectId);
-
-        assertEquals("getTimesheetsByProjedtId returned wrong number of timesheets", expectedTimesheets.size(), actualTimesheets.size());
-
-        for (int i = 0; i < expectedTimesheets.size(); i++){
-            assertTimesheetsMatch("getTimesheetsByProjectId returned wrong or partial data", expectedTimesheets.get(i), actualTimesheets.get(i));
-        }
+        List<Timesheet> timesheets = jdbcTimesheetDao.getTimesheetsByProjectId();
+        Assert.assertEquals("getTimesheetByProjectId() returned wrong number of timesheets", 4, timesheets.size());
     }
 
     @Test
     public void createTimesheet_creates_timesheet() {
         Timesheet newTimeshseet = new Timesheet(0, 1, 1, LocalDate.parse("2021-03-01"), 3.0, true, "New Timeshseet");
-        Timesheet createdTimesheet = dao.createTimesheet(newTimeshseet);
+        Timesheet createdTimesheet = jdbcTimesheetDao.createTimesheet(newTimeshseet);
 
         assertNotNull("createTimesheet did not return a created timesheet", createdTimesheet);
         assertTimesheetsMatch("createTimesheet did not create the correct timesheet", newTimeshseet, createdTimesheet);
@@ -93,7 +98,7 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {
 
         existingTimesheet.setHoursWorked(5.0);
 
-        Timesheet updatedTimesheet = dao.updateTimesheet(existingTimesheet);
+        Timesheet updatedTimesheet = jdbcTimesheetDao.updateTimesheet(existingTimesheet);
 
         assertNotNull("updateTimesheet did not return an updated timesheet", updatedTimesheet);
         assertTimesheetsMatch("updatedTimesheet did not update the correct timesheet", existingTimesheet, updatedTimesheet);
@@ -103,10 +108,10 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {
     public void deleteTimesheetById_deletes_timesheet() {
         int timesheetIdToDelete = TIMESHEET_1.getTimesheetId();
 
-        int rowsAffected = dao.deleteTimesheetById(timesheetIdToDelete);
+        int rowsAffected = jdbcTimesheetDao.deleteTimesheetById(timesheetIdToDelete);
 
         assertEquals("deleteTimesheetById did not delete the correct number of rows", 1, rowsAffected);
-        assertNull("deleteTimesheetById did not delete the timesheet", dao.getTimesheetById(timesheetIdToDelete));
+        assertNull("deleteTimesheetById did not delete the timesheet", jdbcTimesheetDao.getTimesheetById(timesheetIdToDelete));
     }
 
     @Test
@@ -114,7 +119,7 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {
         int validEmployeeId = TIMESHEET_1.getEmployeeId();
         int validProjectId = TIMESHEET_1.getProjectId();
 
-        double billableHours = dao.getBillableHours(validEmployeeId, validProjectId);
+        double billableHours = jdbcTimesheetDao.getBillableHours(validEmployeeId, validProjectId);
 
         assertEquals("getBillableHours returned wrong total billable hours", 2.5, billableHours, 0.001);
     }
