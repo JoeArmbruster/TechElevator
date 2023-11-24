@@ -48,8 +48,8 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {
         Assert.assertNotNull("getTimesheetById(4) returned null", timesheet);
         assertTimesheetsMatch("getTimesheetById(4) returned wrong or partial data", TIMESHEET_4, timesheet);
 
-//        timesheet = jdbcTimesheetDao.getTimesheetById(5);
-//        Assert.assertNull("getTimesheetById(5) does not exist and should be null", timesheet);
+        timesheet = jdbcTimesheetDao.getTimesheetById(5);
+        Assert.assertNull("getTimesheetById(5) does not exist and should be null", timesheet);
 
     }
 
@@ -78,13 +78,14 @@ public class JdbcTimesheetDaoTests extends BaseDaoTests {
 
     @Test
     public void getTimesheetsByProjectId_with_valid_id_returns_list_of_all_timesheets_for_project() {
-        List<Timesheet> timesheets = jdbcTimesheetDao.getTimesheetsByProjectId();
+        int validProjectId = 1;
+        List<Timesheet> timesheets = jdbcTimesheetDao.getTimesheetsByProjectId(validProjectId);
         Assert.assertEquals("getTimesheetByProjectId() returned wrong number of timesheets", 4, timesheets.size());
     }
 
     @Test
     public void createTimesheet_creates_timesheet() {
-        Timesheet newTimeshseet = new Timesheet(0, 1, 1, LocalDate.parse("2021-03-01"), 3.0, true, "New Timeshseet");
+        Timesheet newTimeshseet = new Timesheet(5, 1, 1, LocalDate.parse("2021-03-01"), 3.0, true, "New Timeshseet");
         Timesheet createdTimesheet = jdbcTimesheetDao.createTimesheet(newTimeshseet);
 
         assertNotNull("createTimesheet did not return a created timesheet", createdTimesheet);
