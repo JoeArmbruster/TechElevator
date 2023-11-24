@@ -59,7 +59,8 @@ public class JdbcTimesheetDao implements TimesheetDao {
         return timesheets;
     }
 
-    public List<Timesheet> getTimesheetsByProjectId() {
+    @Override
+    public List<Timesheet> getTimesheetsByProjectId(int projectId) {
         List<Timesheet> timesheets = new ArrayList<>();
         String sql = "SELECT timesheet_id, employee_id, project_id, date_worked, hours_worked, billable, description " +
                 "FROM timesheet " +
@@ -81,20 +82,19 @@ public class JdbcTimesheetDao implements TimesheetDao {
 
     @Override
     public Timesheet createTimesheet(Timesheet newTimesheet) {
-        Timesheet timesheets = null;
+        int newId;
         String sql = "INSERT INTO timesheet (employee_id, project_id, date_worked, hours_worked, billable, description) " +
                 "VALUES (?, ?, ?, ?, ?, ?) RETURNING timesheet_id;";
         try {
-            int newId = jdbcTemplate.queryForObject(sql, int.class, newTimesheet.getEmployeeId(), newTimesheet.getProjectId(),
+            newId = jdbcTemplate.queryForObject(sql, int.class, newTimesheet.getEmployeeId(), newTimesheet.getProjectId(),
                     newTimesheet.getDateWorked(), newTimesheet.getHoursWorked(), newTimesheet.isBillable(),
                     newTimesheet.getDescription());
-            timesheets = getTimesheetById(newId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (DataIntegrityViolationException e) {
             throw new DaoException("Data integrity violation", e);
         }
-        return timesheets;
+        return getTimesheetById(newId);
     }
 
     @Override
@@ -164,3 +164,4 @@ public class JdbcTimesheetDao implements TimesheetDao {
         return timesheet;
     }
 }
+
