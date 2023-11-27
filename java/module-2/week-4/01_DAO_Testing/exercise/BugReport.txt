@@ -1,13 +1,13 @@
 Bug 1
 -----
 Test that demonstrates problem:
-    getTimesheetById_with_valid_id_returns_correct_timesheet
+    getTimesheetsByEmployeeId_with_valid_employee_id_returns_list_of_timesheets_for_employee
 Expected output:
     a list of timesheets for the given employee Id
 Actual output:
     getTimesheetsByEmployeeId returned wrong number of timesheets
 How did you fix this bug?
-    Replaced employee_id in WHERE clause with project_id
+    Change the loop condition to 'while' to iterate through all results and add each to the list
 
 Bug 2
 -----
