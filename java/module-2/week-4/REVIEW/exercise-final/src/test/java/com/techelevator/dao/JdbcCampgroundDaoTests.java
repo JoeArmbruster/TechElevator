@@ -8,7 +8,7 @@ import org.junit.Test;
 import java.math.BigDecimal;
 import java.util.List;
 
-public class JdbcCampgroundDaoTests extends BaseDaoTests {
+public class    JdbcCampgroundDaoTests extends BaseDaoTests {
 
     // Park 1 campgrounds
     private static final Campground CAMPGROUND_1 = mapValuesToCampground(1, 1, "Blackwoods", 1, 12,

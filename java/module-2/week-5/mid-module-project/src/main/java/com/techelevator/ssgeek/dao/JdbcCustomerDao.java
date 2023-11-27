@@ -22,21 +22,19 @@ public class JdbcCustomerDao implements CustomerDao {
 
     @Override
     public Customer getCustomerById(int customerId) {
-        Customer customer = null;
+
         String sql = "SELECT * FROM customer WHERE customer_id = ?;";
 
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, customerId);
             if (results.next()) {
-                customer = mapRowToCustomer(results);
+                return mapRowToCustomer(results);
             }
-        } catch (CannotGetJdbcConnectionException e) {
-            throw new DaoException("Unable to connect to server or database");
-        } catch (DataIntegrityViolationException e) {
-            throw new DaoException("Data integrity violation", e);
+        } catch (DataAccessException e) {
+            throw new DaoException("Error retrieving customer by ID", e);
         }
+        throw new DaoException("Customer not found for ID: " + customerId);
 
-        return customer;
     }
 
     @Override
@@ -50,13 +48,11 @@ public class JdbcCustomerDao implements CustomerDao {
                 Customer customer = mapRowToCustomer(results);
                 customers.add(customer);
             }
-        } catch (CannotGetJdbcConnectionException e) {
-            throw new DaoException("Unable to connect to server or database");
-        } catch (DataIntegrityViolationException e) {
-            throw new DaoException("Data integrity violation", e);
+            return customers;
+        } catch (DataAccessException e) {
+            throw new DaoException("Error retrieving customers", e);
         }
 
-        return customers;
     }
 
     @Override
@@ -110,7 +106,7 @@ public class JdbcCustomerDao implements CustomerDao {
         customer.setStreetAddress2(results.getString("street_address2"));
         customer.setCity(results.getString("city"));
         customer.setState(results.getString("state"));
-        customer.setZipCode(results.getString("cip_code"));
+        customer.setZipCode(results.getString("zip_code"));
         return customer;
     }
 }
