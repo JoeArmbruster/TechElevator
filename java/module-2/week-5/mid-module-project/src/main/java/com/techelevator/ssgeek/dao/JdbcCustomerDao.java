@@ -34,7 +34,6 @@ public class JdbcCustomerDao implements CustomerDao {
             throw new DaoException("Error retrieving customer by ID", e);
         }
         throw new DaoException("Customer not found for ID: " + customerId);
-
     }
 
     @Override
@@ -52,7 +51,6 @@ public class JdbcCustomerDao implements CustomerDao {
         } catch (DataAccessException e) {
             throw new DaoException("Error retrieving customers", e);
         }
-
     }
 
     @Override
