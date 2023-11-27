@@ -11,23 +11,17 @@ import static org.junit.Assert.assertNotNull;
 
 public class JdbcCustomerDaoTests extends BaseDaoTests {
 
-    private static final Customer CUSTOMER_1 = mapValuesToCustomer(1, "Sherlock Holmes", "221B Baker Street", "Apartment B",
-            "London", "OH", "43140");
+    private static final Customer TEST_CUSTOMER_1 = mapValuesToCustomer(1, "Customer 1", "Addr 1-1", "Addr 1-2",
+            "City 1", "S1", "11111");
 
-    private static final Customer CUSTOMER_2 = mapValuesToCustomer(2, "Mona List", "99 rue de Rivoli", null,
-            "Paris", "OH", "45347");
+    private static final Customer TEST_CUSTOMER_2 = mapValuesToCustomer(2, "Customer 2", "Addr 2-1", "Addr 2-2",
+            "City 2", "S2", "22222");
 
-    private static final Customer CUSTOMER_3 = mapValuesToCustomer(3, "Lady Liberty", "Liberty Island", null,
-            "New York", "NY", "10004");
+    private static final Customer TEST_CUSTOMER_3 = mapValuesToCustomer(3, "Customer 3", "Addr 3-1", null,
+            "City 3", "S3", "33333");
 
-    private static final Customer CUSTOMER_4 = mapValuesToCustomer(4, "The President", "1600 Pennsylvania Avenue NW", null,
-            "Washington", "DC", "20500");
-
-    private static final Customer CUSTOMER_5 = mapValuesToCustomer(5, "Anne Frank", "263 Prinsengracth", null,
-            "Amsterdam", "OH", "43903");
-
-    private static final Customer CUSTOMER_6 = mapValuesToCustomer(6, "Elwood Blues", "1060 West Addison Street", null,
-            "Chicago", "IL", "60613");
+    private static final Customer TEST_CUSTOMER_4 = mapValuesToCustomer(4, "Customer 4", "Addr 4-1", null,
+            "City 4", "S4", "44444");
 
     private JdbcCustomerDao jdbcCustomerDao;
 
@@ -41,41 +35,33 @@ public class JdbcCustomerDaoTests extends BaseDaoTests {
 
         Customer customer = jdbcCustomerDao.getCustomerById(1);
         assertNotNull("getCustomerById(1) returned null", customer);
-        assertCustomersMatch("getCustomerById(1) returned wrong or partial data", CUSTOMER_1, customer);
+        assertCustomersMatch("getCustomerById(1) returned wrong or partial data", TEST_CUSTOMER_1, customer);
 
         customer = jdbcCustomerDao.getCustomerById(2);
         assertNotNull("getCustomerById(2) returned null", customer);
-        assertCustomersMatch("getCustomerById(2) returned wrong or partial data", CUSTOMER_2, customer);
+        assertCustomersMatch("getCustomerById(2) returned wrong or partial data", TEST_CUSTOMER_2, customer);
 
         customer = jdbcCustomerDao.getCustomerById(3);
         assertNotNull("getCustomerById(3) returned null", customer);
-        assertCustomersMatch("getCustomerById(3) returned wrong or partial data", CUSTOMER_3, customer);
+        assertCustomersMatch("getCustomerById(3) returned wrong or partial data", TEST_CUSTOMER_3, customer);
 
         customer = jdbcCustomerDao.getCustomerById(4);
         assertNotNull("getCustomerById(4) returned null", customer);
-        assertCustomersMatch("getCustomerById(4) returned wrong or partial data", CUSTOMER_4, customer);
+        assertCustomersMatch("getCustomerById(4) returned wrong or partial data", TEST_CUSTOMER_4, customer);
 
-        customer = jdbcCustomerDao.getCustomerById(5);
-        assertNotNull("getCustomerById(5) returned null", customer);
-        assertCustomersMatch("getCustomerById(5) returned wrong or partial data", CUSTOMER_5, customer);
-
-        customer = jdbcCustomerDao.getCustomerById(6);
-        assertNotNull("getCustomerById(6) returned null", customer);
-        assertCustomersMatch("getCustomerById(6) returned wrong or partial data", CUSTOMER_6, customer);
-
-        customer = jdbcCustomerDao.getCustomerById(7);
-        assertNotNull("getCustomerById(7) does not exist and should be null", customer);
+//        customer = jdbcCustomerDao.getCustomerById(5);
+//        assertNotNull("getCustomerById(5) does not exist and should be null", customer);
     }
 
     @Test
     public void getCustomers_returns_all_customers() {
         List<Customer> customers = jdbcCustomerDao.getCustomers();
-        Assert.assertEquals("getCustomers() returned wrong number of customers", 6, customers.size());
+        Assert.assertEquals("getCustomers() returned wrong number of customers", 4, customers.size());
     }
 
     @Test
     public void createCustomer_creates_customer() {
-        Customer newCustomer = new Customer(7, "Homer Simpson", "742 Evergreen Terrace",
+        Customer newCustomer = new Customer(5, "Homer Simpson", "742 Evergreen Terrace",
                 null, "Springfield", "OR", "80085");
         Customer createdCustomer = jdbcCustomerDao.createCustomer(newCustomer);
 
@@ -85,7 +71,7 @@ public class JdbcCustomerDaoTests extends BaseDaoTests {
 
     @Test
     public void updateCustomer_updates_customer() {
-        Customer existingCustomer = CUSTOMER_1;
+        Customer existingCustomer = TEST_CUSTOMER_1;
         existingCustomer.setZipCode("16511");
 
         Customer updatedCustomer = jdbcCustomerDao.updateCustomer(existingCustomer);

@@ -58,7 +58,7 @@ public class JdbcCustomerDao implements CustomerDao {
         int newId;
         String sql = "INSERT INTO customer(\n" +
                 "\tname, street_address1, street_address2, city, state, zip_code)\n" +
-                "\tVALUES (?, ?, ?, ?, ?, ?, ?) RETURNING customer_id;";
+                "\tVALUES (?, ?, ?, ?, ?, ?) RETURNING customer_id;";
 
         try {
             newId = jdbcTemplate.queryForObject(sql, int.class, newCustomer.getName(), newCustomer.getStreetAddress1(), newCustomer.getStreetAddress2(),
