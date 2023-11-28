@@ -163,7 +163,7 @@ public class JdbcSaleDao implements SaleDao {
         sale.setCustomerId(results.getInt("customer_id"));
         sale.setSaleDate(results.getDate("sale_date").toLocalDate());
         if (results.getDate("ship_date") != null) {
-            sale.setShipDate(results.getDate("ship_date").toLocalDate();
+            sale.setShipDate(results.getDate("ship_date").toLocalDate());
         }
         sale.setCustomerName(results.getString("ustomer_name"));
         return sale;
