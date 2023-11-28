@@ -8,6 +8,7 @@ import org.junit.Test;
 import java.util.List;
 
 import static org.junit.Assert.assertNotNull;
+import static org.junit.Assert.assertNull;
 
 public class JdbcCustomerDaoTests extends BaseDaoTests {
 
@@ -49,8 +50,8 @@ public class JdbcCustomerDaoTests extends BaseDaoTests {
         assertNotNull("getCustomerById(4) returned null", customer);
         assertCustomersMatch("getCustomerById(4) returned wrong or partial data", TEST_CUSTOMER_4, customer);
 
-//        customer = jdbcCustomerDao.getCustomerById(5);
-//        assertNotNull("getCustomerById(5) does not exist and should be null", customer);
+        customer = jdbcCustomerDao.getCustomerById(5);
+        assertNull("getCustomerById(5) does not exist and should be null", customer);
     }
 
     @Test

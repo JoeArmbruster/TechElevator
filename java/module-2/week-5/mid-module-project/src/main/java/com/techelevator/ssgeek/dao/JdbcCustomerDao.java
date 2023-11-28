@@ -22,18 +22,18 @@ public class JdbcCustomerDao implements CustomerDao {
 
     @Override
     public Customer getCustomerById(int customerId) {
-
+        Customer customer = null;
         String sql = "SELECT * FROM customer WHERE customer_id = ?;";
 
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, customerId);
             if (results.next()) {
-                return mapRowToCustomer(results);
+                customer = mapRowToCustomer(results);
             }
-        } catch (DataAccessException e) {
-            throw new DaoException("Error retrieving customer by ID", e);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database");
         }
-        throw new DaoException("Customer not found for ID: " + customerId);
+        return customer;
     }
 
     @Override
