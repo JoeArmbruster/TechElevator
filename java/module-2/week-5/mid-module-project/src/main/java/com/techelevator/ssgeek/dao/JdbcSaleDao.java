@@ -23,7 +23,7 @@ public class JdbcSaleDao implements SaleDao {
         Sale sale = null;
         String sql = "SELECT sale.*, customer.name AS customer_name " +
                 "FROM sale " +
-                "JOIN customer ON sale_customer_id = customer.customer_id " +
+                "JOIN customer ON sale.customer_id = customer.customer_id " +
                 "WHERE sale_id = ?;";
 
         try {
@@ -65,7 +65,7 @@ public class JdbcSaleDao implements SaleDao {
         List<Sale> sales = new ArrayList<>();
         String sql = "SELECT sale.*, customer.name as customer_name" +
                 "FROM sale" +
-                "JOIN customer ON cale.customer_id = customer.customer_id" +
+                "JOIN customer ON sale.customer_id = customer.customer_id" +
                 "WHERE sale.customer_id = ?" +
                 "ORDER BY sale.sale.id;";
         try {

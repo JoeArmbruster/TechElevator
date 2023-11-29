@@ -30,6 +30,25 @@ public class JdbcSaleDaoTests extends BaseDaoTests {
         jdbcSaleDao = new JdbcSaleDao(dataSource);
     }
 
+    @Test
+    public void getSaleById_returns_correct_sale() {
+        Sale sale = jdbcSaleDao.getSaleById(1);
+        assertSalesMatch("getSaleById(1) returned wrong or partial data", TEST_SALE_1, sale);
+
+        sale = jdbcSaleDao.getSaleById(2);
+        assertSalesMatch("getSaleById(2) returned wrong or partial data", TEST_SALE_2, sale);
+
+        sale = jdbcSaleDao.getSaleById(3);
+        assertSalesMatch("getSaleById(3) returned wrong or partial data", TEST_SALE_3, sale);
+
+        sale = jdbcSaleDao.getSaleById(4);
+        assertSalesMatch("getSaleById(4) returned wrong or partial data", TEST_SALE_4, sale);
+
+        sale = jdbcSaleDao.getSaleById(5);
+        assertNull("getSaleById(5) does not exist and should be null", sale);
+    }
+
+
 
 
     private static Sale mapValuesToSale(int saleId, int customerId, LocalDate saleDate, LocalDate shipDate, String customerName) {
@@ -43,7 +62,7 @@ public class JdbcSaleDaoTests extends BaseDaoTests {
         return sale;
     }
 
-    private void assertSalesMatch(String message, Sale expected, Sale actual){
+    private void assertSalesMatch(String message, Sale expected, Sale actual) {
         Assert.assertEquals(message, expected.getSaleId(), actual.getSaleId());
         Assert.assertEquals(message, expected.getCustomerId(), actual.getCustomerId());
         Assert.assertEquals(message, expected.getSaleDate(), actual.getSaleDate());
