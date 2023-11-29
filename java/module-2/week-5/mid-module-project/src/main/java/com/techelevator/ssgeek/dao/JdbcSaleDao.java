@@ -63,11 +63,11 @@ public class JdbcSaleDao implements SaleDao {
     @Override
     public List<Sale> getSalesByCustomerId(int customerId) {
         List<Sale> sales = new ArrayList<>();
-        String sql = "SELECT sale.*, customer.name as customer_name" +
-                "FROM sale" +
-                "JOIN customer ON sale.customer_id = customer.customer_id" +
-                "WHERE sale.customer_id = ?" +
-                "ORDER BY sale.sale.id;";
+        String sql = "SELECT sale.*, customer.name as customer_name " +
+                "FROM sale " +
+                "JOIN customer ON sale.customer_id = customer.customer_id " +
+                "WHERE sale.customer_id = ? " +
+                "ORDER BY sale.sale_id;";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, customerId);
             while (results.next()) {
@@ -84,11 +84,11 @@ public class JdbcSaleDao implements SaleDao {
     @Override
     public List<Sale> getSalesByProductId(int productId) {
         List<Sale> sales = new ArrayList<>();
-        String sql = "SELECT sale.*, customer.name AS customer_name" +
-                "FROM sale" +
-                "JOIN customer ON sale.customer_id = customer.customer_id" +
-                "JOIN line_item ON sale.sale_id = line_item.sale_id" +
-                "WHERE line_item.product_id = ?" +
+        String sql = "SELECT sale.*, customer.name AS customer_name " +
+                "FROM sale " +
+                "JOIN customer ON sale.customer_id = customer.customer_id " +
+                "JOIN line_item ON sale.sale_id = line_item.sale_id " +
+                "WHERE line_item.product_id = ? " +
                 "ORDER BY sale.sale_id;";
 
         try {
@@ -165,7 +165,7 @@ public class JdbcSaleDao implements SaleDao {
         if (results.getDate("ship_date") != null) {
             sale.setShipDate(results.getDate("ship_date").toLocalDate());
         }
-        sale.setCustomerName(results.getString("ustomer_name"));
+        sale.setCustomerName(results.getString("customer_name"));
         return sale;
     }
 }

@@ -4,12 +4,10 @@ import com.techelevator.ssgeek.model.Sale;
 import org.junit.Assert;
 import org.junit.Before;
 import org.junit.Test;
-import org.springframework.jdbc.core.JdbcTemplate;
 
 import java.time.LocalDate;
 import java.util.List;
 
-import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertNull;
 
 public class JdbcSaleDaoTests extends BaseDaoTests {
@@ -32,34 +30,55 @@ public class JdbcSaleDaoTests extends BaseDaoTests {
 
     @Test
     public void getSaleById_returns_correct_sale() {
-        Sale sale = jdbcSaleDao.getSaleById(1);
-        assertSalesMatch("getSaleById(1) returned wrong or partial data", TEST_SALE_1, sale);
-
-        sale = jdbcSaleDao.getSaleById(2);
-        assertSalesMatch("getSaleById(2) returned wrong or partial data", TEST_SALE_2, sale);
-
-        sale = jdbcSaleDao.getSaleById(3);
-        assertSalesMatch("getSaleById(3) returned wrong or partial data", TEST_SALE_3, sale);
-
-        sale = jdbcSaleDao.getSaleById(4);
-        assertSalesMatch("getSaleById(4) returned wrong or partial data", TEST_SALE_4, sale);
-
-        sale = jdbcSaleDao.getSaleById(5);
-        assertNull("getSaleById(5) does not exist and should be null", sale);
+        Sale result = jdbcSaleDao.getSaleById(1);
+        assertSalesMatch("TEST_SALE_1 does not match result", TEST_SALE_1, result);
     }
 
+    @Test
+    public void getUnshippedSales_returns_correct_sales() {
+        List<Sale> results = jdbcSaleDao.getUnshippedSales();
+        Assert.assertEquals(2, results.size());
+        assertSalesMatch("TEST_SALE_1 does not match results", TEST_SALE_1, results.get(0));
+        assertSalesMatch("TEST_SALE_3 does not match results", TEST_SALE_3, results.get(1));
+    }
 
+    @Test
+    public void getSalesByCustomerId_returns_correct_sales() {
+        List<Sale> results = jdbcSaleDao.getSalesByCustomerId(1);
+        Assert.assertEquals(2, results.size());
+        assertSalesMatch("TEST_SALE_1 does not match results", TEST_SALE_1, results.get(0));
+        assertSalesMatch("TEST_SALE_2 does not match results", TEST_SALE_2, results.get(1));
+    }
 
+    @Test
+    public void getSalesByProductId_returns_correct_sales() {
+        List<Sale> results = jdbcSaleDao.getSalesByProductId(1);
+        Assert.assertEquals(2, results.size());
+        assertSalesMatch("TEST_SALE_1 does not match results", TEST_SALE_1, results.get(0));
+        assertSalesMatch("TEST_SALE_3 does not match results", TEST_SALE_3, results.get(1));
+    }
 
-    private static Sale mapValuesToSale(int saleId, int customerId, LocalDate saleDate, LocalDate shipDate, String customerName) {
+    @Test
+    public void createSale_adds_new_sale_and_returns_it() {
+        Sale newSale = new Sale(0, 3, LocalDate.parse("2022-04-01"), null, "Customer 3");
+        Sale result = jdbcSaleDao.createSale(newSale);
+        assertSalesMatch("New sale does not match result", newSale, result);
+    }
 
-        Sale sale = new Sale();
-        sale.setSaleId(saleId);
-        sale.setCustomerId(customerId);
-        sale.setSaleDate(saleDate);
-        sale.setShipDate(shipDate);
-        sale.setCustomerName(customerName);
-        return sale;
+    @Test
+    public void updateSale_updates_sale_and_returns_it() {
+        Sale updatedSale = new Sale(2, 1, LocalDate.parse("2022-02-01"),
+                LocalDate.parse("2022-02-03"), "Customer 1");
+        Sale result = jdbcSaleDao.updateSale(updatedSale);
+        assertSalesMatch("Updated sale does not match result", updatedSale, result);
+    }
+
+    @Test
+    public void deleteSaleById_deletes_sale() {
+        int rowsAffected = jdbcSaleDao.deleteSaleById(1);
+        Assert.assertEquals(1, rowsAffected);
+        Sale result = jdbcSaleDao.getSaleById(1);
+        assertNull("Sale with ID 1 still exists after deletion", result);
     }
 
     private void assertSalesMatch(String message, Sale expected, Sale actual) {
