@@ -24,13 +24,13 @@ How did you fix this bug?
 Bug 3
 -----
 Test that demonstrates problem:
-
+    getTimesheetsByProjectId_with_valid_id_returns_list_of_all_timeshseets_for_project()
 Expected output:
-
+    correct number of timesheets
 Actual output:
-
+    incorrect number of timesheets
 How did you fix this bug?
-
+    change employee_id to project_id in WHERE CLAUSE
 
 Bug 4
 -----
