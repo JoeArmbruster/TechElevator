@@ -16,9 +16,10 @@ Test that demonstrates problem:
 Expected output:
     updated timesheet
 Actual output:
-
+    error
 How did you fix this bug?
-
+    in the UPDATE statement, add billable = ?
+    and in the int rowsAffected, add timesheet.isBillable()
 
 Bug 3
 -----
