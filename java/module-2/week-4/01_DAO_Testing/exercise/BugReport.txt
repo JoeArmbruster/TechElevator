@@ -12,9 +12,9 @@ How did you fix this bug?
 Bug 2
 -----
 Test that demonstrates problem:
-
+    updateTimeshseet_updates_timesheet()
 Expected output:
-
+    updated timesheet
 Actual output:
 
 How did you fix this bug?

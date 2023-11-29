@@ -101,11 +101,11 @@ public class JdbcTimesheetDao implements TimesheetDao {
     public Timesheet updateTimesheet(Timesheet timesheet) {
         Timesheet updatedTimesheet = null;
         String sql = "UPDATE timesheet " +
-                "SET employee_id = ?, project_id = ?, date_worked = ?, hours_worked = ?, description = ? " +
+                "SET employee_id = ?, project_id = ?, date_worked = ?, hours_worked = ?, billable = ?, description = ? " +
                 "WHERE timesheet_id = ?";
         try {
             int rowsAffected = jdbcTemplate.update(sql, timesheet.getEmployeeId(), timesheet.getProjectId(),
-                    timesheet.getDateWorked(), timesheet.getHoursWorked(),
+                    timesheet.getDateWorked(), timesheet.getHoursWorked(), timesheet.isBillable(),
                     timesheet.getDescription(), timesheet.getTimesheetId());
 
             if (rowsAffected == 0) {

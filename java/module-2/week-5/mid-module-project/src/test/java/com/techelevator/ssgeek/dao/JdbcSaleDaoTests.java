@@ -30,6 +30,8 @@ public class JdbcSaleDaoTests extends BaseDaoTests {
         jdbcSaleDao = new JdbcSaleDao(dataSource);
     }
 
+
+
     private static Sale mapValuesToSale(int saleId, int customerId, LocalDate saleDate, LocalDate shipDate, String customerName) {
 
         Sale sale = new Sale();
