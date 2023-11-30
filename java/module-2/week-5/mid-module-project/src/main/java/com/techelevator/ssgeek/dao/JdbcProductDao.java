@@ -116,7 +116,13 @@ public class JdbcProductDao implements ProductDao {
         String sql = "DELETE FROM product WHERE product_Id = ?;";
 
         try {
-            return jdbcTemplate.update(sql, productId);
+            for (Product product : getProductsWithNoSales()) {
+                if (product.getProductId() == productId) {
+
+                    return jdbcTemplate.update(sql, productId);
+                }
+            }
+            return 0;
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (DataIntegrityViolationException e) {
