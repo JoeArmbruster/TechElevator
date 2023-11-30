@@ -106,20 +106,16 @@ public class JdbcSaleDao implements SaleDao {
 
     @Override
     public Sale createSale(Sale newSale) {
-        int newId;
-        String sql = "INSERT INTO sale(customer_id, sale_date, ship_date)" +
-                "VALUES (?, ?, ?) RETURNING sale_id;";
 
+        String sql = "INSERT INTO sale(customer_id, sale_date, ship_date) VALUES (?, ?, ?) RETURNING sale_id;";
         try {
-            newId = jdbcTemplate.queryForObject(sql, int.class, newSale.getCustomerId(), newSale.getSaleDate(),
+            int newId = jdbcTemplate.queryForObject(sql, Integer.class, newSale.getCustomerId(), newSale.getSaleDate(),
                     newSale.getShipDate());
+            newSale.setSaleId(newId);
+            return newSale;
         } catch (CannotGetJdbcConnectionException e) {
-            throw new DaoException("Unable to connect to server or database", e);
-        } catch (DataIntegrityViolationException e) {
-            throw new DaoException("Data integrity violation", e);
+            throw new DaoException("Error creating sale", e);
         }
-
-        return getSaleById(newId);
     }
 
     @Override

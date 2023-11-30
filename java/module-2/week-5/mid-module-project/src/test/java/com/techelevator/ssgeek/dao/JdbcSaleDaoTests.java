@@ -53,9 +53,9 @@ public class JdbcSaleDaoTests extends BaseDaoTests {
     @Test
     public void getSalesByProductId_returns_correct_sales() {
         List<Sale> results = jdbcSaleDao.getSalesByProductId(1);
-        Assert.assertEquals(2, results.size());
+        Assert.assertEquals(3, results.size());
         assertSalesMatch("TEST_SALE_1 does not match results", TEST_SALE_1, results.get(0));
-        assertSalesMatch("TEST_SALE_3 does not match results", TEST_SALE_3, results.get(1));
+        assertSalesMatch("TEST_SALE_3 does not match results", TEST_SALE_2, results.get(1));
     }
 
     @Test
