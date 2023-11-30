@@ -146,10 +146,12 @@ public class JdbcSaleDao implements SaleDao {
 
     @Override
     public int deleteSaleById(int saleId) {
-        String sql = "DELETE FROM sale WHERE sale_id = ?;";
+        String sql1 = "DELETE FROM line_item WHERE sale_id = ?;";
+        String sql2 = "DELETE FROM sale WHERE sale_id = ?;";
 
         try {
-            return jdbcTemplate.update(sql, saleId);
+            jdbcTemplate.update(sql1, saleId);
+            return jdbcTemplate.update(sql2, saleId);
         } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database", e);
         } catch (DataIntegrityViolationException e) {
