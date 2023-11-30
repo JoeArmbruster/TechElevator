@@ -45,7 +45,7 @@ public class JdbcLineItemDao implements LineItemDao {
         lineItem.setSaleId(results.getInt("sale_id"));
         lineItem.setProductId(results.getInt("product_id"));
         lineItem.setQuantity(results.getInt("quantity"));
-        lineItem.setProductName(results.getString("product)name"));
+        lineItem.setProductName(results.getString("product_name"));
         lineItem.setPrice(results.getBigDecimal("price"));
         return lineItem;
     }

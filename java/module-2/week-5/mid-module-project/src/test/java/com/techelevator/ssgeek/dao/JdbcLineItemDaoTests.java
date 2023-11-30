@@ -2,6 +2,7 @@ package com.techelevator.ssgeek.dao;
 
 import com.techelevator.ssgeek.model.LineItem;
 import org.junit.Assert;
+import org.junit.Before;
 import org.junit.Test;
 
 import javax.sound.sampled.Line;
@@ -19,6 +20,7 @@ public class JdbcLineItemDaoTests extends BaseDaoTests {
 
     private JdbcLineItemDao jdbcLineItemDao;
 
+    @Before
     public void setup() {
         jdbcLineItemDao = new JdbcLineItemDao(dataSource);
     }
