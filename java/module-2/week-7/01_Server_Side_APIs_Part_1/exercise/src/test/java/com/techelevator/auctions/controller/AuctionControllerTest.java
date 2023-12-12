@@ -34,7 +34,7 @@ public class AuctionControllerTest {
     @Autowired
     private ObjectMapper mapper;
 
-    private AuctionDao dao;
+    private final AuctionDao dao;
 
     public AuctionControllerTest() {
         dao = new MemoryAuctionDao();
@@ -66,7 +66,7 @@ public class AuctionControllerTest {
     @Test
     public void getInvalidIdShouldReturnNothing() throws Exception {
         mvc.perform(get("/auctions/99")
-                .accept(MediaType.APPLICATION_JSON))
+                        .accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andExpect(content().string(""));
     }
@@ -74,8 +74,8 @@ public class AuctionControllerTest {
     @Test
     public void createShouldThrowExceptionWhenRequestBodyDoesntExist() throws Exception {
         mvc.perform(post("/auctions")
-                .contentType(MediaType.APPLICATION_JSON)
-                .contentType(MediaType.APPLICATION_JSON))
+                        .contentType(MediaType.APPLICATION_JSON)
+                        .contentType(MediaType.APPLICATION_JSON))
                 .andExpect(status().isBadRequest());
     }
 
@@ -88,7 +88,7 @@ public class AuctionControllerTest {
                 350.00);
 
         mvc.perform(post("/auctions").contentType(MediaType.APPLICATION_JSON).contentType(MediaType.APPLICATION_JSON)
-                .content(toJson(auction))).andExpect(status().is2xxSuccessful()).andExpect(jsonPath("$.id").value(8))
+                        .content(toJson(auction))).andExpect(status().is2xxSuccessful()).andExpect(jsonPath("$.id").value(8))
                 .andExpect(jsonPath("$.title").value("Standing Desk"));
     }
 
@@ -101,10 +101,11 @@ public class AuctionControllerTest {
 
         MvcResult mvcResult = mvc.perform(get("/auctions?title_like=watch").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn();
 
-        List<Auction> searchResults = mapper.readValue(mvcResult.getResponse().getContentAsString(), new TypeReference<List<Auction>>() {});
-        assertEquals(expected.size(),searchResults.size());
-        assertEquals(expected.get(0).getTitle(),"Pineapple Smart Watch");
-        assertEquals(expected.get(1).getTitle(),"Molex Gold Watch");
+        List<Auction> searchResults = mapper.readValue(mvcResult.getResponse().getContentAsString(), new TypeReference<List<Auction>>() {
+        });
+        assertEquals(expected.size(), searchResults.size());
+        assertEquals(expected.get(0).getTitle(), "Pineapple Smart Watch");
+        assertEquals(expected.get(1).getTitle(), "Molex Gold Watch");
     }
 
     @Test
@@ -120,12 +121,13 @@ public class AuctionControllerTest {
 
         MvcResult mvcResult = mvc.perform(get("/auctions?currentBid_lte=70").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk()).andReturn();
 
-        List<Auction> searchResults = mapper.readValue(mvcResult.getResponse().getContentAsString(), new TypeReference<List<Auction>>() {});
+        List<Auction> searchResults = mapper.readValue(mvcResult.getResponse().getContentAsString(), new TypeReference<List<Auction>>() {
+        });
         System.out.println(searchResults);
-        assertEquals(expected.size(),searchResults.size());
-        assertEquals(expected.get(0).getTitle(),"Annie Sunglasses");
-        assertEquals(expected.get(0).getDescription(),"Keep the sun from blinding you");
-        assertEquals(expected.get(0).getCurrentBid(), 69.67,1);
+        assertEquals(expected.size(), searchResults.size());
+        assertEquals(expected.get(0).getTitle(), "Annie Sunglasses");
+        assertEquals(expected.get(0).getDescription(), "Keep the sun from blinding you");
+        assertEquals(expected.get(0).getCurrentBid(), 69.67, 1);
     }
 
     @Test
@@ -140,10 +142,11 @@ public class AuctionControllerTest {
 
         // Act
         MvcResult mvcResult = mvc.perform(
-                get("/auctions" + queryString).accept(MediaType.APPLICATION_JSON))
+                        get("/auctions" + queryString).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn();
-        List<Auction> searchResults = mapper.readValue(mvcResult.getResponse().getContentAsString(), new TypeReference<List<Auction>>() {});
+        List<Auction> searchResults = mapper.readValue(mvcResult.getResponse().getContentAsString(), new TypeReference<List<Auction>>() {
+        });
 
         // Assert
         assertEquals(1, searchResults.size());
@@ -156,10 +159,11 @@ public class AuctionControllerTest {
 
         // Act
         MvcResult mvcResult = mvc.perform(
-                get("/auctions" + queryString).accept(MediaType.APPLICATION_JSON))
+                        get("/auctions" + queryString).accept(MediaType.APPLICATION_JSON))
                 .andExpect(status().isOk())
                 .andReturn();
-        List<Auction> searchResults = mapper.readValue(mvcResult.getResponse().getContentAsString(), new TypeReference<List<Auction>>() {});
+        List<Auction> searchResults = mapper.readValue(mvcResult.getResponse().getContentAsString(), new TypeReference<List<Auction>>() {
+        });
 
         // Assert
         assertEquals(0, searchResults.size());
