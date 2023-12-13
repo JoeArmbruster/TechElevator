@@ -29,8 +29,18 @@ public class AuctionController {
     }
 
     @RequestMapping(method = RequestMethod.GET)
-    public List<Auction> list() {
-        return auctionDao.getAuctions();
+    public List<Auction> list(
+            @RequestParam(name = "title_like", defaultValue = "") String titleLike,
+            @RequestParam(name = "currentBid_lte", defaultValue = "0") double currentBidlte) {
+        if (!titleLike.isEmpty() && currentBidlte > 0) {
+            return auctionDao.getAuctionsByTitleAndMaxBid(titleLike, currentBidlte);
+        } else if (!titleLike.isEmpty()) {
+            return auctionDao.getAuctionsByTitle(titleLike);
+        } else if (currentBidlte > 0) {
+            return auctionDao.getAuctionsByMaxBid(currentBidlte);
+        } else {
+            return auctionDao.getAuctions();
+        }
     }
 
     @RequestMapping(value = "/{id}", method = RequestMethod.GET)
@@ -42,51 +52,5 @@ public class AuctionController {
     public Auction create(@RequestBody Auction auction) {
         return auctionDao.createAuction(auction);
     }
-
-    @RequestMapping(path = "/search", method = RequestMethod.GET)
-    public List<Auction> listByTitle(@RequestParam(name = "title_like", defaultValue = "") String titleLike) {
-        if (!titleLike.isEmpty()) {
-            return auctionDao.getAuctionsByTitle(titleLike);
-        } else {
-            return auctionDao.getAuctions();
-        }
-    }
-
-    @RequestMapping(path = "/search", method = RequestMethod.GET)
-    public List<Auction> listByPrice(@RequestParam(name = "currentBid_lte", defaultValue = "0") double currentBidlte){
-        if (currentBidlte > 0){
-            return auctionDao.getAuctionsByMaxBid(currentBidlte);
-        } else {
-            return auctionDao.getAuctions();
-        }
-    }
-
-    @RequestMapping(path = "/search", method = RequestMethod.GET)
-    public List<Auction> listByTitleAndPrice(@RequestParam(name = "title_like", defaultValue = "") String titleLike,
-                              @RequestParam(name = "currentBid_lte", defaultValue = "0") double currentBidLte){
-        if (!titleLike.isEmpty() && currentBidLte > 0){
-            return auctionDao.getAuctionsByTitleAndMaxBid(titleLike, currentBidLte);
-        } else if (!titleLike.isEmpty()) {
-            return auctionDao.getAuctionsByTitle(titleLike);
-        } else if (currentBidLte > 0) {
-            return auctionDao.getAuctionsByMaxBid(currentBidLte);
-        } else {
-            return auctionDao.getAuctions();
-        }
-    }
-
-//    @RequestMapping(path = "/search", method = RequestMethod.GET)
-//    public List<Auction> list(@RequestParam(defaultValue = "") String title_like, @RequestParam(defaultValue = "0") double currentBid_lte) {
-//
-//        if (!title_like.equals("")) {
-//            return auctionDao.getAuctionsByTitle(title_like);
-//        }
-//        if (currentBid_lte > 0) {
-//            return auctionDao.getAuctionsByMaxBid(currentBid_lte);
-//        }
-//
-//        return auctionDao.getAuctions();
-//    }
-
 
 }
