@@ -75,18 +75,18 @@ public class AuctionController {
 //        }
 //    }
 
-//    @RequestMapping(path = "", method = RequestMethod.GET)
-//    public List<Auction> list(@RequestParam(defaultValue = "") String title_like, @RequestParam(defaultValue = "0") double currentBid_lte) {
-//
-//        if (!title_like.equals("")) {
-//            return auctionDao.getAuctionsByTitle(title_like);
-//        }
-//        if (currentBid_lte > 0) {
-//            return auctionDao.getAuctionsByMaxBid(currentBid_lte);
-//        }
-//
-//        return auctionDao.getAuctions();
-//    }
+    @RequestMapping(path = "", method = RequestMethod.GET)
+    public List<Auction> list(@RequestParam(defaultValue = "") String title_like, @RequestParam(defaultValue = "0") double currentBid_lte) {
+
+        if (!title_like.equals("")) {
+            return auctionDao.getAuctionsByTitle(title_like);
+        }
+        if (currentBid_lte > 0) {
+            return auctionDao.getAuctionsByMaxBid(currentBid_lte);
+        }
+
+        return auctionDao.getAuctions();
+    }
 
 
 }
