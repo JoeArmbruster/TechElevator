@@ -4,13 +4,7 @@ import java.util.List;
 
 import com.techelevator.auctions.exception.DaoException;
 import org.springframework.http.HttpStatus;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseStatus;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import com.techelevator.auctions.dao.AuctionDao;
 import com.techelevator.auctions.model.Auction;
@@ -59,14 +53,16 @@ public class AuctionController {
 
     @RequestMapping(value = "/{id}", method = RequestMethod.PUT)
     public Auction update(@Valid @RequestBody Auction auction, @PathVariable int id){
+        auction.setId(id);
+
         try {
-            auction.setId(id);
             return auctionDao.updateAuction(auction);
         } catch (DaoException e){
             throw new ResponseStatusException(HttpStatus.NOT_FOUND, "Auction Not Found", e);
         }
     }
 
+    //    @DeleteMapping("/{id}")
     @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
     @ResponseStatus(HttpStatus.NO_CONTENT)
     public void delete(@PathVariable int id){
