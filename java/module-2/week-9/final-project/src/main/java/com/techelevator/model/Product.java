@@ -3,21 +3,27 @@ package com.techelevator.model;
 public class Product {
 
     private int id;
+    private String sku;
     private String name;
 
     private String description;
 
     private double price;
 
-    public Product(){
+    private String imageName;
+
+    public Product() {
     }
 
-    public Product(int id, String name, String description, double price){
+    public Product(int id, String sku, String name, String description, double price, String imageName) {
         this.id = id;
+        this.sku = sku;
         this.name = name;
         this.description = description;
         this.price = price;
+        this.imageName = imageName;
     }
+
 
     public int getId() {
         return id;
@@ -25,6 +31,14 @@ public class Product {
 
     public void setId(int id) {
         this.id = id;
+    }
+
+    public String getSku() {
+        return sku;
+    }
+
+    public void setSku(String sku) {
+        this.sku = sku;
     }
 
     public String getName() {
@@ -51,13 +65,23 @@ public class Product {
         this.price = price;
     }
 
+    public String getImageName() {
+        return imageName;
+    }
+
+    public void setImageName(String imageName) {
+        this.imageName = imageName;
+    }
+
     @Override
     public String toString() {
         return "Product{" +
                 "id=" + id +
+                ", sku='" + sku + '\'' +
                 ", name='" + name + '\'' +
                 ", description='" + description + '\'' +
                 ", price=" + price +
+                ", imageName='" + imageName + '\'' +
                 '}';
     }
 }
