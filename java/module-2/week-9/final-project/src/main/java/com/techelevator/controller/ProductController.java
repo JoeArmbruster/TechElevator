@@ -17,6 +17,10 @@ public class ProductController {
         this.productDao = productDao;
     }
 
+    @RequestMapping(path = "", method = RequestMethod.GET)
+    public List<Product> getList(@RequestParam(required = false) String sku,
+                                 @RequestParam(required = false) String name)
+
     @GetMapping
     public List<Product> getProducts(){
         return productDao.getProducts();
@@ -30,8 +34,9 @@ public class ProductController {
     @GetMapping("/search")
     public List<Product> searchProducts(
             @RequestParam(required = false) String sku,
-            @RequestParam(required = false) String name) {
-        return productDao.getProductsByOptionalSkuAndOrName(sku, name);
+            @RequestParam(required = false) String name,
+            @RequestParam(defaultValue = "false") boolean useWildCard) {
+        return productDao.getProductsByOptionalSkuAndOrName(sku, name, useWildCard);
     }
 
     @GetMapping("/user/{userId}")

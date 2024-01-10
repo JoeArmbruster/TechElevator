@@ -10,7 +10,7 @@ public interface ProductDao {
 
     Product getProductById(int id);
 
-    List<Product> getProductsByOptionalSkuAndOrName(String sku, String name);
+    List<Product> getProductsByOptionalSkuAndOrName(String sku, String name, boolean useWildCard);
 
     List<Product> getProductsByUserId(int userId);
 
