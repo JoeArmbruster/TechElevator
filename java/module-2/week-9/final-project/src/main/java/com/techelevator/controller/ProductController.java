@@ -18,20 +18,16 @@ public class ProductController {
     }
 
     @RequestMapping(path = "", method = RequestMethod.GET)
-    public List<Product> getList(@RequestParam(required = false) String sku,
-                                 @RequestParam(required = false) String name)
-
-    @GetMapping
     public List<Product> getProducts(){
         return productDao.getProducts();
     }
 
-    @GetMapping("/{id}")
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
     public Product getProductById(@PathVariable int id){
         return productDao.getProductById(id);
     }
 
-    @GetMapping("/search")
+    @RequestMapping(path = "/search", method = RequestMethod.GET)
     public List<Product> searchProducts(
             @RequestParam(required = false) String sku,
             @RequestParam(required = false) String name,
@@ -39,7 +35,7 @@ public class ProductController {
         return productDao.getProductsByOptionalSkuAndOrName(sku, name, useWildCard);
     }
 
-    @GetMapping("/user/{userId}")
+    @RequestMapping(path = "/user/{userId}", method = RequestMethod.GET)
     public List<Product> getProductsByUserId(@PathVariable int userId){
         return productDao.getProductsByUserId(userId);
     }
