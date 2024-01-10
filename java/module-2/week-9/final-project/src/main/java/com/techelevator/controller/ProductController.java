@@ -13,30 +13,28 @@ public class ProductController {
 
     private final ProductDao productDao;
 
-    public ProductController(ProductDao productDao){
+    public ProductController(ProductDao productDao) {
         this.productDao = productDao;
     }
 
     @RequestMapping(path = "", method = RequestMethod.GET)
-    public List<Product> getProducts(){
-        return productDao.getProducts();
+    public List<Product> getProducts(@RequestParam(required = false) String sku,
+                                     @RequestParam(required = false) String name) {
+        if (sku == null && name == null) {
+            return productDao.getProducts();
+        } else {
+            return productDao.getProductsByOptionalSkuAndOrName(sku, name, true);
+        }
     }
 
     @RequestMapping(path = "/{id}", method = RequestMethod.GET)
-    public Product getProductById(@PathVariable int id){
+    public Product getProductById(@PathVariable int id) {
         return productDao.getProductById(id);
     }
 
-    @RequestMapping(path = "/search", method = RequestMethod.GET)
-    public List<Product> searchProducts(
-            @RequestParam(required = false) String sku,
-            @RequestParam(required = false) String name,
-            @RequestParam(defaultValue = "false") boolean useWildCard) {
-        return productDao.getProductsByOptionalSkuAndOrName(sku, name, useWildCard);
-    }
 
     @RequestMapping(path = "/user/{userId}", method = RequestMethod.GET)
-    public List<Product> getProductsByUserId(@PathVariable int userId){
+    public List<Product> getProductsByUserId(@PathVariable int userId) {
         return productDao.getProductsByUserId(userId);
     }
 

@@ -37,11 +37,6 @@ public class JdbcProductDao implements ProductDao {
     }
 
     @Override
-    public Product getProductById(int id) {
-        return null;
-    }
-
-    @Override
     public List<Product> getProductsByOptionalSkuAndOrName(String sku, String name, boolean useWildCard) {
         List<Product> products = new ArrayList<>();
 
@@ -73,6 +68,22 @@ public class JdbcProductDao implements ProductDao {
         }
         return products;
     }
+
+    @Override
+    public Product getProductById(int id) {
+        Product product = null;
+        String sql = "SELECT * FROM product WHERE product_id = ?";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
+            if (results.next()){
+                product = mapRowToProduct(results);
+            }
+        } catch (CannotGetJdbcConnectionException e){
+            throw new DaoException("Unable to connect to server or database");
+        }
+        return product;
+    }
+
 
     @Override
     public List<Product> getProductsByUserId(int userId) {
