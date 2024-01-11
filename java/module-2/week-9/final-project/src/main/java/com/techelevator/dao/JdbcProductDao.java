@@ -36,15 +36,16 @@ public class JdbcProductDao implements ProductDao {
         return products;
     }
 
+
     @Override
     public List<Product> getProductsByOptionalSkuAndOrName(String sku, String name, boolean useWildCard) {
         List<Product> products = new ArrayList<>();
 
         if (useWildCard) {
-            name = '%' + (name == null ? "" : name) + '%';
+            name = "%" + (name == null ? "" : name) + "%";
         }
 
-        boolean checkSku = sku != null && sku.trim().length() > 0;
+        boolean checkSku = sku != null && !sku.isEmpty();
 
         String sql = "SELECT * FROM product WHERE name ILIKE ? " +
                 (checkSku ? "AND product_sku = ? " : "") +
@@ -59,11 +60,11 @@ public class JdbcProductDao implements ProductDao {
                 results = jdbcTemplate.queryForRowSet(sql, name);
             }
 
-            while (results.next()){
+            while (results.next()) {
                 Product product = mapRowToProduct(results);
                 products.add(product);
             }
-        } catch (CannotGetJdbcConnectionException e){
+        } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Cannot connect to server or database");
         }
         return products;
@@ -75,10 +76,10 @@ public class JdbcProductDao implements ProductDao {
         String sql = "SELECT * FROM product WHERE product_id = ?";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, id);
-            if (results.next()){
+            if (results.next()) {
                 product = mapRowToProduct(results);
             }
-        } catch (CannotGetJdbcConnectionException e){
+        } catch (CannotGetJdbcConnectionException e) {
             throw new DaoException("Unable to connect to server or database");
         }
         return product;
@@ -96,7 +97,7 @@ public class JdbcProductDao implements ProductDao {
         product.setSku(results.getString("product_sku"));
         product.setName(results.getString("name"));
         product.setDescription(results.getString("description"));
-        product.setPrice(results.getDouble("price"));
+        product.setPrice(results.getBigDecimal("price"));
         product.setImageName(results.getString("image_name"));
         return product;
     }

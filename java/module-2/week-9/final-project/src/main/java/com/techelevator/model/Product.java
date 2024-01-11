@@ -1,5 +1,7 @@
 package com.techelevator.model;
 
+import java.math.BigDecimal;
+
 public class Product {
 
     private int id;
@@ -8,14 +10,14 @@ public class Product {
 
     private String description;
 
-    private double price;
+    private BigDecimal price;
 
     private String imageName;
 
     public Product() {
     }
 
-    public Product(int id, String sku, String name, String description, double price, String imageName) {
+    public Product(int id, String sku, String name, String description, BigDecimal price, String imageName) {
         this.id = id;
         this.sku = sku;
         this.name = name;
@@ -57,11 +59,11 @@ public class Product {
         this.description = description;
     }
 
-    public double getPrice() {
+    public BigDecimal getPrice() {
         return price;
     }
 
-    public void setPrice(double price) {
+    public void setPrice(BigDecimal price) {
         this.price = price;
     }
 
@@ -84,4 +86,5 @@ public class Product {
                 ", imageName='" + imageName + '\'' +
                 '}';
     }
+
 }
