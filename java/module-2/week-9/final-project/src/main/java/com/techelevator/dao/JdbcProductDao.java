@@ -88,7 +88,21 @@ public class JdbcProductDao implements ProductDao {
 
     @Override
     public List<Product> getProductsByUserId(int userId) {
-        return null;
+        List<Product> products = new ArrayList<>();
+        String sql = "SELECT * FROM product WHERE product_id IN (SELECT * FROM cart_item WHERE user_id = ?);";
+
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
+
+            while (results.next()) {
+                Product product = mapRowToProduct(results);
+                products.add(product);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database");
+        }
+
+        return products;
     }
 
     private Product mapRowToProduct(SqlRowSet results) {
