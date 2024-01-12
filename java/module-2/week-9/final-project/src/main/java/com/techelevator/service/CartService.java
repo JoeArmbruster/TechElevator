@@ -106,7 +106,7 @@ public class CartService {
         cartItemDao.addCartItem(cartItem);
     }
 
-    public void remoteCartItem(int itemId, Principal principal){
+    public void removeCartItem(int itemId, Principal principal){
         String userName = principal.getName();
         User user = userDao.getUserByUsername(userName);
         int userId = user.getId();

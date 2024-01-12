@@ -62,17 +62,22 @@ public class JdbcCartItemDao implements CartItemDao {
 
     @Override
     public void updateCartItemQuantity(int itemId, int quantity) {
+        String sql = "UPDATE cart_item SET quantity = ? WHERE cart_item_id = ?";
+        jdbcTemplate.update(sql, quantity, itemId);
 
     }
 
     @Override
     public void removeCartitem(int itemId) {
+        String sql = "DELETE FROM cart_item WHERE cart_item_id = ?";
+        jdbcTemplate.update(sql, itemId);
 
     }
 
     @Override
     public void clearCart(int userId) {
-
+        String sql = "DELETE FROM cart_item WHERE user_id = ?";
+        jdbcTemplate.update(sql, userId);
     }
 
 

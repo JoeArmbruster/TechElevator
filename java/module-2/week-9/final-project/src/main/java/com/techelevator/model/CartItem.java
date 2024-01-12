@@ -12,7 +12,7 @@ public class CartItem {
 
     private Product product;
 
-    //    private BigDecimal price;
+    private BigDecimal price;
 
     private int quantity;
 
@@ -73,6 +73,10 @@ public class CartItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
+    }
+
+    public BigDecimal getPrice(){
+        return price.multiply(BigDecimal.valueOf(quantity));
     }
 
 }
