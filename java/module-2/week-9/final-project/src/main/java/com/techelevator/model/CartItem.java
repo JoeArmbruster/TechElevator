@@ -19,11 +19,11 @@ public class CartItem {
     public CartItem(){
     }
 
-    public CartItem(int cartItemId, int userId, int productId, int quantity) { //BigDecimal price,
+    public CartItem(int cartItemId, int userId, int productId, BigDecimal price, int quantity) {
         this.cartItemId = cartItemId;
         this.userId = userId;
         this.productId = productId;
-//        this.price = price;
+        this.price = price;
         this.quantity = quantity;
     }
 
@@ -58,14 +58,14 @@ public class CartItem {
     public void setProduct(Product product) {
         this.product = product;
     }
-//
-//    public BigDecimal getPrice() {
-//        return price;
-//    }
-//
-//    public void setPrice(BigDecimal price) {
-//        this.price = price;
-//    }
+
+    public BigDecimal getPrice() {
+        return price;
+    }
+
+    public void setPrice(BigDecimal price) {
+        this.price = price;
+    }
 
     public int getQuantity() {
         return quantity;
@@ -73,10 +73,6 @@ public class CartItem {
 
     public void setQuantity(int quantity) {
         this.quantity = quantity;
-    }
-
-    public BigDecimal getPrice(){
-        return price.multiply(BigDecimal.valueOf(quantity));
     }
 
 }

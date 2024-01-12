@@ -54,8 +54,8 @@ public class JdbcCartItemDao implements CartItemDao {
 
     @Override
     public void addCartItem(CartItem cartItem) {
-        String sql = "INSERT INTO cart_item (user_id, product_id, price, quantity) VALUES (?, ?, ?, ?)";
-        jdbcTemplate.update(sql, cartItem.getUserId(), cartItem.getProductId(), cartItem.getPrice(), cartItem.getQuantity());
+        String sql = "INSERT INTO cart_item (user_id, product_id, quantity) VALUES (?, ?, ?)";
+        jdbcTemplate.update(sql, cartItem.getUserId(), cartItem.getProductId(), cartItem.getQuantity());
 
 
     }

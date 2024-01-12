@@ -47,7 +47,7 @@ public class CartService {
         // get a list of all products belonging to this user (HINT: use the ProductDao)
         List<Product> userProducts = productDao.getProductsByUserId(userId);
 
-        for (CartItem cartItem : items){
+        for (CartItem cartItem : items) {
             int productId = cartItem.getProductId();
             Product correspondingProduct = getCorrespondingProduct(productId, userProducts);
             cartItem.setProduct(correspondingProduct);
@@ -71,31 +71,33 @@ public class CartService {
 
     private BigDecimal calculateSubtotal(List<CartItem> items) {
         BigDecimal subtotal = BigDecimal.ZERO;
-        for (CartItem cartItem : items){
-            BigDecimal itemTotal = cartItem.getProduct().getPrice().multiply(BigDecimal.valueOf(cartItem.getQuantity()));
-            subtotal = subtotal.add(itemTotal);
+        for (CartItem cartItem : items) {
+            if (cartItem.getProduct() != null && cartItem.getProduct().getPrice() != null) {
+                BigDecimal itemTotal = cartItem.getProduct().getPrice().multiply(BigDecimal.valueOf(cartItem.getQuantity()));
+                subtotal = subtotal.add(itemTotal);
+            }
         }
         return subtotal;
     }
 
     private Product getCorrespondingProduct(int productId, List<Product> productsToSearch) {
 
-        for (Product product : productsToSearch){
-            if (product.getId() == productId){
+        for (Product product : productsToSearch) {
+            if (product.getId() == productId) {
                 return product;
             }
         }
         return null;
     }
 
-    public void addCartItem(CartItem cartItem, Principal principal){
+    public void addCartItem(CartItem cartItem, Principal principal) {
         String userName = principal.getName();
         User user = userDao.getUserByUsername(userName);
         int userId = user.getId();
 
         List<CartItem> existingItems = cartItemDao.getCartItemsByUserId(userId);
-        for (CartItem existingItem : existingItems){
-            if (existingItem.getProductId() == cartItem.getProductId()){
+        for (CartItem existingItem : existingItems) {
+            if (existingItem.getProductId() == cartItem.getProductId()) {
                 int updatedQuantity = existingItem.getQuantity() + cartItem.getQuantity();
                 cartItemDao.updateCartItemQuantity(existingItem.getCartItemId(), updatedQuantity);
                 return;
@@ -106,16 +108,19 @@ public class CartService {
         cartItemDao.addCartItem(cartItem);
     }
 
-    public void removeCartItem(int itemId, Principal principal){
+    public void removeCartItem(int itemId, Principal principal) {
         String userName = principal.getName();
         User user = userDao.getUserByUsername(userName);
         int userId = user.getId();
 
         cartItemDao.removeCartitem(itemId);
 
+        Cart cart = getUserCart(principal);
+        cart.setItems(cartItemDao.getCartItemsByUserId(userId));
+
     }
 
-    public void clearCart(Principal principal){
+    public void clearCart(Principal principal) {
         String userName = principal.getName();
         User user = userDao.getUserByUsername(userName);
         int userId = user.getId();

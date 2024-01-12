@@ -55,4 +55,7 @@ public class Cart {
         this.tax = tax;
     }
 
+    public void setItems(List<CartItem> items) {
+        this.items = items;
+    }
 }
