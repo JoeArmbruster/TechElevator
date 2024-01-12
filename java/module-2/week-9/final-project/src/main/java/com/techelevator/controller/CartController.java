@@ -1,11 +1,10 @@
 package com.techelevator.controller;
 
 import com.techelevator.model.Cart;
+import com.techelevator.model.CartItem;
 import com.techelevator.service.CartService;
 import org.springframework.security.access.prepost.PreAuthorize;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.security.Principal;
 
@@ -27,6 +26,19 @@ public class CartController {
         return  userCart;
     }
 
+    @RequestMapping(path = "/items", method = RequestMethod.POST)
+    public void addCartItem(@RequestBody CartItem cartItem, Principal principal){
+        cartService.addCartItem(cartItem, principal);
+    }
 
+    @RequestMapping(path = "/items/{itemId", method = RequestMethod.DELETE)
+    public void removeCartItem(@PathVariable int itemId, Principal principal){
+        cartService.removeCartItem(itemId, principal);
+    }
+
+    @RequestMapping(path = "", method = RequestMethod.DELETE)
+    public void clearCart(Principal principal){
+        cartService.clearCart(principal);
+    }
 
 }

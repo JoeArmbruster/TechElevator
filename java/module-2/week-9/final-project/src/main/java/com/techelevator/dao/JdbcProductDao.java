@@ -89,7 +89,7 @@ public class JdbcProductDao implements ProductDao {
     @Override
     public List<Product> getProductsByUserId(int userId) {
         List<Product> products = new ArrayList<>();
-        String sql = "SELECT * FROM product WHERE product_id IN (SELECT * FROM cart_item WHERE user_id = ?);";
+        String sql = "SELECT * FROM product WHERE product_id IN (SELECT product_id FROM cart_item WHERE user_id = ?);";
 
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);

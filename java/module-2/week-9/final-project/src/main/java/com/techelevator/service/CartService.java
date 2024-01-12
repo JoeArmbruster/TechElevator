@@ -53,16 +53,29 @@ public class CartService {
             cartItem.setProduct(correspondingProduct);
         }
 
-        // BONUS:
-        // Add tax, subtotal, and total.
+        // calculate subtotal
+        BigDecimal subtotal = calculateSubtotal(cart.getItems());
+        cart.setSubtotal(subtotal);
 
-        BigDecimal taxAmount = taxService.getTaxRate(user.getStateCode());
+        BigDecimal taxRate = taxService.getTaxRate(user.getStateCode());
+
+        BigDecimal taxAmount = subtotal.multiply(taxRate);
         cart.setTax(taxAmount);
-        cart.setSubtotal(new BigDecimal("100"));
-        cart.setTotal(new BigDecimal("200"));
+
+        BigDecimal total = subtotal.add(taxAmount);
+        cart.setTotal(total);
 
         return cart;
 
+    }
+
+    private BigDecimal calculateSubtotal(List<CartItem> items) {
+        BigDecimal subtotal = BigDecimal.ZERO;
+        for (CartItem cartItem : items){
+            BigDecimal itemTotal = cartItem.getProduct().getPrice().multiply(BigDecimal.valueOf(cartItem.getQuantity()));
+            subtotal = subtotal.add(itemTotal);
+        }
+        return subtotal;
     }
 
     private Product getCorrespondingProduct(int productId, List<Product> productsToSearch) {
@@ -74,4 +87,40 @@ public class CartService {
         }
         return null;
     }
+
+    public void addCartItem(CartItem cartItem, Principal principal){
+        String userName = principal.getName();
+        User user = userDao.getUserByUsername(userName);
+        int userId = user.getId();
+
+        List<CartItem> existingItems = cartItemDao.getCartItemsByUserId(userId);
+        for (CartItem existingItem : existingItems){
+            if (existingItem.getProductId() == cartItem.getProductId()){
+                int updatedQuantity = existingItem.getQuantity() + cartItem.getQuantity();
+                cartItemDao.updateCartItemQuantity(existingItem.getCartItemId(), updatedQuantity);
+                return;
+            }
+        }
+
+        cartItem.setUserId(userId);
+        cartItemDao.addCartItem(cartItem);
+    }
+
+    public void remoteCartItem(int itemId, Principal principal){
+        String userName = principal.getName();
+        User user = userDao.getUserByUsername(userName);
+        int userId = user.getId();
+
+        cartItemDao.removeCartitem(itemId);
+
+    }
+
+    public void clearCart(Principal principal){
+        String userName = principal.getName();
+        User user = userDao.getUserByUsername(userName);
+        int userId = user.getId();
+
+        cartItemDao.clearCart(userId);
+    }
+
 }

@@ -25,7 +25,7 @@ public class JdbcCartItemDao implements CartItemDao {
         String sql = "SELECT * FROM cart_item WHERE user_id = ?";
         try {
             SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId);
-            if (results.next()) {
+            while (results.next()) {
                 CartItem cartItem = mapRowToCartItem(results);
                 cartItems.add(cartItem);
             }
@@ -36,12 +36,53 @@ public class JdbcCartItemDao implements CartItemDao {
         return cartItems;
     }
 
+    @Override
+    public CartItem getCartItemByProductId(int userId, int productId) {
+        CartItem cartItem = null;
+        String sql = "SELECT * FROM cart_item WHERE user_id = ? AND product_id = ?";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, userId, productId);
+            if(results.next()){
+                cartItem = mapRowToCartItem(results);
+            }
+        }catch (CannotGetJdbcConnectionException e){
+            throw new DaoException("Unable to connect to server or database");
+        }
+
+        return cartItem;
+    }
+
+    @Override
+    public void addCartItem(CartItem cartItem) {
+        String sql = "INSERT INTO cart_item (user_id, product_id, price, quantity) VALUES (?, ?, ?, ?)";
+        jdbcTemplate.update(sql, cartItem.getUserId(), cartItem.getProductId(), cartItem.getPrice(), cartItem.getQuantity());
+
+
+    }
+
+    @Override
+    public void updateCartItemQuantity(int itemId, int quantity) {
+
+    }
+
+    @Override
+    public void removeCartitem(int itemId) {
+
+    }
+
+    @Override
+    public void clearCart(int userId) {
+
+    }
+
+
+
     private CartItem mapRowToCartItem(SqlRowSet results) {
         CartItem cartItem = new CartItem();
         cartItem.setCartItemId(results.getInt("cart_item_id"));
         cartItem.setUserId(results.getInt("user_id"));
         cartItem.setProductId(results.getInt("product_id"));
-        cartItem.setPrice(results.getBigDecimal("price"));
+//        cartItem.setPrice(results.getBigDecimal("price"));
         cartItem.setQuantity(results.getInt("quantity"));
         return cartItem;
     }
