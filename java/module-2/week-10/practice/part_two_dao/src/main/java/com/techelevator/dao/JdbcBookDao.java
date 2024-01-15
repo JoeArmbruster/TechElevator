@@ -2,6 +2,7 @@ package com.techelevator.dao;
 
 import com.techelevator.exception.DaoException;
 import com.techelevator.model.Book;
+import org.springframework.dao.DataAccessException;
 import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
@@ -37,12 +38,35 @@ public class JdbcBookDao implements BookDao {
 
     @Override
     public Book getBookById(int bookId) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        Book book = null;
+        String sql = "SELECT * FROM book WHERE book_id = ?";
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bookId);
+            if (results.next()) {
+                book = mapRowToBook(results);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database");
+        }
+        return book;
     }
 
     @Override
     public Book updateBookRating(int bookId, BigDecimal newRating) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        String sql = "UPDATE book SET star_rating = ? WHERE book_id = ?";
+
+        if (getBookById(bookId) == null) {
+            throw new DaoException("No book found with is: " + bookId);
+        }
+
+        try {
+            jdbcTemplate.update(sql, newRating, bookId);
+            return getBookById(bookId);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataAccessException e) {
+            throw new DaoException("Data integrity violation during update", e);
+        }
     }
 
     private Book mapRowToBook(SqlRowSet results) {
