@@ -2,3 +2,8 @@
 -- Order the results by rating, highest first.
 -- (4 rows, starting with T&E Publishing)
 
+SELECT publisher.publisher_name, MAX(book.star_rating) AS highest_rating
+FROM publisher
+LEFT JOIN book ON publisher.publisher_id = book.publisher_id
+GROUP BY publisher.publisher_id, publisher.publisher_name
+ORDER BY highest_rating DESC;

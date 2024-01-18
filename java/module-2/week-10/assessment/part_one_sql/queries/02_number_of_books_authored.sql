@@ -3,3 +3,10 @@
 -- Tip: make sure to add a space between the author's first and last names.
 -- (16 rows)
 
+SELECT person.first_name || ' ' || person.last_name AS author, COUNT(book.book_id) AS num_books
+FROM person
+LEFT JOIN book_author ON person.person_id = book_author.author_id
+LEFT JOIN book ON book_author.book_id = book.book_id
+GROUP BY person.person_id, person.first_name, person.last_name
+HAVING COUNT(book.book_id) > 0
+ORDER BY num_books DESC, person.first_name;
