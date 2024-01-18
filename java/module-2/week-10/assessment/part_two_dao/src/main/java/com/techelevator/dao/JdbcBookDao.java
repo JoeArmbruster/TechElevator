@@ -1,6 +1,9 @@
 package com.techelevator.dao;
 
+import com.techelevator.exception.DaoException;
 import com.techelevator.model.Book;
+import org.springframework.dao.DataIntegrityViolationException;
+import org.springframework.jdbc.CannotGetJdbcConnectionException;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 
@@ -19,23 +22,46 @@ public class JdbcBookDao implements BookDao {
         Book book = null;
         String sql = "SELECT book_id, book_title, star_rating, out_of_print, foreword_by, publisher_id, published_date" +
                 " FROM book WHERE book_id = ?;";
-
-        SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bookId);
-        if (results.next()) {
-            book = mapRowToBook(results);
+        try {
+            SqlRowSet results = jdbcTemplate.queryForRowSet(sql, bookId);
+            if (results.next()) {
+                book = mapRowToBook(results);
+            }
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database");
         }
-
         return book;
     }
 
     @Override
     public Book createBook(Book newBook) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        int newBookId;
+        String sql = "INSERT INTO book (book_title, star_rating, out_of_print, foreword_by, publisher_id, published_date)" +
+                " VALUES(?, ?, ?, ?, ?, ?) RETURNING book_id;";
+        try {
+            newBookId = jdbcTemplate.queryForObject(sql, int.class, newBook.getBookTitle(), newBook.getStarRating(),
+                    newBook.isOutOfPrint(), newBook.getForewordBy(), newBook.getPublisherId(), newBook.getPublishedDate());
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
+        return getBookById(newBookId);
     }
 
     @Override
     public int deleteBookById(int bookId) {
-        throw new UnsupportedOperationException("Not implemented yet");
+        try {
+            String deleteBookAuthorSql = "DELETE FROM book_author WHERE book_id = ?;";
+            jdbcTemplate.update(deleteBookAuthorSql, bookId);
+
+            String deleteBookSql = "DELETE FROM book WHERE book_id = ?;";
+            return jdbcTemplate.update(deleteBookSql, bookId);
+        } catch (CannotGetJdbcConnectionException e) {
+            throw new DaoException("Unable to connect to server or database", e);
+        } catch (DataIntegrityViolationException e) {
+            throw new DaoException("Data integrity violation", e);
+        }
     }
 
     private Book mapRowToBook(SqlRowSet results) {
