@@ -1,0 +1,33 @@
+* {
+    background-color: lightskyblue;
+}
+
+header {
+    height: 200px;
+    width: 100%;
+}
+
+header h1{
+    color: yellow;
+    text-shadow: 2px 2px 5px black;
+    display: inline-block;
+}
+
+img {
+    height: 150px;
+    display: inline-block;
+}
+
+.runners-list{
+    list-style: none;
+
+}
+.runner-result{
+    width: 100px;
+    height: 100px;
+    text-align: left;
+}
+
+.runners-result:nth-child(1){
+    background-color: yellow;
+}

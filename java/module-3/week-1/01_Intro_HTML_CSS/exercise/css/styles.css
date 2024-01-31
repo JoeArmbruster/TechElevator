@@ -1,0 +1,38 @@
+body {
+    background-color: black;
+    color: white;
+}
+
+h1 {
+    text-align: center;
+}       
+
+img {
+    width: 350px;
+  }
+
+h2 {
+    text-decoration: underline;
+}
+
+#facts-section h2{
+    text-decoration: underline;
+}
+
+#facts-section table {
+    border-collapse: separate;
+    border-spacing: 15px;     
+  }
+
+  #quotes-section h2{
+    text-decoration: underline;
+} 
+  
+  #quotes-section blockquote {
+    font-style: italic;
+    max-width: 500px;
+  }
+
+  #links-section h2{
+    text-decoration: underline;
+}
