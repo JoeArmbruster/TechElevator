@@ -1,10 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Info Form</title>
+    <link rel="stylesheet" href="css/formstyles.css">
 </head>
+
 <body>
-    
+    <form action="https://www.fakeurl.com/submit" method="post">
+
+        <label for="name">Name:</label>
+        <input type="text" id="name" name="name" required>
+        <br>
+
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required>
+        <br>
+
+        <label for="date-of-birth">Date of birth:</label>
+        <input type="date" id="date-of-birth" name="date-of-birth">
+        <br>
+
+        <label for="favorite-color">Favorite Color:</label>
+        <select id="favorite-color" name="favorite-color">
+            <option value="red">red</option>
+            <option value="orange">orange</option>
+            <option value="yellow">yellow</option>
+            <option value="green">green</option>
+            <option value="blue">blue</option>
+            <option value="purple">purple</option>
+            <option value="pink">pink</option>
+            <option value="brown">brown</option>
+            <option value="black">black</option>
+        </select>
+        <br>
+
+        <label for="lucky-number">Lucky number:</label>
+        <input type="number" id="lucky-number" name="lucky-number">
+        <br>
+
+        <label for="confirmation">Confirmation:</label>
+        <input type="checkbox" id="confirmation" name="confirmation">
+        <br>
+
+        <input type="submit" value="Submit">
+    </form>
+
 </body>
+
 </html>
