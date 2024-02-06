@@ -5,6 +5,8 @@ body {
 }
 
 .container {
+  display: flex;
+  justify-content: space-evenly;
   background-color: #F0F0F0;
 }
 

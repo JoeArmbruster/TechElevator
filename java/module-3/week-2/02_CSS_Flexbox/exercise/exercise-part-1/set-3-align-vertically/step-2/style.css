@@ -5,6 +5,9 @@ body {
 }
 
 .container {
+  display: flex;
+  justify-content: flex-start;
+  align-items: flex-end;
   background-color: #F0F0F0;
   height: 500px;
 }

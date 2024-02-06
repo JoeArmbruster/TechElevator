@@ -9,10 +9,19 @@ body {
   padding: 20px;
   margin-bottom: 20px;
   border: solid 1px #555;
+  display: flex;
 }
 
 .bio img {
   width: 150px;
   border-radius: 999px;
   margin: 0 10px;
+}
+
+.bio:nth-child(1).about{
+  order:2;
+}
+
+.bio:nth-child(2) img {
+  order: 1;
 }

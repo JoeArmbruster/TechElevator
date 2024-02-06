@@ -38,6 +38,15 @@ a:hover {
   text-decoration: underline;
 }
 
-.my-account img {
-  width: 40px;
+nav ul {
+  display: flex;
+}
+
+header {
+  display: flex;
+  align-items: center;
+}
+
+.spacer {
+  flex-grow: 1;
 }
