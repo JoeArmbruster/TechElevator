@@ -1,0 +1,129 @@
+*{
+    font-size: 16px;
+    font-family:'Segoe UI', Roboto, Noto Sans, Ubuntu, Droid Sans, Helvetica Neue, sans-serif;
+}
+
+main{
+    margin-top: 50px;
+}
+
+body{
+    background: linear-gradient(to bottom, #858c90, #bbb);
+}
+
+body, h1, h2, ul, li{
+    margin: 0;
+    padding: 0;
+}
+
+.list{
+    width: 300px;
+    background-color: #ddd;
+    margin-right: 10px;
+    padding: 10px;
+    border-radius: 3px;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.list h2{
+    font-size: 16px;
+    margin-bottom: 10px;
+    font-weight: bold;
+}
+
+.cards {
+    list-style: none;
+}
+
+.card {
+    background-color: white;
+    border-radius: 2px;
+    margin-bottom: 8px;
+    padding: 10px;
+    box-shadow: 0 2px 2px #bbb;
+    font-size: 90%;
+    cursor: pointer;
+}
+
+.card:hover{
+    background: #c0e1ff;
+    color: darkblue;
+}
+
+a:hover{
+    background-color: rgba(33, 130, 186, 0.25);
+    color: darkblue;
+}
+
+.label{
+    display: inline-block;
+    width: 35px;
+    height: 8px;
+    border-radius: 3px;
+    margin-right: 5px;
+}
+
+.prep{
+    background-color: red;
+}
+
+.general{
+    background-color: orange;
+}
+
+.plumbing{
+    background-color: green;
+}
+
+.electrical{
+    background-color: blue;
+}
+
+.finish{
+    background-color: violet;
+}
+
+header{
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 50px;
+    line-height: 50px;
+    background: rgba(0,0,0,0.3);
+    color: rgba(255,255,255,0.8);
+    cursor:pointer;
+}   
+
+header h1{
+    display: inline-block;
+    font-size: 110%;
+    border-right: 1px solid white;
+    padding-right: 20px;
+    vertical-align: middle;
+}
+
+nav{
+    display: inline-block;
+    vertical-align: middle;
+}
+
+nav ul{
+    list-style: none;
+    display: inline-block;
+}
+
+nav li{
+    display: inline-block;
+    border-right: 1px solid white;
+    padding-left: 5px;
+    padding-right: 20px;
+    vertical-align: middle;
+}
+
+nav a{
+    text-decoration: none;
+    font-size: 90%;
+    color: white;
+}
