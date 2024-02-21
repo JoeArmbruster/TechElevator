@@ -19,7 +19,7 @@ const groceries = [
  */
 function setPageTitle() {
   const title = document.getElementById('title');
-  title.textContent = pageTitle;
+  title.innerHTML = pageTitle;
 }
 
 /**
