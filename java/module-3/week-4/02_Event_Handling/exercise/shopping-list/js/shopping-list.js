@@ -36,3 +36,25 @@ function displayGroceries() {
     ul.appendChild(li);
   });
 }
+
+document.addEventListener('DomContentLoaded', () => {
+  setPageTitle();
+  displayGroceries();
+
+  const listItems = document.querySelectorAll('li');
+
+  listItems.forEach((item) => {
+    if (!item.classList.contains('completed')) {
+      item.classList.add('completed');
+      item.querySelector('i').classList.add('completed');
+    }
+  });
+
+  listItems.addEventListener('dblclick', () => {
+    if (item.classList.contains('completed')) {
+      item.classList.remove('completed');
+      item.querySelector('i').classList.remove('completed');
+    }
+  });
+
+});
