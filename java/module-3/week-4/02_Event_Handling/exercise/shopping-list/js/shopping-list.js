@@ -37,24 +37,25 @@ function displayGroceries() {
   });
 }
 
-document.addEventListener('DomContentLoaded', () => {
+document.addEventListener('DOMContentLoaded', () => {
   setPageTitle();
   displayGroceries();
 
   const listItems = document.querySelectorAll('li');
 
   listItems.forEach((item) => {
+    item.addEventListener('click', () => {
     if (!item.classList.contains('completed')) {
       item.classList.add('completed');
       item.querySelector('i').classList.add('completed');
     }
   });
 
-  listItems.addEventListener('dblclick', () => {
-    if (item.classList.contains('completed')) {
-      item.classList.remove('completed');
-      item.querySelector('i').classList.remove('completed');
-    }
+    item.addEventListener('dblclick', () => {
+      if (item.classList.contains('completed')) {
+        item.classList.remove('completed');
+        item.querySelector('i').classList.remove('completed');
+      }
+    });
   });
-
 });
