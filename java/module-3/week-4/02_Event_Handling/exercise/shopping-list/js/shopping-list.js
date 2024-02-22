@@ -61,7 +61,7 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   });
 
-  toggleAllButton.addEventListener('click', () =>
+  toggleAllButton.addEventListener('click', () => {
     listItems.forEach((item) => {
       if (allItemsIncomplete) {
         item.classList.add('completed');
@@ -72,13 +72,13 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
 
-  if (allItemsIncomplete) {
-    toggleAllButton.textContent = 'Mark All Incomplete';
-  } else {
-    toggleAllButton.textContent = 'Mark All Complete';
-  }
+    if (allItemsIncomplete) {
+      toggleAllButton.textContent = 'Mark All Incomplete';
+    } else {
+      toggleAllButton.textContent = 'Mark All Complete';
+    }
 
-  allItemsIncomplete = !allItemsIncomplete;
-});
+    allItemsIncomplete = !allItemsIncomplete;
+  });
 
 });
