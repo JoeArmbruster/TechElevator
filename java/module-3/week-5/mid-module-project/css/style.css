@@ -2,3 +2,125 @@
     style.css - this stylesheet is linked from index.html to apply styles to the products home page.
     Add all of your custom styles here.
 */
+
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+}
+
+header img {
+    display: block;
+    margin: 0 auto;
+    max-width: 100%;
+}
+
+nav {
+    position: fixed;
+    top: 70px;
+    left: 0;
+    width: 100%;
+}
+
+nav ul {
+    list-style-type: none;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+nav ul li {
+    display: inline;
+}
+
+.message-window {
+    display: none;
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    
+}
+
+.logout {
+    margin-left: auto;
+}
+
+footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}
+
+main {
+    overflow-y: auto;    
+}
+
+#product-cards {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+
+.product-card {
+    display: grid;
+    grid-template-areas: 
+    "sku price"
+    "name name"
+    "image image"
+    "cart cart";
+    grid-template-columns: 1fr 1fr;
+    padding: 20px;
+    border: 1px solid;
+    margin-bottom: 20px;
+}
+
+.sku {
+    grid-area: sku;
+    align-self: start;
+}
+
+.price {
+    grid-area: price;
+    align-self: start;
+    justify-self: end;
+}
+
+.product-name {
+    grid-area: name;
+    align-self: start;
+}
+
+.product-image {
+    grid-area: image;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.product-image img {
+    max-width: 100%;
+    height: auto;
+}
+
+.cart {
+    grid-area: cart;
+    align-self: end;
+    justify-self: end;
+}
+
+@media only screen and (max-width: 1024px) {
+    .product-card{
+        width: calc(50% - 10px);
+    
+    }
+}
+    
+@media only screen and (max-width: 768px) {
+    .product-card{
+        width: calc(100% - 10px);
+    }
+    
+}

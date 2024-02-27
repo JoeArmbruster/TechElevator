@@ -18,7 +18,7 @@ let productService = {
     },
     {
       "productId": 3,
-      "productSku": "ART-256",
+      "productSku": "ART-256",  
       "name": "Galactic poster",
       "description": "Beautiful view of a galaxy",
       "price": 9.59,
@@ -61,5 +61,13 @@ let productService = {
   getProducts() {
     return this.allProducts;
   },
+
+  searchProducts(searchTerm){
+    return this.allProducts.filter(product => {
+      const productName = product.name.toLocaleLowerCase();
+      const term = searchTerm.toLocaleLowerCase();
+      return productName.includes(term);
+    });
+  }
 
 };

@@ -15,9 +15,21 @@
   </head>
   <body>
     <div id="app">
+      <header>
+        <img src="img/logo_400x70.png" alt="logo placeholder">
+      </header>
+      <nav>
+        <ul>
+          <li><a href="#">Home</a></li>
+          <li><a href="#">Cart</a></li>
+          <li class="logout"><a href="#">Logout</a></li>
+        </ul>
+        <div id="message-window" class="message-window"></div>
+      </nav>
+      <input type="text" id="search-box" placeholder="Search...">
       <main>
         <section id="product-cards">
-          <article class="product-card">
+          <!-- <article class="product-card">
             <div class="sku">SKU-001</div>
             <div class="price">$1.99</div>
             <div class="product-name action" data-id="1">A super product</div>
@@ -60,9 +72,12 @@
             <div class="cart">
               <i class="fa-solid fa-cart-plus icon action" title="Add item to cart"></i>
             </div>
-          </article>
+          </article> -->
         </section>
       </main>
+      <footer>
+        <p>&copy; 2024 All rights reserved</p>
+      </footer>
     </div>
   </body>
 </html>
