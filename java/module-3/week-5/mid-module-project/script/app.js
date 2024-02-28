@@ -9,6 +9,8 @@ document.addEventListener("DOMContentLoaded", function () {
     const searchBox = document.getElementById("search-box");
     const messageWindow = document.getElementById("message-window");
 
+    let isSmallScreen = window.innerWidth <= 768;
+
     searchBox.addEventListener("keyup", function (event) {
         const searchTerm = event.target.value.trim().toLowerCase();
 
@@ -45,6 +47,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
         productName.addEventListener("click", function() {
             showMessage(product.description);
+            messageWindow.classList.add("product-description-message");
         });
 
         const productImage = document.createElement("div");
@@ -61,7 +64,13 @@ document.addEventListener("DOMContentLoaded", function () {
         cartIcon.setAttribute("title", "Add item to cart");
 
         cartIcon.addEventListener("click", function () {
-            showMessage(`"${product.name}" has been added to the cart!`);
+            if(isSmallScreen){
+                messageWindow.textContent = `"${product.name}" added!`;
+            } else {
+            messageWindow.textContent = `"${product.name}" added to cart!`;
+        }
+            messageWindow.style.display = "block";
+            messageWindow.classList.add("cart-message");
         });
         cart.appendChild(cartIcon);
 
