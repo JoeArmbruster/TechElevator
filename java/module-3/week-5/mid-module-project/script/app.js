@@ -4,7 +4,6 @@
 */
 
 document.addEventListener("DOMContentLoaded", function () {
-
     const products = productService.getProducts();
     const productCardsSection = document.getElementById("product-cards");
     const searchBox = document.getElementById("search-box");
@@ -24,6 +23,7 @@ document.addEventListener("DOMContentLoaded", function () {
             }
         });
     });
+
 
     products.forEach(product => {
         const article = document.createElement("article");
@@ -61,7 +61,7 @@ document.addEventListener("DOMContentLoaded", function () {
         cartIcon.setAttribute("title", "Add item to cart");
 
         cartIcon.addEventListener("click", function () {
-            showMessage(`"${product.name}" has been added to the cart.`);
+            showMessage(`"${product.name}" has been added to the cart!`);
         });
         cart.appendChild(cartIcon);
 

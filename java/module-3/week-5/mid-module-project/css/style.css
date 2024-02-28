@@ -8,6 +8,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
+    border-bottom: 1px solid;
 }
 
 header img {
@@ -16,11 +17,31 @@ header img {
     max-width: 100%;
 }
 
+#app {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
 nav {
     position: fixed;
     top: 70px;
+    margin-bottom: 20px;
     left: 0;
     width: 100%;
+    border-bottom: 1px solid;
+}
+
+.search-box {
+    position: relative;
+    width: fit-content;
+    margin-left: auto;
+    margin-top: 140px;
+}
+
+.search-input {
+    padding-right: 30px;
+    width: 200px;
 }
 
 nav ul {
@@ -36,14 +57,30 @@ nav ul li {
 
 .message-window {
     display: none;
-    position: fixed;
+    position: absolute;
     top: 50%;
     left: 50%;
-    
+    transform: (-50%, -50%);
 }
 
 .logout {
     margin-left: auto;
+    margin-right: 20px;
+}
+
+nav ul li:not(:last-child){
+    margin-right: 40px;
+}
+
+nav ul li a {
+    text-decoration: none;
+    font-size: 24px;
+    padding: 0;
+}
+
+main{
+    
+    overflow-y: auto;
 }
 
 footer {
@@ -51,6 +88,8 @@ footer {
     bottom: 0;
     left: 0;
     width: 100%;
+    border-top: 1px solid;
+    background-color:white;
 }
 
 main {
@@ -60,9 +99,18 @@ main {
 #product-cards {
     display: flex;
     flex-wrap: wrap;
-    justify-content: space-between;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 20px 10px;
 }
 
+.product-card {
+    flex-grow: 0;
+    flex-shrink: 0;
+    width: calc(20% - 20px);
+    margin-bottom: 20px;
+    margin-right: 30px;
+}
 
 .product-card {
     display: grid;
@@ -91,6 +139,12 @@ main {
 .product-name {
     grid-area: name;
     align-self: start;
+    font-size: 18px;
+}
+
+.sku,
+.price {
+    font-size: 24px;
 }
 
 .product-image {
@@ -98,11 +152,15 @@ main {
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 15px;
+    margin-bottom: 10px;
 }
 
 .product-image img {
     max-width: 100%;
     height: auto;
+    border-radius: 25px;
+    opacity: 0.3;
 }
 
 .cart {
@@ -111,9 +169,13 @@ main {
     justify-self: end;
 }
 
+.cart i {
+    font-size: 24px;
+}
+
 @media only screen and (max-width: 1024px) {
     .product-card{
-        width: calc(50% - 10px);
+        width: calc(50%% - 20px);
     
     }
 }
