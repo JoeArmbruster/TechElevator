@@ -4,10 +4,8 @@
       <h1>Boulder Bolt</h1>
     </header>
     <section id="register">
-      <race-registration-vue/>
     </section>
     <section id="results">
-      <race-results-vue/>
     </section>
 
   </div>
