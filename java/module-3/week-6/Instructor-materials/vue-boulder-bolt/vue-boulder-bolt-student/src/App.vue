@@ -12,18 +12,12 @@
 </template>
 
 <script>
-import RaceRegistrationVue from "./components/RaceRegistration.vue"
-import RaceResultsVue from './components/RaceResults.vue'
-
 export default {
   components: {
-    RaceRegistrationVue,
-    RaceResultsVue
+
   }
 }
-
 </script>
-
 
 <style>
 
