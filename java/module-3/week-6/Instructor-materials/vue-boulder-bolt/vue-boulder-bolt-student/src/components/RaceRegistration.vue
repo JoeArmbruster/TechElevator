@@ -2,9 +2,12 @@
   <div id="registration">
     <section id="info-2024">
       <img src="../assets/runners_fun.png" />
+      <p>{{ this.raceDateString }}</p>
+      <a class = "title-btn" v-on:click="showRegistrationForm = !showRegistrationForm">
+        {{(showRegistrationForm ? "hide registration" : "show registration")}}</a>
     </section>
     <section id="registration">
-      <form id="registration-form">
+      <form id="registration-form" v-if="showRegistrationForm">
         <h2>Register</h2>
          <p> 999 days remain! </p>
         <label for="fname">First name:</label>
@@ -23,6 +26,7 @@
 export default {
     data() {
         return {
+            showRegistrationForm: true;
             raceDateString: "04/16/2024",
         }
     },

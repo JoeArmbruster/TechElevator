@@ -9,8 +9,16 @@
       <tr>
         <th>Last Name</th>
         <th>First Name</th>
-        <th>Time</th>
+        <th>{{viewTotalTime ? 'Time' : 'Pace'}}</th>
       </tr>
+      <tr
+        class="runner-row"
+        v-for="(runner,index) in this.runners"
+        v-bind:key="index"
+        >
+        <td>{{ runner.last_name}}</td>
+        <td>{{ runner.first_name}}</td>
+        <td>{{ viewTotalTime ? getRaceTime (runner.time_seconds) : getPace(runner.time_seconds)}}</td>
     </table>
   </div>
 </template>
@@ -20,7 +28,11 @@ import RunnerData from "../assets/RunnerData";
 
 export default {
   data() {
-    return {};
+    return {
+      runners: RunnerData.getRunnerData(),
+      raceDistance: 26.2,
+      viewTotalTime: true
+    };
   },
   methods: {
     getRaceTime(timeInSeconds) {

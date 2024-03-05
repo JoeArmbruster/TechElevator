@@ -11,12 +11,12 @@
     </thead>
     <tbody>
       <tr>
-        <td><input type="text" id="firstNameFilter"/></td>
-        <td><input type="text" id="lastNameFilter"/></td>
-        <td><input type="text" id="usernameFilter"/></td>
-        <td><input type="text" id="emailFilter"/></td>
+        <td><input type="text" v-model="search.firstName" id="firstNameFilter"/></td>
+        <td><input type="text" v-model="search.lastName" id="lastNameFilter"/></td>
+        <td><input type="text" v-model="search.username" id="usernameFilter"/></td>
+        <td><input type="text" v-model="search.emailAddress" id="emailFilter"/></td>
         <td>
-          <select id="statusFilter">
+          <select v-model="search.status" id="statusFilter">
             <option value="">Show All</option>
             <option value="Active">Active</option>
             <option value="Inactive">Inactive</option>
@@ -24,6 +24,13 @@
         </td>
       </tr>
       <!-- user listing goes here -->
+      <tr v-for="(user,index) in users" :key="index">
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.username }}</td>
+        <td>{{ user.emailAddress }}</td>
+        <td>{{ user.status }}</td>
+      </tr>
     </tbody>
   </table>
 </template>
