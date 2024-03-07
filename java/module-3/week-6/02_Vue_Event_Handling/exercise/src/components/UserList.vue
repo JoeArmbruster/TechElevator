@@ -15,7 +15,7 @@
       <tbody>
         <tr>
           <td>
-            <input type="checkbox" id="selectAll" />
+            <input type="checkbox" id="selectAll" v-model="selectAllChecked" @change="toggleSelectAll" />
           </td>
           <td>
             <input type="text" id="firstNameFilter" v-model="filter.firstName" />
@@ -44,7 +44,7 @@
           v-bind:class="{ deactivated: user.status === 'Inactive' }"
         >
           <td>
-            <input type="checkbox" v-bind:id="user.id" v-bind:value="user.id" />
+            <input type="checkbox" v-bind:id="user.id" v-model="selectedUserIds" v-bind:value="user.id" />
           </td>
           <td>{{ user.firstName }}</td>
           <td>{{ user.lastName }}</td>
@@ -60,9 +60,9 @@
     </table>
 
     <div class="all-actions">
-      <button>Activate Users</button>
-      <button>Deactivate Users</button>
-      <button>Delete Users</button>
+      <button @click="activateSelectedUsers">Activate Users</button>
+      <button @click="deactivateSelectedUsers">Deactivate Users</button>
+      <button @click="deleteSelectedUsers">Delete Users</button>
     </div>
 
     <button @click="toggleNewUserForm">Add New User</button>
@@ -94,6 +94,8 @@ export default {
   data() {
     return {
       showNewUserForm: false,
+      selectedUserIds: [],
+      selectAllChecked: false,
       filter: {
         firstName: "",
         lastName: "",
@@ -201,6 +203,39 @@ export default {
     toggleUserStatus(userId) {
       const userIndex = this.users.findIndex(user => user.id === userId);
       this.users[userIndex].status = this.users[userIndex].status === 'Active' ? 'Inactive' : 'Active';
+    },
+    activateSelectedUsers(){
+      this.selectedUserIds.forEach(userId => {
+        const userIndex = this.users.findIndex(user => user.id === userId);
+        this.users[userIndex].status = 'Active';
+      });
+      this.selectedUserIds = [];
+      this.selectAllCheckbox = false;
+    },
+    deactivateSelectedUsers(){
+      this.selectedUserIds.forEach(userId => {
+        const userIndex = this.users.findIndex(user => user.id === userId);
+        this.users[userIndex].status = 'Inactive';
+      });
+      this.selectedUserIds = [];
+      this.selectAllCheckbox = false;
+    },
+    deleteSelectedUsers(){
+      this.users = this.users.filter(user => !this.selectedUserIds.includes(user.id));
+      this.selectedUserIds = [];
+      this.selectAllCheckbox = false;
+    },
+    toggleSelectAll() {
+      if(this.selectAllChecked){
+        this.selectedUserIds = this.users.map(user => user.id);
+      } else {
+        this.selectedUserIds = [];
+      }
+    },
+    checkSelectAllCheckbox(){
+      const totalUsers = this.filteredList.length;
+      const selectedUsers = this.selectedUserIds.length;
+      this.selectAllChecked = selectedUsers === totalUsers;
     }
   },
   computed: {
