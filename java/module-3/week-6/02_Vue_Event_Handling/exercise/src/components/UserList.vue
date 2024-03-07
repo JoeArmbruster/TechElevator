@@ -64,9 +64,9 @@
       <button>Delete Users</button>
     </div>
 
-    <button>Add New User</button>
+    <button @click="toggleNewUserForm">Add New User</button>
 
-    <form id="frmAddNewUser">
+    <form id="frmAddNewUser" v-show="showNewUserForm" @submit.prevent="addNewUser">
       <div class="field">
         <label for="firstName">First Name:</label>
         <input type="text" id="firstName" name="firstName" />
@@ -92,6 +92,7 @@
 export default {
   data() {
     return {
+      showNewUserForm: false,
       filter: {
         firstName: "",
         lastName: "",
@@ -161,6 +162,38 @@ export default {
     };
   },
   methods: {
+    toggleNewUserForm(){
+      this.showNewUserForm = !this.showNewUserForm;
+    },
+    clearForm(){
+      this.newUser = {
+        id: null,
+        firstName: "",
+        lastName: "",
+        username: "",
+        emailAddress: "",
+        status: "Active"
+      };
+    },
+    addNewUser(){
+      const newUser = this.createNewUser();
+      this.users.push(newUser);
+      this.clearForm();
+      this.showNewUserForm = false;
+    },
+    createNewUser(){
+      const userId = this.getNextUserId();
+  
+      const newUser = {
+        id: userId,
+        firstName: this.newUser.firstName,
+        lastName: this.newUser.lastName,
+        username: this.newUser.username,
+        emailAddress: this.newUser.emailAddress,
+        status: this.newUser.status
+        };
+      return newUser;
+      },
     getNextUserId() {
       return this.nextUserId++;
     }
