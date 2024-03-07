@@ -52,7 +52,8 @@
           <td>{{ user.emailAddress }}</td>
           <td>{{ user.status }}</td>
           <td>
-            <button class="btnActivateDeactivate">Activate or Deactivate</button>
+            <button class="btnActivateDeactivate" @click="toggleUserStatus(user.id)">
+              {{ user.status === 'Active' ? 'Deactivate' : 'Activate' }}</button>
           </td>
         </tr>
       </tbody>
@@ -196,6 +197,10 @@ export default {
       },
     getNextUserId() {
       return this.nextUserId++;
+    },
+    toggleUserStatus(userId) {
+      const userIndex = this.users.findIndex(user => user.id === userId);
+      this.users[userIndex].status = this.users[userIndex].status === 'Active' ? 'Inactive' : 'Active';
     }
   },
   computed: {
