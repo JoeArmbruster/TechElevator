@@ -15,7 +15,7 @@
       <tbody>
         <tr>
           <td>
-            <input type="checkbox" id="selectAll" v-model="selectAllChecked" @change="toggleSelectAll" />
+            <input type="checkbox" id="selectAll" v-model="selectAllCheckbox" @change="toggleSelectAll" />
           </td>
           <td>
             <input type="text" id="firstNameFilter" v-model="filter.firstName" />
@@ -60,9 +60,9 @@
     </table>
 
     <div class="all-actions">
-      <button @click="activateSelectedUsers">Activate Users</button>
-      <button @click="deactivateSelectedUsers">Deactivate Users</button>
-      <button @click="deleteSelectedUsers">Delete Users</button>
+      <button @click="activateSelectedUsers" :disabled="selectedUserIds.length === 0">Activate Users</button>
+      <button @click="deactivateSelectedUsers" :disabled="selectedUserIds.length === 0">Deactivate Users</button>
+      <button @click="deleteSelectedUsers" :disabled="selectedUserIds.length === 0">Delete Users</button>
     </div>
 
     <button @click="toggleNewUserForm">Add New User</button>
@@ -95,7 +95,7 @@ export default {
     return {
       showNewUserForm: false,
       selectedUserIds: [],
-      selectAllChecked: false,
+      selectAllCheckbox: false,
       filter: {
         firstName: "",
         lastName: "",
@@ -226,7 +226,7 @@ export default {
       this.selectAllCheckbox = false;
     },
     toggleSelectAll() {
-      if(this.selectAllChecked){
+      if(this.selectAllCheckbox){
         this.selectedUserIds = this.users.map(user => user.id);
       } else {
         this.selectedUserIds = [];
@@ -235,7 +235,7 @@ export default {
     checkSelectAllCheckbox(){
       const totalUsers = this.filteredList.length;
       const selectedUsers = this.selectedUserIds.length;
-      this.selectAllChecked = selectedUsers === totalUsers;
+      this.selectAllCheckbox = selectedUsers === totalUsers & totalUsers > 0;
     }
   },
   computed: {
