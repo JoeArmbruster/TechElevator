@@ -1,12 +1,27 @@
 <template>
-  <div class="card">
-
+  <div :class="{ 'card': true, 'read': book.read }">
+    <h2 class="book-title">{{ book.title }}</h2>
+    <h3 class="book-author">{{ book.author }}</h3>
+    <img class="book-image" :src="'http://covers.openlibrary.org/b/isbn/' + book.isbn + '-M.jpg'" alt="Book Cover">
+    <button @click="toggleRead" :class="{ 'mark-read': !book.read, 'mark-unread': book.read }">
+      {{ book.read ? 'Mark Unread' : 'Mark Read' }}
+    </button>
   </div>
 </template>
 
 <script>
 export default {
-
+  props: {
+    book: {
+      type: Object,
+      required: true
+    }
+  },
+  methods: {
+    toggleRead() {
+      this.$store.commit('TOGGLE_READ_STATUS', this.book);
+    }
+  }
 }
 </script>
 
@@ -36,7 +51,8 @@ export default {
   width: 80%;
 }
 
-.mark-read, .mark-unread {
+.mark-read,
+.mark-unread {
   display: block;
   position: absolute;
   bottom: 40px;

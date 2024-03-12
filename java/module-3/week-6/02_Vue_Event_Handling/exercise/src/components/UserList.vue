@@ -240,7 +240,7 @@ export default {
   },
   computed: {
     filteredList() {
-      let filteredUsers = this.users;
+      let filteredUsers = this.users; 
       if (this.filter.firstName != "") {
         filteredUsers = filteredUsers.filter((user) =>
           user.firstName
