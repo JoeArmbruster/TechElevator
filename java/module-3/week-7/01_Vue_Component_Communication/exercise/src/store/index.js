@@ -31,11 +31,14 @@ export function createStore() {
       ]
     },
     mutations: {
-      TOGGLE_READ_STATUS(state, book) {
+      TOGGLE_READ_STATUS(state, book){
         const index = state.books.findIndex(b => b.isbn === book.isbn);
-        if (index !== -1) {
+        if (index !== -1){
           state.books[index].read = !state.books[index].read;
         }
+      },
+      SAVE_BOOK(state, book) {
+        state.books.push(book);
       }
     },
     actions: {},
