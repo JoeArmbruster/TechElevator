@@ -15,7 +15,15 @@ export default {
   },
 
   create(topic) {
-    return http.post('/topcis', topic);
+    return http.post('/topics', topic);
+  },
+
+  update(topicId, updatedTopic) {
+    return http.put(`/topics/${topicId}`, updatedTopic);
+  },
+
+  delete(topicId){
+    return http.delete(`/topics/${topicId}`);
   }
 
 }

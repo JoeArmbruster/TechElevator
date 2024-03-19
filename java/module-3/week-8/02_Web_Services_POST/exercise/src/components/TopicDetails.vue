@@ -18,8 +18,8 @@
 </template>
 
 <script>
-import topicService from '../services/TopicService.js';
 import MessageSummary from '../components/MessageSummary.vue';
+import TopicService from '../services/TopicService';
 
 export default {
   components: {
@@ -47,7 +47,14 @@ export default {
         
         // TODO - Do a delete, then navigate Home on success
         // For errors, call handleErrorResponse
-        
+        TopicService.delete(this.topic.id)
+        .this(response => {
+          if(response.status === 200){
+            this.$router.push({ name: 'HomeView' });
+          } else {
+            this.handleErrorResponse(response, 'deleting');
+          }
+        })
       }
     },
     handleErrorResponse(error, verb) {
