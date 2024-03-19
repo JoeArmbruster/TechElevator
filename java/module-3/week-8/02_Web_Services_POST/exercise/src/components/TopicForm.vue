@@ -12,6 +12,8 @@
 </template>
 
 <script>
+import TopicService from '../services/TopicService';
+
 export default {
   props: {
     topic: {
@@ -42,14 +44,19 @@ export default {
 
         // TODO - Do an add, then navigate Home on success.
         // For errors, call handleErrorResponse
-
+        TopicService.create(this.editTopic)
+        .then(response => {
+          if (response.status === 201){
+            this.$router.push({ name: 'HomeView' });
+        
       } else {
 
         // TODO - Do an edit, then navigate back to Topic Details on success
         // For errors, call handleErrorResponse
-
+        this.handleErrorResponse(response, 'adding');
       }
-    },
+    });
+    }},
     cancelForm() {
       // Go back to previous page
       this.$router.back();
