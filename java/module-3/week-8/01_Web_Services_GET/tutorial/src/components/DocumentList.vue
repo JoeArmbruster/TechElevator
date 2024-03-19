@@ -25,6 +25,9 @@
 </template>
 
 <script>
+
+import docsService from '../services/DocsService';
+
 export default {
   data() {
     return {
@@ -48,7 +51,9 @@ export default {
     }
   },
   created() {
-
+    docsService.list().then(response => {
+      this.docs = response.data;
+    });
   }
 };
 </script>
