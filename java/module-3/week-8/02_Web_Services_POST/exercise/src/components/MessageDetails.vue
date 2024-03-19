@@ -18,6 +18,7 @@
 </template>
 
 <script>
+import MessageService from '../services/MessageService';
 import messageService from '../services/MessageService';
 export default {
   props: {
@@ -39,7 +40,14 @@ export default {
         
         // TODO - Do a delete, then navigate to Topic Details on success
         // For errors, call handleErrorResponse
-
+      MessageService.delete(this.message.id)
+      .then(response => {
+        if(response.status === 200){
+          this.$router.push({ name: 'TopicDetailsView', params: { topicId: this.message.topicId} });
+        } else {
+          this.handleErrorResponse(response, 'deleting');
+        }
+      })
       }
     },
     handleErrorResponse(error, verb) {
