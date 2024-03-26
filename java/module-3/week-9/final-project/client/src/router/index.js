@@ -6,6 +6,8 @@ import ProductsView from '../views/ProductsView.vue'
 import LoginView from '../views/LoginView.vue'
 import LogoutView from '../views/LogoutView.vue'
 import RegisterView from '../views/RegisterView.vue'
+import ProductDetailsView from '../views/ProductDetailsView.vue';
+import CartView from '../views/CartView.vue';
 
 
 /**
@@ -26,6 +28,22 @@ const routes = [
       path: '/products',
       name: 'products',
       component: ProductsView,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/products/:id',
+      name: 'productDetails',
+      component: ProductDetailsView,
+      meta: {
+        requiresAuth: false
+      }
+    },
+    {
+      path: '/cart',
+      name: 'cart',
+      component: CartView,
       meta: {
         requiresAuth: false
       }

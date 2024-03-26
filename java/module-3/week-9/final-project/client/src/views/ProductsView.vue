@@ -6,32 +6,7 @@
         <loading-spinner id="spinner" v-bind:spin="isLoading" />
       </h1>
     </div>
-    <h2>Loading spinner demonstration</h2>
-    <p>
-      This is a demonstration of how you can show or hide a "spinner" icon to
-      let the user know something is happening. Before calling an API, you'd set
-      the data property <code>isLoading</code> to <code>true</code>. When the
-      call completes, set it to <code>false</code>.
-    </p>
-    <p>
-      For this demonstration, clicking the checkbox below sets
-      <code>isLoading</code> to <code>true</code>, so it simulates what the user
-      would see when your app is accessing an API.
-    </p>
-    <input type="checkbox" name="loading" id="loading" v-model="isLoading" /> Is
-    Loading
-    <p id="login-message" v-if="!isLoggedIn">
-      Welcome! You may browse anonymously as much as you wish,<br />
-      but you must
-      <router-link v-bind:to="{ name: 'login' }">Login</router-link> to add
-      items to your shopping cart.
-    </p>
-    <h2>Font-awesome demonstration</h2>
-    <p>
-      This code shows you how you can include Font-awesome icons on your page. Below are two icons: 
-      one to indicate a "tile" view of products, and another to indicate a "table" view. There's also a little bit
-      of styling to get you started, but you can style it your own way. And there's a property to track which view is "active".
-    </p>
+
     <font-awesome-icon
       v-bind:class="{ 'view-icon': true, active: cardView }"
       v-on:click="cardView = true"
@@ -44,19 +19,29 @@
       icon="fa-solid fa-table"
       title="View table"
     />
+
+    <products-as-cards v-bind:products="products" v-if="cardView" />
+    <products-as-table v-bind:products="products" v-else />
+
   </div>
 </template>
 
 <script>
 import LoadingSpinner from "../components/LoadingSpinner.vue";
+import ProductsAsCards from "../components/ProductsAsCards.vue";
+import ProductsAsTable from "../components/ProductsAsTable.vue";
+
 export default {
   components: {
     LoadingSpinner,
+    ProductsAsCards,
+    ProductsAsTable,
   },
   data() {
     return {
       isLoading: false,
       cardView: true,
+      products: [],
     };
   },
 
@@ -66,9 +51,72 @@ export default {
     },
   },
 
-  methods: {},
+  methods: {
+    getProducts() {
+      this.products = [
+        {
+          productId: 1,
+          productSku: "MUG-023",
+          name: "Solar Geeks coffee mug",
+          description: "Start your day off right!",
+          price: 14.99,
+          imageName: "Product-MUG-023.jpg",
+        },
+        {
+          productId: 2,
+          productSku: "YET-001",
+          name: "Solar Geeks Yeti",
+          description: "Keep cool all day long.",
+          price: 21.99,
+          imageName: "Product-YET-001.jpg",
+        },
+        {
+          productId: 3,
+          productSku: "ART-256",
+          name: "Galactic poster",
+          description: "Beautiful view of a galaxy",
+          price: 9.59,
+          imageName: "Product-ART-256.jpg",
+        },
+        {
+          productId: 4,
+          productSku: "TOY-978",
+          name: "Toy rocket",
+          description: "To infinite imagination",
+          price: 39.99,
+          imageName: "Product-TOY-978.jpg",
+        },
+        {
+          productId: 5,
+          productSku: "EAT-235",
+          name: "Astronaut ice cream",
+          description: "As cold as space",
+          price: 5.79,
+          imageName: "Product-EAT-215.jpg",
+        },
+        {
+          productId: 6,
+          productSku: "HAT-928",
+          name: "Solar Geeks baseball cap",
+          description: "Look stylish with our logo",
+          price: 16.89,
+          imageName: "Product-HAT-908.jpg",
+        },
+        {
+          productId: 7,
+          productSku: "LIT-612",
+          name: "Intro to Astrophysics",
+          description: "Learn about astrophysics",
+          price: 7.99,
+          imageName: "Product-LIT-612.jpg",
+        },
+      ];
+    },
+  },
 
-  created() {},
+  created() {
+    this.getProducts();
+  },
 };
 </script>
 

@@ -1,0 +1,15 @@
+<template>
+<div id="cart-view">
+  <h1>Cart View</h1>
+</div>
+</template>
+
+<script>
+export default {
+
+}
+</script>
+
+<style>
+
+</style>
