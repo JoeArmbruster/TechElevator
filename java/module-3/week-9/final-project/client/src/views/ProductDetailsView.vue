@@ -1,5 +1,5 @@
 <template>
-  <div id="product-details">
+  <div id="product-details" v-if="product">
     <div id="heading-line">
       <h1>{{ product.name }}</h1>
       <button class="add-to-cart-button" @click="addToCart(product.productId)">
@@ -11,40 +11,64 @@
       <span>{{ product.productSku }}</span>
       <span>{{ formatCurrency(product.price) }}</span>
     </div>
-    <img :src="imageSrc(product.imageName)" alt="Product Image" class="product-image" />
+    <img
+      :src="imageSrc(product.imageName)"
+      alt="Product Image"
+      class="product-image"
+    />
+  </div>
+  <div v-else>
+    <p>Loading...</p>
   </div>
 </template>
 
 <script>
 export default {
-  props: ["products"],
+  data() {
+    return {
+      product: null,
+    };
+  },
 
+  created() {
+    const productId = this.$route.params.id;
+    this.fetchProductDetails(productId);
+  },
   methods: {
-      formatCurrency(price) {
-          return new Intl.NumberFormat('en-US', {
-              currency: 'USD',
-              style: "currency"
-          }).format(price);
-      },
-      addtoCart(productId){
-          
-      }
-  }
+    fetchProductDetails(productId) {
+      const apiURL = `/api/products/${productId}`;
+      fetch(apiURL)
+        .then((response) => response.json())
+        .then((productData) => {
+          this.product = productData;
+        });
+    },
+    formatCurrency(price) {
+      return new Intl.NumberFormat("en-US", {
+        currency: "USD",
+        style: "currency",
+      }).format(price);
+    },
+    addtoCart(productId) {},
+    imageSrc(imageName) {
+      return `/img/${imaageName}`;
+    },
+  },
 };
 </script>
 
 <style>
 #heading-line {
-    display: flex;
-    align-items: center;
+  display: flex;
+  align-items: center;
 }
 
-#details-line{
-    display: flex;
-    justify-content: space-between;
+#details-line {
+  display: flex;
+  justify-content: space-between;
 }
 
 product-image {
-    max-width: 100%;
+  max-width: 100%;
 }
 </style>
