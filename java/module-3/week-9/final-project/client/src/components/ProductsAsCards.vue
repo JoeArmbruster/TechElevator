@@ -4,6 +4,7 @@
       class="product-card"
       v-for="product in products"
       v-bind:key="product.productId">
+      <router-link :to="`/products/${product.productId}`">
       <div class="product-header">
       <div class="product-sku">{{ product.productSku }}</div>
       <div class="product-price">{{ formatCurrency(product.price) }}</div>
@@ -11,6 +12,7 @@
         <div class="product-name">{{ product.name }}</div>
         <img src="/img/product_350x250.jpg" alt="Product Image" class="product-image" />
       <button @click="addToCart(product.productId)" class="add-to-cart-btn"><font-awesome-icon icon="fa-solid fa-cart-plus" /></button>
+      </router-link>
       </div>
   </section>
 </template>

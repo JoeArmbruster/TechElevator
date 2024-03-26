@@ -36,6 +36,7 @@ const routes = [
       path: '/products/:id',
       name: 'productDetails',
       component: ProductDetailsView,
+      props: true,
       meta: {
         requiresAuth: false
       }

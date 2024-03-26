@@ -24,25 +24,28 @@
 
 <script>
 export default {
-  data() {
-    return {
-      product: null,
-    };
-  },
+    props: ['product'],
 
-  created() {
-    const productId = this.$route.params.id;
-    this.fetchProductDetails(productId);
-  },
+//   props: {
+//       product: {
+//           type: Object,
+//           required: true
+//       }
+//   },
+
+//   created() {
+//     const productId = this.$route.params.id;
+//     this.fetchProductDetails(productId);
+//   },
   methods: {
-    fetchProductDetails(productId) {
-      const apiURL = `/api/products/${productId}`;
-      fetch(apiURL)
-        .then((response) => response.json())
-        .then((productData) => {
-          this.product = productData;
-        });
-    },
+    // fetchProductDetails(productId) {
+    //   const apiURL = `/api/products/${productId}`;
+    //   fetch(apiURL)
+    //     .then((response) => response.json())
+    //     .then((productData) => {
+    //       this.product = productData;
+    //     });
+    // },
     formatCurrency(price) {
       return new Intl.NumberFormat("en-US", {
         currency: "USD",
@@ -51,7 +54,8 @@ export default {
     },
     addtoCart(productId) {},
     imageSrc(imageName) {
-      return `/img/${imaageName}`;
+    return '/img/product_350x250.jpg';
+    //   return imageName ? `/img/${imageName}` : "img/product_350x250.jpg";
     },
   },
 };
