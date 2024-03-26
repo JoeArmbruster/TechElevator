@@ -73,5 +73,8 @@ nav {
 
 footer {
   border-top: 1px solid;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
 }
 </style>

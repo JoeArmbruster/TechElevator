@@ -5,24 +5,34 @@
         Products
         <loading-spinner id="spinner" v-bind:spin="isLoading" />
       </h1>
+
+      <div class="search-box">
+        <font-awesome-icon
+          v-bind:class="{ 'view-icon': true, active: cardView }"
+          v-on:click="cardView = true"
+          icon="fa-solid fa-grip"
+          title="View tiles"
+        />
+        <font-awesome-icon
+          v-bind:class="{ 'view-icon': true, active: !cardView }"
+          v-on:click="cardView = false"
+          icon="fa-solid fa-table"
+          title="View table"
+        />
+
+        <input
+          type="text"
+          v-model.trim="searchTerm"
+          @keyup.enter="searchProducts"
+          placeholder="Search..."
+        />
+        <button @click="searchProducts" title="Search">
+          <font-awesome-icon icon="fa-solid fa-search" />
+        </button>
+      </div>
     </div>
-
-    <font-awesome-icon
-      v-bind:class="{ 'view-icon': true, active: cardView }"
-      v-on:click="cardView = true"
-      icon="fa-solid fa-grip"
-      title="View tiles"
-    />
-    <font-awesome-icon
-      v-bind:class="{ 'view-icon': true, active: !cardView }"
-      v-on:click="cardView = false"
-      icon="fa-solid fa-table"
-      title="View table"
-    />
-
-    <products-as-cards v-bind:products="products" v-if="cardView" />
-    <products-as-table v-bind:products="products" v-else />
-
+    <products-as-cards v-bind:products="filteredProducts" v-if="cardView" />
+    <products-as-table v-bind:products="filteredProducts" v-else />
   </div>
 </template>
 
@@ -42,16 +52,37 @@ export default {
       isLoading: false,
       cardView: true,
       products: [],
+      searchTerm: "",
     };
   },
 
   computed: {
+    filteredProducts() {
+      const searchTerm = this.searchTerm.toLowerCase();
+      return this.products.filter((product) => {
+        const productName = product.name.toLowerCase();
+        const productSku = product.productSku.toLowerCase();
+        return (
+          productName.includes(searchTerm) || productSku.includes(searchTerm)
+        );
+      });
+    },
     isLoggedIn() {
       return this.$store.state.token.length > 0;
     },
   },
 
   methods: {
+    searchProducts() {
+      this.filteredProducts = this.products.filter((product) => {
+        const productName = product.name.toLowerCase();
+        const productSku = product.productSku.toLowerCase();
+        return (
+          productName.includes(this.searchTerm.toLowerCase()) ||
+          productSku.includes(this.searchTerm.toLowerCase())
+        );
+      });
+    },
     getProducts() {
       this.products = [
         {
@@ -121,6 +152,18 @@ export default {
 </script>
 
 <style scoped>
+#heading-line {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-bottom: 10px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin: 5px;
+}
+
 #spinner {
   color: green;
 }
@@ -146,5 +189,10 @@ export default {
 .view-icon:not(.active):hover {
   color: blue;
   background-color: rgba(255, 255, 255, 0.7);
+}
+
+.search-box {
+  display: flex;
+  align-items: center;
 }
 </style>

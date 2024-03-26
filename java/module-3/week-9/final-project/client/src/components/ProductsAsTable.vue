@@ -3,18 +3,17 @@
     <table>
         <thead>
             <tr>
-                <th>SKU</th>
-                <th>Product></th>
-                <th>Price</th>
-                <th>Action</th>
+                <th class="center">SKU</th>
+                <th class="left">Product</th>
+                <th class="right">Price</th>
             </tr>
         </thead>
         <tbody>
             <tr v-for="product in products" :key="product.productId">
-                <td>{{ product.productSku }}</td>
-                <td>{{ product.name }}</td>
-                <td>{{ formatCurrency(product.price) }}</td>
-                <td><button @click="addToCart(product.productId)">Add to cart</button></td>
+                <td class="center">{{ product.productSku }}</td>
+                <td class="left">{{ product.name }}</td>
+                <td class="right">{{ formatCurrency(product.price) }}</td>
+                <td class="button-col"><button @click="addToCart(product.productId)"><font-awesome-icon icon="fa-solid fa-cart-plus" /></button></td>
             </tr>
         </tbody>
     </table>
@@ -39,5 +38,45 @@ export default {
 };
 </script>
 
-<style>
+<style scoped>
+#product-table {
+    margin-top: 20px;
+}
+
+table {
+    width: auto;
+}
+
+th, td {
+    padding: 5px 50px;
+}
+
+th {
+    text-align: center;
+    font-size: 25px;
+}
+
+td {
+    vertical-align: center;
+}
+
+td.center {
+    text-align: center;
+}
+
+td.left {
+    text-align: left;
+}
+
+td.right {
+    text-align: right;
+}
+
+td:last-child {
+    text-align: center;
+}
+
+.button-col button {
+    margin-left: -50px;
+}
 </style>
