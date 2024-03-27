@@ -11,11 +11,7 @@
       <span>{{ product.productSku }}</span>
       <span>{{ formatCurrency(product.price) }}</span>
     </div>
-    <img
-      :src="imageSrc(product.imageName)"
-      alt="Product Image"
-      class="product-image"
-    />
+    <img src="/img/product_350x250.jpg" alt="Product Image" class="product-image" />
   </div>
   <div v-else>
     <p>Loading...</p>
@@ -23,29 +19,27 @@
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
-    props: ['product'],
+    data() {
+        return {
+            product: null,
+        };
+    },
 
-//   props: {
-//       product: {
-//           type: Object,
-//           required: true
-//       }
-//   },
-
-//   created() {
-//     const productId = this.$route.params.id;
-//     this.fetchProductDetails(productId);
-//   },
+    created() {
+        const productId = this.$route.params.id;
+        this.fetchProductDetails(productId);
+    },
+ 
   methods: {
-    // fetchProductDetails(productId) {
-    //   const apiURL = `/api/products/${productId}`;
-    //   fetch(apiURL)
-    //     .then((response) => response.json())
-    //     .then((productData) => {
-    //       this.product = productData;
-    //     });
-    // },
+    fetchProductDetails(productId) {
+      axios.get(`/api/products/${productId}`)
+      .then(response => {
+          this.product = response.data;
+      })
+    },
     formatCurrency(price) {
       return new Intl.NumberFormat("en-US", {
         currency: "USD",
@@ -53,10 +47,6 @@ export default {
       }).format(price);
     },
     addtoCart(productId) {},
-    imageSrc(imageName) {
-    return '/img/product_350x250.jpg';
-    //   return imageName ? `/img/${imageName}` : "img/product_350x250.jpg";
-    },
   },
 };
 </script>

@@ -6,15 +6,19 @@
           <th class="center">SKU</th>
           <th class="left">Product</th>
           <th class="right">Price</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
         <tr v-for="product in products" :key="product.productId">
-          <router-link :to="`/products/${product.productId}`">
-            <td class="center">{{ product.productSku }}</td>
-            <td class="left">{{ product.name }}</td>
-            <td class="right">{{ formatCurrency(product.price) }}</td>
-          </router-link>
+          <td class="center">{{ product.productSku }}</td>
+          <td class="left">
+            <router-link :to="`/products/${product.productId}`">{{
+              product.name
+            }}</router-link>
+          </td>
+          <td class="right">{{ formatCurrency(product.price) }}</td>
+
           <td class="button-col">
             <button @click="addToCart(product.productId)">
               <font-awesome-icon icon="fa-solid fa-cart-plus" />
