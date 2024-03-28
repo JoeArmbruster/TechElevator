@@ -11,32 +11,50 @@
           <th>Amount</th>
         </tr>
       </thead>
-      <tbody></tbody>
+      <tbody>
+          <tr v-for="item in cartItems" :key="item.productId">
+              <td>{{ item.quantity }}</td>
+              <td>{{ item.name }}</td>
+              <td>{{ formatCurrency(item.price) }}</td>
+              <td>{{ formatCurrency(item.quantity * item.price) }}</td>
+          </tr>
+      </tbody>
     </table>
 
-    <div id="cart-summary">
+    <!-- <div id="cart-summary">
       <div>
         <span>Subtotal:</span>
         <span>{{ formatCurrency(Subtotal) }}</span>
       </div>
       <div>
-        <span>Tax (6%):</span>
+        <span>Tax:</span>
         <span>{{ formatCurrency(tax) }}</span>
       </div>
       <div>
         <span>Total:</span>
         <span>{{ formatCurrency(total) }}</span>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>
 
 <script>
+import axios from 'axios';
+
 export default {
   data() {
     return {
       cartItems: [],
     };
+  },
+//   props: {
+//       cartItems: {
+//           type: Array,
+//           default: () => [],
+//       },
+//   },
+  created() {
+      this.fetchCartItems();
   },
   computed: {
     subtotal() {
@@ -56,6 +74,12 @@ export default {
     formatCurrency(amount) {
       return amount.toFixed(2);
     },
+    fetchCartItems() {
+        axios.get('/api/cart')
+        .then(response => {
+            this.cartItems = response.data;
+        })
+    }
   },
 };
 </script>

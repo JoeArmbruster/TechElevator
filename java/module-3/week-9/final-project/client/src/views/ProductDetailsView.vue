@@ -19,7 +19,7 @@
 </template>
 
 <script>
-import axios from 'axios';
+import productService from '../services/ProductService';
 
 export default {
     data() {
@@ -35,7 +35,7 @@ export default {
  
   methods: {
     fetchProductDetails(productId) {
-      axios.get(`/api/products/${productId}`)
+        productService.get(productId)
       .then(response => {
           this.product = response.data;
       })

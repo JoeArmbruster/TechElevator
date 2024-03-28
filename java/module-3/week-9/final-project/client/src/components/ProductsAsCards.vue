@@ -5,19 +5,20 @@
       v-for="product in products"
       v-bind:key="product.productId"
     >
-      <router-link :to="`/products/${product.productId}`">
-        <div class="product-header">
-          <div class="product-sku">{{ product.productSku }}</div>
-          <div class="product-price">{{ formatCurrency(product.price) }}</div>
-        </div>
-        <div class="product-name">{{ product.name }}</div>
-        <img
-          src="/img/product_350x250.jpg"
-          alt="Product Image"
-          class="product-image"
-        />
+      <div class="product-header">
+        <div class="product-sku">{{ product.productSku }}</div>
+        <div class="product-price">{{ formatCurrency(product.price) }}</div>
+      </div>
+      <router-link :to="`/products/${product.productId}`"
+        ><div class="product-name">{{ product.name }}</div>
       </router-link>
-      <button @click="addToCart(product.productId)" class="add-to-cart-btn">
+
+      <img
+        src="/img/product_350x250.jpg"
+        alt="Product Image"
+        class="product-image"
+      />
+      <button @click="addToCart(product)" class="add-to-cart-btn">
         <font-awesome-icon icon="fa-solid fa-cart-plus" />
       </button>
     </div>
@@ -35,7 +36,9 @@ export default {
         style: "currency",
       }).format(price);
     },
-    addtoCart(productId) {},
+    addtoCart(product) {
+      this.$emit("add-to-cart", product);
+    },
   },
 };
 </script>
