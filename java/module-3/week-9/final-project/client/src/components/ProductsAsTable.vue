@@ -20,7 +20,7 @@
           <td class="right">{{ formatCurrency(product.price) }}</td>
 
           <td class="button-col">
-            <button @click="addToCart(product)">
+            <button @click="addToCart(product.productId)">
               <font-awesome-icon icon="fa-solid fa-cart-plus" />
             </button>
           </td>
@@ -41,8 +41,8 @@ export default {
         style: "currency",
       }).format(price);
     },
-    addtoCart(product) {
-        this.$emit("add-to-cart", product);
+    addtoCart(productId) {
+        this.$emit('add-to-cart', productId);
     },
   },
 };

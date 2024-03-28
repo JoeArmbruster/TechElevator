@@ -3,15 +3,19 @@
     <div id="heading-line">
       <h1>{{ product.name }}</h1>
       <button class="add-to-cart-button" @click="addToCart(product.productId)">
-        <i class="fas fa-cart-plus"></i> Add to Cart
+        <font-awesome-icon icon="fa-solid fa-cart-plus" /> Add to Cart
       </button>
     </div>
-    <p>{{ product.description }}</p>
-    <div id="details-line">
-      <span>{{ product.productSku }}</span>
-      <span>{{ formatCurrency(product.price) }}</span>
+    <div class="product-description">{{ product.description }}</div>
+    <span class="product-sku">{{ product.productSku }}</span>
+    <span class="product-price">{{ formatCurrency(product.price) }}</span>
+    <div class="product-image">
+      <img
+        src="/img/product_350x250.jpg"
+        alt="Product Image"
+        class="product-image"
+      />
     </div>
-    <img src="/img/product_350x250.jpg" alt="Product Image" class="product-image" />
   </div>
   <div v-else>
     <p>Loading...</p>
@@ -19,26 +23,25 @@
 </template>
 
 <script>
-import productService from '../services/ProductService';
+import productService from "../services/ProductService";
 
 export default {
-    data() {
-        return {
-            product: null,
-        };
-    },
+  data() {
+    return {
+      product: null,
+    };
+  },
 
-    created() {
-        const productId = this.$route.params.id;
-        this.fetchProductDetails(productId);
-    },
- 
+  created() {
+    const productId = this.$route.params.id;
+    this.fetchProductDetails(productId);
+  },
+
   methods: {
     fetchProductDetails(productId) {
-        productService.get(productId)
-      .then(response => {
-          this.product = response.data;
-      })
+      productService.get(productId).then((response) => {
+        this.product = response.data;
+      });
     },
     formatCurrency(price) {
       return new Intl.NumberFormat("en-US", {
@@ -46,23 +49,57 @@ export default {
         style: "currency",
       }).format(price);
     },
-    addtoCart(productId) {},
+    addtoCart(productId) {
+        this.$emit('add-to-cart', productId)
+    },
   },
 };
 </script>
 
 <style>
+#product-details {
+    margin-left: 10px;
+}
+
 #heading-line {
   display: flex;
   align-items: center;
-}
-
-#details-line {
-  display: flex;
   justify-content: space-between;
 }
 
-product-image {
-  max-width: 100%;
+.product-name {
+  flex-grow: 1;
+}
+
+h1 {
+  font-size: 2.5rem;
+  margin: 5px;
+}
+
+.product-sku,
+.product-price {
+  font-size: 1.2 rem;
+  font-weight: normal;
+}
+
+.product-sku {
+  margin-right: 15px;
+}
+
+.product-image {
+  width: auto;
+  height: auto;
+  margin-top: 10px;
+}
+
+.add-to-cart-button {
+  border-radius: 7px;
+  font-size: 1.3rem;
+  margin-right: 10px;
+}
+
+.product-description {
+  font-size: 2rem;
+  margin-bottom: 10px;
 }
 </style>

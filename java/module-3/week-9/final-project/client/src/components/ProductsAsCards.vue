@@ -18,7 +18,7 @@
         alt="Product Image"
         class="product-image"
       />
-      <button @click="addToCart(product)" class="add-to-cart-btn">
+      <button @click="addToCart(product.productId)" class="add-to-cart-btn">
         <font-awesome-icon icon="fa-solid fa-cart-plus" />
       </button>
     </div>
@@ -36,8 +36,8 @@ export default {
         style: "currency",
       }).format(price);
     },
-    addtoCart(product) {
-      this.$emit("add-to-cart", product);
+    addtoCart(productId) {
+      this.$emit('add-to-cart', productId);
     },
   },
 };
