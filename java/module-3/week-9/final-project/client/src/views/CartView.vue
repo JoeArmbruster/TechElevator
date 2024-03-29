@@ -1,111 +1,112 @@
 <template>
   <div id="cart-view">
     <h1>Shopping Cart</h1>
-
-    <table>
+    <table id="cart-table">
       <thead>
         <tr>
-          <th>Quantity</th>
+          <th>Qty</th>
           <th>Product</th>
           <th>Price</th>
           <th>Amount</th>
+          <th></th>
         </tr>
       </thead>
       <tbody>
-          <tr v-for="item in cartItems" :key="item.productId">
-              <td>{{ item.quantity }}</td>
-              <td>{{ item.productName }}</td>
-              <td>{{ formatCurrency(item.price) }}</td>
-              <td>{{ formatCurrency(item.amount) }}</td>
-          </tr>
+        <tr v-for="item in cart.items" v-bind:key="item.cartItemId"></tr>
+        <td>{{ item.quantity }}</td>
+        <td>{{ item.product.name }}</td>
       </tbody>
     </table>
-
-    <div id="cart-summary">
-      <div>
-        <span>Subtotal:</span>
-        <span>{{ formatCurrency(subtotal) }}</span>
-      </div>
-      <div>
-        <span>Tax:</span>
-        <span>{{ formatCurrency(tax) }}</span>
-      </div>
-      <div>
-        <span>Total:</span>
-        <span>{{ formatCurrency(total) }}</span>
-      </div>
-    </div>
   </div>
 </template>
 
 <script>
-import axios from 'axios';
-
 export default {
   data() {
     return {
-      cartItems: [],
+      cart: {},
     };
   },
-
-  created() {
-      this.$root.$on('add-to-cart', this.addToCart);
-      this.products = [
-          { productId: 1, name: 'Solar Geeks coffee mug', price: 14.99 },
-          { productId: 2, name: 'Solar Geeks Yeti', price: 21.99 },
-          { productId: 3, name: 'Galactic poster', price: 9.59 },
-          { productId: 4, name: 'Toy rocket', price: 39.99 },
-          { productId: 5, name: 'Astronaut ice cteam', price: 5.79 },
-          { productId: 6, name: 'Solar Geeks baseball cap', price: 16.89 },
-          { productId: 7, name: 'Inro to Astrophysics', price: 7.99}
-      ];
-  },
-  computed: {
-    subtotal() {
-      return this.cartItems.reduce((acc, productId) => {
-        return acc + this.getAmount(productId);
-      }, 0);
-    },
-    tax() {
-      return this.subtotal * 0.06; // Assuming tax rate is 6%
-    },
-    total() {
-      return this.subtotal + this.tax;
-    },
-  },
   methods: {
-    addToCart(productId) {
-      // Add productId to cartItems array
-      this.cartItems.push(productId);
+    getCart() {
+      this.cart = {
+        tax: 8.74,
+        items: [
+          {
+            cartItemId: 1,
+            userId: 1,
+            productId: 2,
+            product: {
+              productId: 2,
+              productSku: "YET-001",
+              name: "Solar Geeks Yeti",
+              description: "Keep cool all day long.",
+              price: 21.99,
+              imageName: "Product-YET-001.jpg",
+            },
+            quantity: 3,
+          },
+          {
+            cartItemId: 2,
+            userId: 1,
+            productId: 4,
+            product: {
+              productId: 4,
+              productSku: "TOY-978",
+              name: "Toy rocket",
+              description: "To infinite imagination",
+              price: 39.99,
+              imageName: "Product-TOY-978.jpg",
+            },
+            quantity: 1,
+          },
+          {
+            cartItemId: 3,
+            userId: 1,
+            productId: 1,
+            product: {
+              productId: 1,
+              productSku: "MUG-023",
+              name: "Solar Geeks coffee mug",
+              description: "Start your day off right!",
+              price: 14.99,
+              imageName: "Product-MUG-023.jpg",
+            },
+            quantity: 2,
+          },
+          {
+            cartItemId: 4,
+            userId: 1,
+            productId: 7,
+            product: {
+              productId: 7,
+              productSku: "LIT-612",
+              name: "Intro to Astrophysics",
+              description: "Learn about astrophysics",
+              price: 7.99,
+              imageName: "Product-LIT-612.jpg",
+            },
+            quantity: 2,
+          },
+        ],
+        itemSubtotal: 151.92,
+        total: 160.66,
+      };
     },
-    getQuantity(productId) {
-      // Calculate quantity for the productId in cartItems
-      return this.cartItems.filter(id => id === productId).length;
-    },
-    getProduct(productId) {
-      // Find and return the product name for the productId
-      const product = this.products.find(p => p.productId === productId);
-      return product ? product.name : 'Unknown Product';
-    },
-    getPrice(productId) {
-      // Find and return the product price for the productId
-      const product = this.products.find(p => p.productId === productId);
-      return product ? product.price : 0;
-    },
-    getAmount(productId) {
-      // Calculate and return the amount (price x quantity) for the productId
-      return this.getPrice(productId) * this.getQuantity(productId);
-    },
-    formatCurrency(price) {
-      // Format price as currency
-      return new Intl.NumberFormat('en-US', {
-        style: 'currency',
-        currency: 'USD',
-      }).format(price);
-    },
+  },
+  created() {
+    this.getCart();
   },
 };
 </script>
 
 <style>
 </style>
+ 
+
+
+
+
+
+
+

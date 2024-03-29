@@ -49,8 +49,11 @@ export default {
         style: "currency",
       }).format(price);
     },
-    addtoCart(productId) {
-        this.$emit('add-to-cart', productId)
+    // addtoCart(productId) {
+    //     this.$emit('add-to-cart', productId)
+    // }
+    addToCart(){
+        
     },
   },
 };
