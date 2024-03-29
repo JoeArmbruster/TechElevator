@@ -12,9 +12,15 @@
         </tr>
       </thead>
       <tbody>
-        <tr v-for="item in cart.items" v-bind:key="item.cartItemId"></tr>
+        <tr v-for="item in cart.items" v-bind:key="item.cartItemId">
         <td>{{ item.quantity }}</td>
         <td>{{ item.product.name }}</td>
+        <td>{{ item.product.price }}</td>
+        <td>{{ item.quantity * item.product.price }}</td>
+        </tr>
+        <tr class="underline-row">
+            <td colspan="5"></td>
+        </tr>
       </tbody>
     </table>
   </div>
@@ -101,6 +107,9 @@ export default {
 </script>
 
 <style>
+#cart-table .underline-row {
+    border-bottom: 1px solid black;
+}
 </style>
  
 
