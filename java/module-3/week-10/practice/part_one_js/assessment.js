@@ -9,6 +9,9 @@
  * Example 3: filteredSum([]) --> 0
  */
 function filteredSum(arr) {
+    const filteredArr = arr.filter(num => num >= 0 && num <= 100);
+    const sum = filteredArr.reduce((acc, curr) => acc + curr, 0);
+    return sum;
 
 }
 
@@ -28,8 +31,35 @@ function filteredSum(arr) {
  *     pagesNonFiction: 927
  *   }
  */
-function yearlyBookCount(year, bookArray) {
+ function yearlyBookCount(year, bookArray) {
+    // Initialize variables to store the total pages read for fiction and non-fiction books
+    let pagesFiction = 0;
+    let pagesNonFiction = 0;
 
+    // Iterate over the book array
+    bookArray.forEach(book => {
+        // Check if the book is from the given year
+        const datesReadInYear = book.datesRead.filter(date => date.endsWith(year));
+
+        // If the book was read in the given year
+        if (datesReadInYear.length > 0) {
+            // Determine if the book is fiction or non-fiction based on its genres
+            const isFiction = book.genres.includes("Fiction");
+
+            // Add the number of pages to the corresponding total
+            if (isFiction) {
+                pagesFiction += book.pageCount;
+            } else {
+                pagesNonFiction += book.pageCount;
+            }
+        }
+    });
+
+    // Return an object with properties for pagesFiction and pagesNonFiction
+    return {
+        pagesFiction: pagesFiction,
+        pagesNonFiction: pagesNonFiction
+    };
 }
 
 /**
@@ -53,6 +83,34 @@ function yearlyBookCount(year, bookArray) {
  *    totalBooks: 32
  * }
  */
-function yearlyBookStatistics(year, bookArray) {
-    
+ function yearlyBookStatistics(year, bookArray) {
+    // Initialize an object to store the counts for each genre
+    const genreCounts = {};
+
+    // Initialize a variable to store the total number of books read
+    let totalBooks = 0;
+
+    // Iterate over the book array
+    bookArray.forEach(book => {
+        // Check if the book was read in the given year
+        const datesReadInYear = book.datesRead.filter(date => date.endsWith(year));
+
+        // If the book was read in the given year
+        if (datesReadInYear.length > 0) {
+            // Increment the total number of books read
+            totalBooks++;
+
+            // Iterate over the genres of the book
+            book.genres.forEach(genre => {
+                // Increment the count for the genre or initialize it if it doesn't exist
+                genreCounts[genre] = (genreCounts[genre] || 0) + 1;
+            });
+        }
+    });
+
+    // Add the totalBooks count to the genreCounts object
+    genreCounts['totalBooks'] = totalBooks;
+
+    // Return the genreCounts object
+    return genreCounts;
 }
