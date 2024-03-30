@@ -2,7 +2,7 @@
   <div id="product-details" v-if="product">
     <div id="heading-line">
       <h1>{{ product.name }}</h1>
-      <button class="add-to-cart-button" @click="addToCart(product.productId)">
+      <button class="add-to-cart-button" @click="addToCartClicked">
         <font-awesome-icon icon="fa-solid fa-cart-plus" /> Add to Cart
       </button>
     </div>
@@ -49,11 +49,9 @@ export default {
         style: "currency",
       }).format(price);
     },
-    // addtoCart(productId) {
-    //     this.$emit('add-to-cart', productId)
-    // }
-    addToCart(){
-        
+    addToCartClicked(){
+              this.$emit('add-to-cart-clicked');
+
     },
   },
 };

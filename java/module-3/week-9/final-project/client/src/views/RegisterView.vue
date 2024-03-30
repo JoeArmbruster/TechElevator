@@ -1,25 +1,29 @@
 <template>
   <div id="register">
-    <form v-on:submit.prevent="register">
+    <form v-on:submit.prevent="register" class="register-form">
       <h1>Create Account</h1>
-      <div id="fields">
+      <div class="form-group">
         <label for="username">Username</label>
         <input
           type="text"
           id="username"
           placeholder="Username"
-          v-model="user.username"
+          v-model.trim="user.username"
           required
           autofocus
         />
+      </div>
+      <div class="form-group">
         <label for="name">Name</label>
         <input
           type="text"
           id="name"
           placeholder="Name"
-          v-model="user.name"
+          v-model.trim="user.name"
           required
         />
+      </div>
+      <div class="form-group">
         <label for="password">Password</label>
         <input
           type="password"
@@ -28,6 +32,8 @@
           v-model="user.password"
           required
         />
+      </div>
+      <div class="form-group">
         <label for="confirmPassword">Confirm password</label>
         <input
           type="password"
@@ -36,47 +42,48 @@
           v-model="user.confirmPassword"
           required
         />
-
+      </div>
+      <div class="form-group">
         <label for="address">Address</label>
         <input
           type="text"
           id="address"
           placeholder="Address"
-          v-model="user.address"
+          v-model.trim="user.address"
         />
-
-        <label for="city">City</label>
-        <input type="text" id="city" placeholder="City" v-model="user.city" />
-
-        <label for="state">State</label>
-        <input
-          type="text"
-          id="state"
-          placeholder="State"
-          v-model="user.stateCode"
-          maxlength="2"
-          required
-        />
-
-        <label for="zip">ZIP</label>
-        <input
-          type="number"
-          id="zip"
-          placeholder="ZIP"
-          v-model="user.zip"
-          required
-          minlength="5"
-          maxlength="5"
-        />
-        <div></div>
-        <div>
-          <button type="submit">Create Account</button>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="city">City</label>
+          <input type="text" id="city" placeholder="City" v-model.trim="user.city" />
+        </div>
+        <div class="form-group">
+          <label for="state">State</label>
+          <input
+            type="text"
+            id="state"
+            placeholder="State"
+            v-model.trim="user.stateCode"
+            maxlength="2"
+            required
+          />
+        </div>
+        <div class="form-group">
+          <label for="zip">ZIP</label>
+          <input
+            type="number"
+            id="zip"
+            placeholder="ZIP"
+            v-model.number="user.zip"
+            required
+            minlength="5"
+            maxlength="5"
+          />
         </div>
       </div>
-      <hr />
-      Have an account?
-      <router-link v-bind:to="{ name: 'login' }">Sign in!</router-link>
+      <button type="submit" class="submit-btn">Create Account</button>
     </form>
+    <p class="login-link">Have an account? <router-link to="/login">Sign in!</router-link></p>
   </div>
 </template>
 
@@ -107,17 +114,15 @@ export default {
       alert(msg);
     },
     register() {
-      if (this.user.password != this.user.confirmPassword) {
+      if (this.user.password !== this.user.confirmPassword) {
         this.error("Password & Confirm Password do not match");
       } else {
         authService
           .register(this.user)
           .then((response) => {
-            if (response.status == 201) {
+            if (response.status === 201) {
               this.success("Thank you for registering, please sign in.");
-              this.$router.push({
-                path: "/login",
-              });
+              this.$router.push({ path: "/login" });
             }
           })
           .catch((error) => {
@@ -146,4 +151,66 @@ export default {
 </script>
 
 <style scoped>
+#register {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+.register-form {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"],
+.form-group input[type="number"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.form-row {
+  display: flex;
+  justify-content: space-between;
+}
+
+.form-row .form-group {
+  flex-basis: calc(33.333% - 10px);
+}
+
+.submit-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.login-link {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.login-link a {
+  text-decoration: none;
+  color: #4caf50;
+}
+
+.login-link a:hover {
+  text-decoration: underline;
+}
 </style>

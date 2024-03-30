@@ -1,9 +1,11 @@
 <template>
   <div id="cart-view">
-      <div class="header-container">
-    <h1>Shopping Cart</h1>
-    <button @click="clearCart" class="clear-cart-button">🗑️ Clear Cart</button>
-      </div>
+    <div class="header-container">
+      <h1>Shopping Cart</h1>
+      <button @click="clearCart" class="clear-cart-button">
+        🗑️ Clear Cart
+      </button>
+    </div>
     <table id="cart-table">
       <thead>
         <tr>
@@ -28,26 +30,28 @@
           </td>
           <td class="center">${{ item.product.price }}</td>
           <td class="center">${{ item.quantity * item.product.price }}</td>
-          <td><button @click="deleteItem(item)" class="delete-btn">X</button></td>
+          <td class>
+            <button @click="deleteItem(item)" class="delete-btn">X</button>
+          </td>
         </tr>
       </tbody>
     </table>
 
     <table id="cart-summary-table">
-        <tbody>
-            <tr>
-                <td class="title-column">Item subtotal:</td>
-                <td class="value-column">${{ cart.itemSubtotal }}</td>
-            </tr>
-            <tr>
-                <td class="title-column">Tax:</td>
-                <td class="value-column">${{ cart.tax }}</td>
-            </tr>
-            <tr>
-                <td class="title-column">Total:</td>
-                <td class="value-column">${{ cart.total }}</td>
-            </tr>
-        </tbody>
+      <tbody>
+        <tr>
+          <td class="title-column">Item subtotal:</td>
+          <td class="value-column">${{ cart.itemSubtotal }}</td>
+        </tr>
+        <tr>
+          <td class="title-column">Tax:</td>
+          <td class="value-column">${{ cart.tax }}</td>
+        </tr>
+        <tr>
+          <td class="title-column">Total:</td>
+          <td class="value-column">${{ cart.total }}</td>
+        </tr>
+      </tbody>
     </table>
   </div>
 </template>
@@ -60,28 +64,30 @@ export default {
     };
   },
   methods: {
-      deleteItem(item){
-          const index = this.cart.items.findIndex(i => i.cartItemId === item.cartItemId);
-          this.cart.items.splice(index, 1);
-          this.cart.itemSubtotal = this.calculateSubtotal();
-          this.cart.tax = this.calculateTax();
-          this.cart.total = this.cart.itemSubtotal + this.cart.tax;
-      },
-      calculateSubtotal() {
-          return this.cart.items.reduce((acc, item) => {
-              return acc + item.quantity * item.product.price;
-          }, 0);
-          
-      },
-      clearCart() {
-          this.cart.items = [];
-          this.cart.itemSubtotal = 0;
-          this.cart.tax = 0;
-          this.cart.total = 0;
-      },
-      calculateTax(){
-          return (0.06 * this.cart.itemSubtotal).toFixed(2);
-      },
+    deleteItem(item) {
+      const index = this.cart.items.findIndex(
+        (i) => i.cartItemId === item.cartItemId
+      );
+      this.cart.items.splice(index, 1);
+      this.cart.itemSubtotal = this.calculateSubtotal();
+      this.cart.tax = this.calculateTax();
+      this.cart.total =
+        parseFloat(this.cart.itemSubtotal) + parseFloat(this.cart.tax);
+    },
+    calculateSubtotal() {
+      return this.cart.items.reduce((acc, item) => {
+        return acc + item.quantity * item.product.price;
+      }, 0);
+    },
+    clearCart() {
+      this.cart.items = [];
+      this.cart.itemSubtotal = 0;
+      this.cart.tax = 0;
+      this.cart.total = 0;
+    },
+    calculateTax() {
+      return (0.06 * this.cart.itemSubtotal).toFixed(2);
+    },
     getCart() {
       this.cart = {
         tax: 8.74,
@@ -183,31 +189,33 @@ td.right {
 }
 
 #cart-summary-table {
-    text-align: right;
-    margin-left: 180px;
+  text-align: right;
+  margin-left: 180px;
 }
 
 .value-column {
-    padding-left: 210px;
+  padding-left: 210px;
 }
 
 .delete-btn {
-    color: red;
-    background: none;
-    border: none;
-    cursor: pointer;
+  color: red;
+  background: none;
+  border: none;
+  cursor: pointer;
 }
 
 .header-container {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .clear-cart-button {
-    border-radius: 7px;
-    font-size: 1.3rem;
-    margin-right: 10px;}
+  border-radius: 7px;
+  font-size: 1.3rem;
+  margin-right: 10px;
+}
+
 </style>
  
 

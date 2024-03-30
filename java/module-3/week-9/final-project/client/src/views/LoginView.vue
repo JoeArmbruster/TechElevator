@@ -1,17 +1,19 @@
 <template>
   <div id="login">
-    <form v-on:submit.prevent="login">
+    <form v-on:submit.prevent="login" class="login-form">
       <h1>Please Sign In</h1>
-      <div id="fields">
+      <div class="form-group">
         <label for="username">Username</label>
         <input
           type="text"
           id="username"
           placeholder="Username"
-          v-model="user.username"
+          v-model.trim="user.username"
           required
           autofocus
         />
+      </div>
+      <div class="form-group">
         <label for="password">Password</label>
         <input
           type="password"
@@ -20,11 +22,10 @@
           v-model="user.password"
           required
         />
-        <div><button type="submit">Sign in</button></div>
       </div>
-      <hr/>
-      Need an account? <router-link v-bind:to="{ name: 'register' }">Register!</router-link>
+      <button type="submit" class="submit-btn">Sign in</button>
     </form>
+    <p class="register-link">Need an account? <router-link to="/register">Register!</router-link></p>
   </div>
 </template>
 
@@ -67,5 +68,56 @@ export default {
 </script>
 
 <style scoped>
+#login {
+  max-width: 400px;
+  margin: 0 auto;
+}
 
+.login-form {
+  border: 1px solid #ccc;
+  padding: 20px;
+  border-radius: 5px;
+  background-color: #f9f9f9;
+}
+
+.form-group {
+  margin-bottom: 15px;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+.form-group input[type="text"],
+.form-group input[type="password"] {
+  width: 100%;
+  padding: 8px;
+  border: 1px solid #ccc;
+  border-radius: 4px;
+}
+
+.submit-btn {
+  background-color: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.register-link {
+  margin-top: 20px;
+  text-align: center;
+}
+
+.register-link a {
+  text-decoration: none;
+  color: #4caf50;
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}
 </style>

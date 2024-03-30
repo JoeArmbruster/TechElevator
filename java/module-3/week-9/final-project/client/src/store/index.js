@@ -6,6 +6,7 @@ export function createStore(currentToken, currentUser) {
     state: {
       token: currentToken || '',
       user: currentUser || {},
+      message: '',
     },
     mutations: {
       SET_AUTH_TOKEN(state, token) {
@@ -23,6 +24,12 @@ export function createStore(currentToken, currentUser) {
         state.token = '';
         state.user = {};
         axios.defaults.headers.common = {};
+      },
+      SET_MESSAGE(state, message) {
+        state.message = message;
+      },
+      CLEAR_MESSAGE(state){
+        state.message = '';
       }
     },
 
