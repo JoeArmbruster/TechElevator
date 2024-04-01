@@ -1,6 +1,6 @@
 <template>
   <div id="book-list-app">
-    <header id="app-header"><h1>The Book List</h1></header>
+    <AppHeader />
     <main id="main-content">
       <router-view />
     </main>
@@ -8,35 +8,22 @@
 </template>
 
 <script>
-import '@/assets/reset.css'
+import "@/assets/reset.css";
+import AppHeader from './components/AppHeader.vue'
 export default {
-  components: {},
-  name: 'App'
-}
+  components: {
+    AppHeader
+  },
+  name: "App",
+};
 </script>
 
 <style>
 /* Color palette: https://coolors.co/fffbdb-da7422-cfbd63-c0b387-30362f */
 body {
-  background-color: #30362F;
+  background-color: #30362f;
   font-family: Arial, Helvetica, sans-serif;
   font-size: 14px;
-}
-
-#app-header {
-  background-color: #DA7422;
-  border-bottom: 1px solid #B05F1C;
-  color: #FFFBDB;
-  font-weight: bold;
-  margin-bottom: 1rem;
-  padding: 1rem;
-  text-align: center;
-  text-shadow: 2px 2px #B05F1C;
-}
- 
-#app-header h1 {
-  font-size: 1.75rem;
-  margin-bottom: 0;
 }
 
 h1 {
@@ -59,16 +46,16 @@ main {
 }
 
 .view-container {
-  background-color: #CFBD63;
+  background-color: #cfbd63;
   border: 1px solid #625834;
-  color: #30362F;
+  color: #30362f;
   margin: auto;
   max-width: 1600px;
   padding: 2rem;
 }
 
 .view-header {
-  color: #30362F;
+  color: #30362f;
   font-size: 1.5rem;
   font-weight: bold;
 }

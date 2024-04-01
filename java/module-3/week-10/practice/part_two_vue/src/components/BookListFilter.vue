@@ -14,8 +14,8 @@
         </select>
       </div>
       <div class="button-group">
-        <button type="submit">Filter</button>
-        <button v-on:click="clear">Reset</button>
+        <button type="submit" class="filter-button">Filter</button>
+        <button v-on:click="clear" class="clear-button">Reset</button>
       </div>
     </form>
   </div>
@@ -63,6 +63,8 @@ export default {
   margin-bottom: 2rem;
   padding: 1rem 2rem;
   width: fit-content;
+  background-color: #C0B387;
+  border: 1px solid #30362F;
 }
 
 form {
@@ -96,7 +98,19 @@ input {
   padding: 0.25rem 0.75rem;
 }
 
-button {
+.filter-button {
+  background-color: #E69C60;
+  border: 1px solid #30362F;
+  border-radius: 0.25rem;
+  display: inline-block;
+  height: fit-content;
+  padding: 0.25rem 0.75rem;
+  margin-bottom: 0.5rem;
+  margin-right: 0.5rem;
+  width: 100px;
+}
+
+.clear-button {
   background-color: #e9e7e3;
   border: 1px solid #30362F;
   border-radius: 0.25rem;

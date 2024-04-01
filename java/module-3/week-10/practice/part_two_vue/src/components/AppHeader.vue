@@ -1,0 +1,32 @@
+<template>
+  <header id="app-header">
+      <router-link to="/books">
+      <h1>The Book List</h1>
+      </router-link>
+  </header>
+</template>
+
+<script>
+export default {
+    name: 'AppHeader'
+
+}
+</script>
+
+<style>
+#app-header {
+  background-color: #DA7422;
+  border-bottom: 1px solid #B05F1C;
+  color: #FFFBDB;
+  font-weight: bold;
+  margin-bottom: 1rem;
+  padding: 1rem;
+  text-align: center;
+  text-shadow: 2px 2px #B05F1C;
+}
+ 
+h1 {
+  font-size: 1.75rem;
+  margin-bottom: 0;
+}
+</style>
