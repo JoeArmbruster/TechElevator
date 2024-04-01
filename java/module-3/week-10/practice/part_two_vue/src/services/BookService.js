@@ -3,7 +3,7 @@ import axios from 'axios';
 export default {
 
   getGenres() {
-    return axios.get(`/api/genres`);
+    return axios.get(`/api/books/genres`);
   },
 
   getBooks() {

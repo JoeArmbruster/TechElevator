@@ -10,7 +10,7 @@
         <label for="genre-list">Genres:</label>
         <select id="genre-list" v-model="genreList" multiple>
           <option v-for="genre of allGenres" v-bind:key="genre.id"
-              v-bind:value="genre.name">{{genre.name}}</option>
+              v-bind:value="genre.name">{{ genre.name }}</option>
         </select>
       </div>
       <div class="button-group">
