@@ -60,11 +60,15 @@ article {
 }
 
 .movie-poster {
+  background-color: #F9F6F0;
+  border: 3px solid #FF9000;
   height: 400px;
   padding: 1.5rem;
 }
 
 .movie-details {
+  background-color: #F9F6F0;
+  border: 3px solid #FF9000;
   padding: 2.5rem;
 }
 

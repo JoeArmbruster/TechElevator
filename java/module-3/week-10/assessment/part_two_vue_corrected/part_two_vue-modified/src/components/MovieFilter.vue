@@ -24,11 +24,13 @@
 </template>
 
 <script>
+import movieService from '../services/MovieService';
+
 export default {
+
   data() {
     return {
-      // TODO - Currently using hard-coded list of genres
-      allGenres: [{"id":2201,"name":"Drama"},{"id":2202,"name":"Action"},{"id":2204,"name":"Comedy"}],
+      allGenres: [],
       titleString: "",
       selectedGenreList: []
     };
@@ -40,8 +42,17 @@ export default {
     clear() {
       this.titleString='';
       this.selectedGenreList=[];
+    },
+    fetchGenres() {
+      movieService.getGenres()
+      .then(response => {
+        this.allGenres = response.data;
+      })
     }
   },
+  created() {
+    this.fetchGenres();
+  }
 };
 </script>
 
